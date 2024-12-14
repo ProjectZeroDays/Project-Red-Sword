@@ -1,0 +1,20 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: archive-analyzer
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: archive-analyzer
+  template:
+    metadata:
+      labels:
+        app: archive-analyzer
+    spec:
+      containers:
+      - name: archive-analyzer
+        image: YOUR_AZURE_ACR_NAME.azurecr.io/archive-analyzer:latest
+        ports:
+        - containerPort: 7860

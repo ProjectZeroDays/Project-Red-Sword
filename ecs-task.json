@@ -1,0 +1,18 @@
+
+{
+    "family": "archive-analyzer",
+    "containerDefinitions": [
+        {
+            "name": "archive-analyzer",
+            "image": "YOUR_AWS_ACCOUNT_ID.dkr.ecr.YOUR_AWS_REGION.amazonaws.com/archive-analyzer",
+            "portMappings": [
+                {
+                    "containerPort": 7860,
+                    "hostPort": 7860
+                }
+            ],
+            "memory": 512,
+            "cpu": 256
+        }
+    ]
+}

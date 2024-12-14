@@ -1,0 +1,9 @@
+
+flask
+gradio
+openai
+requests
+cryptography
+scapy
+sqlalchemy
+archive

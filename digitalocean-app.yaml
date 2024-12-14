@@ -1,0 +1,13 @@
+
+name: archive-analyzer
+services:
+  - name: web
+    image:
+      registry: DOCKER_HUB
+      repository: YOUR_DOCKER_HUB_REPOSITORY/archive-analyzer
+      tag: latest
+    ports:
+      - protocol: http
+        port: 7860
+    environment_slug: docker
+    run_command: python src/frontend/archive_gui.py
