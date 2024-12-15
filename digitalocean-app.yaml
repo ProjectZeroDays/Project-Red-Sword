@@ -1,4 +1,3 @@
-
 name: archive-analyzer
 services:
   - name: web
@@ -11,3 +10,17 @@ services:
         port: 7860
     environment_slug: docker
     run_command: python src/frontend/archive_gui.py
+    envs:
+      - key: OPENAI_API_KEY
+        scope: RUN_AND_BUILD_TIME
+        value: ${OPENAI_API_KEY}
+      - key: HUGGINGFACE_API_KEY
+        scope: RUN_AND_BUILD_TIME
+        value: ${HUGGINGFACE_API_KEY}
+    health_check:
+      http:
+        path: /health
+        port: 7860
+        interval: 30
+        timeout: 5
+        retries: 3

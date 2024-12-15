@@ -1,6 +1,8 @@
 import io
 import random
+import logging
 from typing import List, Tuple
+import re
 
 import aiohttp
 import panel as pn
@@ -17,13 +19,20 @@ ICON_URLS = {
     "brand-discord": "https://discord.gg/AXRHnJU6sP",
 }
 
+# Configure logging
+logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
 
 async def random_url(_):
-    pet = random.choice(["cat", "dog"])
-    api_url = f"https://api.the{pet}api.com/v1/images/search"
-    async with aiohttp.ClientSession() as session:
-        async with session.get(api_url) as resp:
-            return (await resp.json())[0]["url"]
+    try:
+        pet = random.choice(["cat", "dog"])
+        api_url = f"https://api.the{pet}api.com/v1/images/search"
+        async with aiohttp.ClientSession() as session:
+            async with session.get(api_url) as resp:
+                resp.raise_for_status()
+                return (await resp.json())[0]["url"]
+    except aiohttp.ClientError as e:
+        logging.error(f"API request failed: {e}")
+        return None
 
 
 @pn.cache
@@ -36,9 +45,14 @@ def load_processor_model(
 
 
 async def open_image_url(image_url: str) -> Image:
-    async with aiohttp.ClientSession() as session:
-        async with session.get(image_url) as resp:
-            return Image.open(io.BytesIO(await resp.read()))
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.get(image_url) as resp:
+                resp.raise_for_status()
+                return Image.open(io.BytesIO(await resp.read()))
+    except aiohttp.ClientError as e:
+        logging.error(f"HTTP request failed: {e}")
+        return None
 
 
 def get_similarity_scores(class_items: List[str], image: Image) -> List[float]:
@@ -66,12 +80,25 @@ async def process_inputs(class_names: List[str], image_url: str):
         if not image_url:
             yield "##### ⚠️ Provide an image URL"
             return
+
+        # Check if image_url is a valid URL
+        if not re.match(r'^(http|https)://', image_url):
+            yield "##### ⚠️ Invalid URL provided"
+            return
+
+        if not class_names:
+            yield "##### ⚠️ Provide class names"
+            return
     
         yield "##### ⚙ Fetching image and running model..."
         try:
             pil_img = await open_image_url(image_url)
+            if pil_img is None:
+                yield "##### 😔 Something went wrong, please try a different URL!"
+                return
             img = pn.pane.Image(pil_img, height=400, align="center")
         except Exception as e:
+            logging.error(f"Error processing image URL: {e}")
             yield f"##### 😔 Something went wrong, please try a different URL!"
             return
     
