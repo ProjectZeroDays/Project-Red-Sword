@@ -9,6 +9,9 @@ import panel as pn
 from PIL import Image
 from transformers import CLIPModel, CLIPProcessor
 
+from modules.real_time_threat_intelligence import RealTimeThreatIntelligence
+from modules.real_time_monitoring import RealTimeMonitoring
+
 pn.extension(design="bootstrap", sizing_mode="stretch_width")
 
 ICON_URLS = {
@@ -172,3 +175,10 @@ pn.template.BootstrapTemplate(
     main_max_width="min(50%, 698px)",
     header_background="#F08080",
 ).servable(title=title)
+
+# Initialize real-time threat intelligence and monitoring modules
+threat_intelligence = RealTimeThreatIntelligence(api_key="YOUR_API_KEY")
+monitoring = RealTimeMonitoring(threat_intelligence_module=threat_intelligence)
+
+# Update attack simulation framework to use ensemble learning techniques
+# Placeholder for ensemble learning integration
