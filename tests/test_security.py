@@ -1,6 +1,6 @@
 import os
 import pytest
-from app import process_inputs
+from app import process_inputs, random_url, open_image_url
 
 def test_api_key_handling():
     openai_api_key = os.getenv("OPENAI_API_KEY")
