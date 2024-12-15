@@ -26,3 +26,20 @@ async def test_input_validation():
     # Test with empty class names
     async for result in process_inputs("", valid_image_url):
         assert "Provide class names" in result
+
+@pytest.mark.asyncio
+async def test_error_handling():
+    invalid_image_url = "https://example.com/invalid_image.jpg"
+    class_names = "cat, dog"
+    
+    # Test error handling in random_url
+    url = await random_url(None)
+    assert url is not None
+    
+    # Test error handling in open_image_url
+    image = await open_image_url(invalid_image_url)
+    assert image is None
+    
+    # Test error handling in process_inputs
+    async for result in process_inputs(class_names, invalid_image_url):
+        assert "Something went wrong" in result
