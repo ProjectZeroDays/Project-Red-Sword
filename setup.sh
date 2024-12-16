@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 echo "Setting up the Cybersecurity Framework..."
