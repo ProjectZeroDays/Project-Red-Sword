@@ -18,8 +18,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 7860
 
 # Set environment variables for API keys
-ENV OPENAI_API_KEY=your-openai-api-key
-ENV HUGGINGFACE_API_KEY=your-huggingface-api-key
+ENV OPENAI_API_KEY=${OPENAI_API_KEY}
+ENV HUGGINGFACE_API_KEY=${HUGGINGFACE_API_KEY}
 
 # Command to start the Gradio app
 CMD ["python", "src/frontend/archive_gui.py"]

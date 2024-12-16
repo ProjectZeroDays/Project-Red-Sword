@@ -15,11 +15,11 @@
             "environment": [
                 {
                     "name": "OPENAI_API_KEY",
-                    "value": "your-openai-api-key"
+                    "value": "${OPENAI_API_KEY}"
                 },
                 {
                     "name": "HUGGINGFACE_API_KEY",
-                    "value": "your-huggingface-api-key"
+                    "value": "${HUGGINGFACE_API_KEY}"
                 }
             ],
             "resourceRequirements": [
