@@ -11,6 +11,11 @@ from transformers import CLIPModel, CLIPProcessor
 
 from modules.real_time_threat_intelligence import RealTimeThreatIntelligence
 from modules.real_time_monitoring import RealTimeMonitoring
+from modules.threat_intelligence import ThreatIntelligence
+from modules.predictive_analytics import PredictiveAnalytics
+from modules.automated_incident_response import AutomatedIncidentResponse
+from modules.ai_red_teaming import AIRedTeaming
+from modules.blockchain_logger import BlockchainLogger
 
 pn.extension(design="bootstrap", sizing_mode="stretch_width")
 
@@ -180,5 +185,22 @@ pn.template.BootstrapTemplate(
 threat_intelligence = RealTimeThreatIntelligence(api_key="YOUR_API_KEY")
 monitoring = RealTimeMonitoring(threat_intelligence_module=threat_intelligence)
 
-# Update attack simulation framework to use ensemble learning techniques
-# Placeholder for ensemble learning integration
+# Initialize and integrate new modules in the main function
+advanced_threat_intelligence = ThreatIntelligence()
+predictive_analytics = PredictiveAnalytics()
+automated_incident_response = AutomatedIncidentResponse()
+ai_red_teaming = AIRedTeaming()
+blockchain_logger = BlockchainLogger()
+
+# Update the dashboard to display real-time insights and analytics
+dashboard = pn.Column(
+    "### Advanced Capabilities Dashboard",
+    pn.pane.Markdown("Welcome to the Advanced Capabilities Dashboard. Here you can monitor and manage advanced security features."),
+    advanced_threat_intelligence.render(),
+    predictive_analytics.render(),
+    automated_incident_response.render(),
+    ai_red_teaming.render(),
+    blockchain_logger.render()
+)
+
+main.append(dashboard)

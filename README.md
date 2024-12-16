@@ -340,7 +340,7 @@ We welcome contributions to Project Red Sword. If you'd like to contribute, plea
 3. Create a new branch.
 4. Make your changes and commit them.
 5. Push your changes to your fork.
-6. Open a pull request with a description of the changes you've made.
+6. Open a pull request with a description of the changes you have made.
 
 #### License
 
@@ -428,3 +428,44 @@ To further enhance the framework, the following additional features have been ad
 3. **Compliance Management**: Develop a compliance management module to ensure adherence to regulatory requirements and industry standards.
 4. **Security Awareness Training**: Integrate security awareness training to educate users on security best practices and emerging threats.
 5. **Vulnerability Management**: Develop a vulnerability management module to identify, prioritize, and remediate vulnerabilities.
+6. **Exploit Catalogue**: Add a wide array of the latest zero-click and zero-day exploits and the full implementations of them into a controlled access directory within the project to be customized as needed and deployed by AI
+7. **Payload Catalogue**: Add the latest and most sophisticated exploit delivery techniques and methods into a directory to be used and deployed by AI with controlled access.
+8. **Advanced Post Exploitation Modules**: Add advanced post exploitation modules to a directory using controlled access for the AI to deploy and modify as it sees fit.
+9. **Advanced Memory Attacks**: Add fully implemented advanced memory attacks to be deployed by AI automatically.
+10. **Advanced Dashboards**: Add as many dashboards for user features, settings panel, p2p messaging module and settings panel, AI driven customer chat module and admin settings panel for it, C2 operations panel and visualization of assets, message boards, announcements, latest news on the latest exploits, interface for the AI, system connections, logs, system status, system settings, attack simulations, fuzzing, asset control features for selected assets in the c2 panel, settings panel to customize reverse shell and other advanced connection methods, settings panel for advanced payload creation, modification and delivery, settings panel for user profiles, user profiles in the user space, user login screen, user lockout assistance screen, side panel for adding dashboard links, admin settings panel, controlled access settings, and any other panels, settings, modules, visualizations for panels and dashboards such as connection maps showing ip and countries on the map with connecting lines between them.
+11. **Add Advanced Reverse Shells**: Add advanced reverse shells and custom shells similar to that of sophisticated competing frameworks.
+12. **Add Advanced Paywall Bypass Features**: Add advanced methods of bypassing paywalls to analyze information across private forums, dark web, deep web, private servers, etc for code snippets and traces of meta data for searching for illicit code, exploits, or attack frameworks
+13. **Add Pipeline for Disclosure With Prior DIA Approval For New Vulnerabilities / Exploits**: Create a pipeline for providing stakeholders White Papers, PoC, and Mitigation Techniques for the new vulnerability.
+14. **Add Visualizations**: Create and add advanced visualizations such as charts, graphs, and status of systems, network connectivity, threat detection, def-con level.
+15. **Add Defcon Level Status**: Create a bright colored light; green, red for showing status of def-con level pertaining to all systems are ok, threat detected, intrusion alert, system compromised and create appropriate actions the AI should take to mitigate, evade, avoid, fix, and or shut the system down to prevent further access. Create banner alerts for each and details from the logs in the alerts as well as a siren sound, flash the program interface red and white with the centered alert box and details from the log for all def-con levels outside of green unless otherwise returning back to green.
+
+## Blockchain-Based Features
+
+To enhance security, transparency, and accountability, the framework now includes the following blockchain-based features:
+
+1. **Immutable Logs**: Use blockchain to store logs of security events and incidents, ensuring that they cannot be tampered with.
+2. **Audit Trails**: Implement blockchain-based audit trails for all actions taken by the system, providing a transparent and tamper-proof record of activities.
+3. **Data Integrity**: Use blockchain to ensure the integrity of data collected and processed by the system, such as threat intelligence data and device fingerprints.
+
+### Integration with Modules
+
+The blockchain-based features have been integrated into the following modules:
+
+1. **Real-Time Monitoring**: The `modules/real_time_monitoring.py` file now includes blockchain-based immutable logs for security events and incidents.
+2. **Real-Time Threat Intelligence**: The `modules/real_time_threat_intelligence.py` file now includes blockchain-based audit trails for actions taken by the system.
+3. **Data Integrity**: Blockchain-based data integrity features for threat intelligence data and device fingerprints are now included in the `modules/real_time_threat_intelligence.py` file.
+
+### Example Usage of Blockchain-Based Features
+
+```python
+# Example of using the BlockchainLogger module
+from modules.blockchain_logger import BlockchainLogger
+
+logger = BlockchainLogger()
+logger.log_event("Security event detected")
+logger.log_event("Action taken by the system")
+
+# Verify the integrity of the blockchain
+is_valid = logger.verify_chain()
+print(f"Blockchain integrity: {is_valid}")
+```
