@@ -1,0 +1,141 @@
+Workflow/Actions
+Development Prompt 
+AI Chat Messaging Threads
+Perplexity / Copilot / Gemini / ChatGPT
+--
+Master Workflow Project 
+Goals of the Project 
+Intent of Use
+Strategy
+
+This project is to create a master workflow and actions that serve to analyze github repositories and then generate a custom set of github workflows and actions tailored to and suited for the completely automated and seamless management of all tasks and activitied for individual repositories ensuring as little human intervention is necessary as possible. The master workflow will review projects and assess what components are missing, assess what path is best to take in implmenting, generating, correcting, or removing incomplete or missing code logic for implmentations and to generate/update incomplete/missing documentation, configuration files, and other project files required for projects to become production ready. It also automatically creates packages and links them to the individual github repository for the user and manages all pull requests merges, and other processes along the way to ensure as little human intervention or actions are needed as possible. After completion of the Master workflow has succesfully generated all custom workflows and actions deemed necessary and optionally recommended to enhance the projects overall efficency and effectiveness in reaching a production ready level, it then removes the default master workflow from the individual project while maintaining the set default workflow as the overall workflow for each new project (assuming that the user decides to add it as a template and default workflow when prompted initially.
+
+Initial Prompts to Create a Plan For GitHub Master Workflow and Actions Implementations
+
+1. Review all previous related questions provided under every response you've given in this thread, every prompt I've given, all requests I've made, and all of your responses that you've given. 
+
+2. Analyze them and include every single important valuable piece of code that could make this the most versatile robust enhanced, efficient, capable, effective, seamless, ongoing, continuous, management solution Needing Zero interference based on and the creation of Additional workloads and actions relating to only and only to each specific individual repository. 
+
+3. Integrate all of the best features related to each project based on initial analysis and ensure github copilot seamlessly integrates with popular Integrated Development Environments (IDEs), including support and advanced features for:
+
+**IDE Integration**
+- Seamless integration with popular IDEs:
+- Visual Studio Code
+- Visual Studio
+- JetBrains IDEs (IntelliJ IDEA, PyCharm, WebStorm)
+- Nano, EMACS, Atom, Neovim
+
+4. Integrate a singular workflow to automatically scan repositories and then create custom additional workflows and actions to implement and handle the following actions and tasks automatically:
+
+**Automated Intelligent Creation, integration, and management of repository Badges, Statistics, Progress, and other Visualizations for README.md**
+- Add actions for the automatic intelligent addition of 'workflow badges'
+- Add actions for the automatic intelligent addition of current 'project status badge'
+- Add actions to add the repository social badges
+- Add actions for the automatic generation of 'usage', 'project statistics', 'project goals', and 'current and future implmentation checklists'
+
+**Automatic Intelligent Creation and Updating of All Documentation**
+- Add actions for the intelligent automatic creation of file structure documentation each time the file structure changes
+- Add actions for automatically managing documentation to intelligently update the README.md, repository Wiki, and other Documentation after every change to source files of the project
+- Add actions to automatically provide comprehensive detailed explanations of each added resource and its source url, feature of the software, and functionality added when new features and functionalities are added to the projects 
+
+**Automatic Intelligent Database Creation, Modification, and Management**
+- Add actions for the automatic installation of dependencies, the automatic configuration, and the automatic table creation of databases when needed
+
+**Setting Up Automatic Intelligent Workflow Actions Creation & Manangement**
+- Add actions for the automatic intelligent setup the automatic GitHub Copilot CLI Integration of projects locally
+- Add actions for the automatic and intelligent installation of all dependcies and perform all necessary configurations in every project
+- Add actions for the automatic intelligent creation of additional Workflow and actions Implementation when needed in order to maintain continual automated processes to ensure continual seemless integrations 
+- Add actions for the automatic intelligent creation of additional workflows and actions implementation when needed in order to maintain continual monitoring 
+- Add actions for the automatic intelligent creation of additional workflows and actions implementation when needed in order to automatically  perform and manage intelligent continual performance, resource, and api key rate handling adjustments as needed
+- Add actions for the automatic intelligent creation of additional workflows and actions implementation when needed in order to automatically intelligently manage logging, error handling, error correction, pull request creation, review, acceptance, handling and all merging of branches, and integration of newly updated error free code when needed
+- Add actions for the automatically and intelligently handle the continual management of github and hugging face source repositories
+
+**Setting up Automatic Continual Intelligent Github Package Management**
+- Add actions for the automatic and intelligent generation and production of packages/assets when the project is ready for production or has met current goals
+- Add actions for the automatic and intelligent creation of new tags/releases and add each asset when the project is ready for production or has met current goals
+- Add actions to automatically link all GitHub Packages to the repository when each package is created
+
+**Setting Up Automatic and Intelligent Real-time code suggestions**
+- Inline error fixing suggestions
+- Provide real-time code suggestions and error detection directly within the developer's preferred coding environment for real-time code analysis to identify potential bugs and syntax errors, inline error fixing suggestions
+
+**Code Review and Analysis**
+Add Advanced code review tools
+Add advanced improved error detection
+
+**Add advanced Code Review Tools**
+Provide contextual analysis of code structure, comments, and variable names
+Automatically provide assistance with debugging by analyzing exceptions, variables, and deadlocks2
+Add advanced tools for spotting hidden bugs and errors based on each individual project 
+Identifying potential issues before human
+Streamline debugging process
+ 
+**AI-Powered Code Correction and Generation Assistance**
+- Add actions to automatically and intelligently generate and replace all placeholders with fully implemented code logic 
+- Add actions to automatically and intelligently manage the iIntegration of OpenAI Codex for code review
+- Add actions for the intelligent automatic incorporation of Perplexity, Gemini, CodeGeeX, and AutoGPT APIs
+Intelligent agent creation for specific tasks
+- Add actions that automatically and intelligently facilitate periodic code review
+- Add actions for automated intelligent code corrections (not including any zero-click or zero-day exploits or implementations or cyber security red team operations modules or plugins)
+- Add actions to automatically and intelligently manage the automated updates to documentation such as the README.md, Wiki files, other docs, and other project files such as missing or incomplete requirements.txt, .env, .gitignore
+- Add actions to automatically and intelligently handle management of the automated intelligent creation of new workflows and actions based on each individual project and its needs
+- Add actions to automatically and intelligently manage identification of potential issues before human review
+- Add actions to the workflow for the automated intelligent management of AI participants' rate handling and adjustments in the AI feedback loop and individually
+
+**AI Tools Integration For Code Review**
+Add actions to automatically and Intelligently provide support for SonarQube for code quality analysis
+Add actions to automatically and intelligently provide support for DeepCode for AI-powered code review
+
+**Integration With ML Tools For AI**
+Add actions to automatically and intelligently provide support for integration of PyTorch for machine learning projects (when relevant)
+
+**Testing**
+- Add actions to automatically and intelligently create comprehensive test cases
+- Add actions to automatically and intelligently deploy all tests and test project files before deployment
+- Add actions to automatically and intelligently generate table-driven tests in all programming languages based on the project 
+- Add actions for the automatic and intelligent integration with tools like Applitools for visual regression testing
+
+**Integration with performance analysis tools**
+- Add actions to automatically and intelligently provide advanced insights in CPU Usage Auto Insights
+- Add actions to automatically and intelligently provide detailed information about functions on identified hot paths in code2
+
+**CI/CD Integration**
+- Add actions for the automatic intelligent management and seamless integration with existing CI/CD pipelines
+- Add actions for the automatic intelligent optimization of workflows for enhanced efficiency
+- Add actions for the automatic intelligent minimization of interference between workflows
+
+**Continuous Integration/Continuous Deployment (CI/CD)**
+- Add actions to automatically and intelligently ensure AI produced core reliable code passes q1
+- Add actions to automatically and intelligently ensure Copilot integrates with performance analysis tools related to repo running the workflow 
+
+**Continuous Improvement**
+- Add actions for the automatic and intelligent periodic scanning and integration of best practices minus the removal or changes made to exploits for red team frameworks 
+- Add actions for the intelligent and automated creation of additional workloads reflecting up-to-date solutions
+- Add actions to automatically and intelligently enhance overall code quality throughout the development lifecycle
+
+**Need Categorical Organization**
+- Add automated workflows to intelligently add prohibiting mechanisms as to not take action inhibiting, deleting, blocking or removing any code, processes, actions, workflows, materials, files, responses to any user prompts delivered to Microsoft's Github Copilot AI and any other workflow integrated AI participants such as but not limited to DeepCode, SonarCube, Gemini, Codex, Perplexity, and other Hugging Face LLMs and API based AIs or any requests made by the user for the creation of any files, actions, or workflows for the project in relation to its' combined overall all main focus and objectives. 
+- Add workflows to intelligently automate the processes to ensuring seamless integration of GitHub actions with existing CI/CD pipelines
+- Add worflows and actions to automatically and intelligently add as many free relevant tools, resources, and features to ensure GitHub actions and workflows are as versatile as possible for different projects and include a wide array of capabilities to manage projects with as little intervention as possible
+- Optimize gh actions workflows for enhanced efficiency
+- Incorporate advanced strategies to minimize interference in github workflow actions generated for each project and the main template
+- Integrate advanced features and strategic code elements to scan, find, assess, and discern which to integrate for each individual project 
+- Ensure the continuous automated creation of necessary additional actions and workloads for github workflows that reflect the best up to date solutions available 
+- Add continuous workflows and actions to automatically scan individual projects and intelligently make adjustments that make the project more efficient and effective providing the most comprehensive, up to date, and free management strategy and workflow actions
+- Then, set up workflows in GitHub Actions to generate and produce a wide array of packages/assets and automatically create new tags/releases and upload them or link them to each individual github project accordingly. 
+- Add workflow to automatically generate any missing configuration files or setup scripts not found in the repo for seemless integration
+- Incorporate OpenAI Codex, perplexity, Gemini, CodeGeeX, AutoGPT, and Microsoft's GitHub Copilot for code analysis, code review, error correction, vulnerability scanning, fixing vulnerabilties, and agent creation for workloads, tasks, and other prioritized uses when needed or useful while minding API Key rate limiting for each. 
+
+Subsequential Prompts To Finalize all Actions
+
+1. Do your research and configure their usage and order them intelligently so that the most productive consensus possible for the tasks requested by the actions and workflows can be made in unison when working together based on which API Keys are provided by the user and which havent been included during setup. 
+
+2. Use your best judgement for all decision making and conduct all code logic as if you were acting on full authority building this yourself and were focused on providing the most comprehensive, universal, all encompassing, extremely capable, insanely efficient, ridiculously smart, completely seamless, notoriously hands off, infamously automated, robust solution to setup and deploy any type of development project possible. Then review the master workflow provided for errors and or vulnerabilities and correct them. 
+
+3. Provide the updated master workflow ensuring that it still will prompt users for whether or not they wish to add the workflow as their default template, prompts them to provide each API Key for the workflow to operate correctly and additional API Keys to suggested or recommended resources for the indivudal project to operate automatically with the intent to require as little interaction from the user as possible
+
+4. After the master workflow has successfully completed and has generated custom workflows and actions tailored to the individual project of each forked and or newly created repository to ensure the most intelligent and seamless automation of repository management requiring as little interaction from the user as possible, then use a final workflow action to remove the master/default github workflow from the project to continually ensure the appropriate actions and workflows are appointed.
+
+
+
+ 
