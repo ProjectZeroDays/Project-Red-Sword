@@ -1,8 +1,11 @@
-AI Prompt To Create A Master Github Workflow
+AI Prompt:
+Create A Master Github Workflow
 
+Project Goals:
 This project aims to create a master workflow and actions that analyze GitHub repositories and generate a custom set of GitHub workflows and actions tailored to complete various tasks automatically.
 
-Initial Prompts to Create a Plan for GitHub Master Workflow and Actions Implementations
+Master Worflow Requirements:
+I. Initial Prompts to Create a Plan for GitHub Master Workflow and Actions Implementations
 
     1. Review Previous Interactions:
         * Analyze all previous related questions, prompts, requests, and responses to identify valuable pieces of code for integration.
@@ -61,14 +64,14 @@ Initial Prompts to Create a Plan for GitHub Master Workflow and Actions Implemen
         * Create custom project workflows that also prompt the user for required and optional API keys and credentials.
         * Update Documentation on added custom workflows, resources being used in them, processes carried out for seamless integration, and additional information.
 
-Subsequential Prompts to Finalize All Actions
+II. Subsequential Prompts to Finalize All Actions
 
     1. Conduct research and configure the usage of tools and workflows intelligently.
     2. Use best judgment for decision-making and conduct all code logic with full authority and focus on comprehensive solutions.
     3. Provide the updated master workflow, prompting users for API keys and other necessary inputs.
     4. Ensure the master workflow generates custom workflows and actions tailored to each project, maintaining seamless integration and automation.
 
-Additional Enhancements:
+III. Additional Enhancements:
 
     1. Testing:
         * Automatically create comprehensive test cases, deploy tests before deployment, and generate table-driven tests.
