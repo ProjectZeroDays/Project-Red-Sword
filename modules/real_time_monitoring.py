@@ -1,11 +1,13 @@
 import aiohttp
 import asyncio
 import logging
+from modules.blockchain_logger import BlockchainLogger
 
 class RealTimeMonitoring:
     def __init__(self, threat_intelligence_module):
         self.threat_intelligence_module = threat_intelligence_module
         self.alert_threshold = 0.8  # Threshold for triggering alerts
+        self.blockchain_logger = BlockchainLogger()
 
     async def monitor_exfiltration(self, data_stream):
         async for data in data_stream:
@@ -29,6 +31,7 @@ class RealTimeMonitoring:
         alert_message = f"Suspicious activity detected: {data}"
         logging.warning(alert_message)
         self.send_alert(alert_message)
+        self.blockchain_logger.log_event(alert_message)
 
     def send_alert(self, message):
         # Example alerting logic using email

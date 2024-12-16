@@ -15,6 +15,7 @@ from modules.threat_intelligence import ThreatIntelligence
 from modules.predictive_analytics import PredictiveAnalytics
 from modules.automated_incident_response import AutomatedIncidentResponse
 from modules.ai_red_teaming import AIRedTeaming
+from modules.blockchain_logger import BlockchainLogger
 
 pn.extension(design="bootstrap", sizing_mode="stretch_width")
 
@@ -189,6 +190,7 @@ advanced_threat_intelligence = ThreatIntelligence()
 predictive_analytics = PredictiveAnalytics()
 automated_incident_response = AutomatedIncidentResponse()
 ai_red_teaming = AIRedTeaming()
+blockchain_logger = BlockchainLogger()
 
 # Update the dashboard to display real-time insights and analytics
 dashboard = pn.Column(
@@ -197,7 +199,8 @@ dashboard = pn.Column(
     advanced_threat_intelligence.render(),
     predictive_analytics.render(),
     automated_incident_response.render(),
-    ai_red_teaming.render()
+    ai_red_teaming.render(),
+    blockchain_logger.render()
 )
 
 main.append(dashboard)
