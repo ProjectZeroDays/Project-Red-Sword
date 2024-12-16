@@ -1,4 +1,3 @@
-
 {
     "family": "archive-analyzer",
     "containerDefinitions": [
@@ -12,7 +11,27 @@
                 }
             ],
             "memory": 512,
-            "cpu": 256
+            "cpu": 256,
+            "environment": [
+                {
+                    "name": "OPENAI_API_KEY",
+                    "value": "your-openai-api-key"
+                },
+                {
+                    "name": "HUGGINGFACE_API_KEY",
+                    "value": "your-huggingface-api-key"
+                }
+            ],
+            "resourceRequirements": [
+                {
+                    "type": "MEMORY",
+                    "value": "512"
+                },
+                {
+                    "type": "CPU",
+                    "value": "256"
+                }
+            ]
         }
     ]
 }

@@ -1,4 +1,3 @@
-
 flask
 gradio
 openai
@@ -7,3 +6,7 @@ cryptography
 scapy
 sqlalchemy
 archive
+aiohttp
+Pillow
+transformers
+panel
