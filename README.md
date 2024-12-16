@@ -22,6 +22,9 @@ The Red Sword framework combines powerful cybersecurity tools and techniques int
 - AI-powered fuzzing, exploit generation, and vulnerability scanning.
 - Integration with major intelligence and FOIA sources.
 - Full integration with tools like Sn1per, Empire, and custom modules for advanced penetration testing.
+- Real-time threat intelligence and monitoring.
+- Advanced data exfiltration techniques.
+- Polymorphic and encrypted exploit payloads.
 
 ## Setup
 
@@ -76,7 +79,11 @@ The framework includes a wide array of functionalities:
 - **Post-Exploitation**: Keylogging, privilege escalation, system persistence.
 - **Exploit Discovery**: Zero-day and zero-click exploit generation.
 - **Custom Tools**: Including a custom script generator for Hak5 devices and other third-party platforms.
-  
+- **Real-Time Threat Intelligence**: Provides up-to-date threat data and analysis.
+- **Real-Time Monitoring**: Monitors data exfiltration and detects anomalies.
+- **Data Exfiltration**: Secure data extraction techniques.
+- **Exploit Payloads**: Polymorphic and encrypted payload generation.
+
 ### Example Usage
 
 ```python
@@ -356,3 +363,28 @@ This framework contains advanced attack and penetration testing features, includ
 ---
 
 If you encounter any issues or need further support, please open an issue on the GitHub repository or reach out to us via the Hugging Face Space contact form.
+
+---
+
+### Using the Wiki
+
+The Project Red Sword repository includes a comprehensive Wiki that provides detailed information about the framework, its features, and how to use it effectively. The Wiki is divided into several sections, each covering a specific aspect of the project.
+
+To access the Wiki, navigate to the "Wiki" tab on the GitHub repository page. Here are some of the key sections you will find:
+
+1. **Home Page**: An overview of the project, including its purpose, features, and key modules.
+2. **Feature Pages**: Detailed descriptions and usage instructions for each major feature of the project.
+3. **Setup and Installation**: Step-by-step instructions for setting up and installing the framework.
+4. **Contributing Guidelines**: Information on how to contribute to the project, including coding standards, pull request guidelines, and more.
+
+### Contributing to the Wiki
+
+We encourage contributions to the Project Red Sword Wiki. If you have additional information, corrections, or improvements, please feel free to contribute. Here are the steps to contribute to the Wiki:
+
+1. **Fork the Repository**: Fork the Project Red Sword repository to your GitHub account.
+2. **Clone the Repository**: Clone your forked repository to your local machine.
+3. **Edit the Wiki**: Make your changes to the Wiki pages. You can add new sections, update existing content, or correct any errors.
+4. **Commit and Push**: Commit your changes and push them to your forked repository.
+5. **Open a Pull Request**: Open a pull request to merge your changes into the main repository. Provide a clear description of the changes you have made.
+
+By contributing to the Wiki, you help improve the documentation and make it easier for others to use and understand the Project Red Sword framework.
