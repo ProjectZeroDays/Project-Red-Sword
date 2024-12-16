@@ -23,6 +23,16 @@ The Red Sword framework combines powerful cybersecurity tools and techniques int
 - Integration with major intelligence and FOIA sources.
 - Full integration with tools like Sn1per, Empire, and custom modules for advanced penetration testing.
 
+## Key Capabilities and Objectives of NSA's Tailored Access Operations (TAO)
+
+The NSA's Tailored Access Operations (TAO) is a specialized cyber warfare intelligence-gathering unit within the National Security Agency (NSA). TAO is responsible for conducting highly sophisticated network penetrations and digital espionage operations against foreign targets of interest. Their primary mission is to gain access to sensitive information, disrupt enemy networks, and maintain a persistent presence within targeted systems.
+
+TAO employs a wide range of advanced techniques, including custom-developed exploits, zero-day vulnerabilities, and sophisticated malware, to achieve their objectives. They often target high-value individuals, government agencies, and critical infrastructure networks.
+
+### Detailed Information on TAO's Capabilities and Operations
+
+For a detailed description of TAO's capabilities and operations, please refer to the `prompt` file in this repository.
+
 ## Setup
 
 This framework requires Python 3.8+ and the following dependencies. It can be deployed easily in Hugging Face Spaces or similar environments.

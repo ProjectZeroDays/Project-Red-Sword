@@ -19,42 +19,151 @@ This report provides a detailed analysis of the codebase for Project Red Sword, 
 #### `random_url` Function
 - **Issue**: The function does not handle API errors properly.
 - **Fix**: Add error handling for API errors using `try-except` blocks.
+- **Example**:
+  ```python
+  async def random_url(_):
+      try:
+          pet = random.choice(["cat", "dog"])
+          api_url = f"https://api.the{pet}api.com/v1/images/search"
+          async with aiohttp.ClientSession() as session:
+              async with session.get(api_url) as resp:
+                  resp.raise_for_status()
+                  return (await resp.json())[0]["url"]
+      except aiohttp.ClientError as e:
+          logging.error(f"API request failed: {e}")
+          return None
+  ```
 
 #### `open_image_url` Function
 - **Issue**: The function does not handle HTTP errors properly.
 - **Fix**: Add error handling for HTTP errors using `try-except` blocks.
+- **Example**:
+  ```python
+  async def open_image_url(image_url: str) -> Image:
+      try:
+          async with aiohttp.ClientSession() as session:
+              async with session.get(image_url) as resp:
+                  resp.raise_for_status()
+                  return Image.open(io.BytesIO(await resp.read()))
+      except aiohttp.ClientError as e:
+          logging.error(f"HTTP request failed: {e}")
+          return None
+  ```
 
 #### `process_inputs` Function
 - **Issue**: The function does not log exceptions, making it difficult to trace issues.
 - **Fix**: Add logging for exceptions using the `logging` module.
+- **Example**:
+  ```python
+  async def process_inputs(class_names: List[str], image_url: str):
+      try:
+          main.disabled = True
+          if not image_url:
+              yield "##### ⚠️ Provide an image URL"
+              return
+
+          # Check if image_url is a valid URL
+          if not re.match(r'^(http|https)://', image_url):
+              yield "##### ⚠️ Invalid URL provided"
+              return
+
+          if not class_names:
+              yield "##### ⚠️ Provide class names"
+              return
+      
+          yield "##### ⚙ Fetching image and running model..."
+          try:
+              pil_img = await open_image_url(image_url)
+              if pil_img is None:
+                  yield "##### 😔 Something went wrong, please try a different URL!"
+                  return
+              img = pn.pane.Image(pil_img, height=400, align="center")
+          except Exception as e:
+              logging.error(f"Error processing image URL: {e}")
+              yield f"##### 😔 Something went wrong, please try a different URL!"
+              return
+      
+          class_items = class_names.split(",")
+          class_likelihoods = get_similarity_scores(class_items, pil_img)
+      
+          # build the results column
+          results = pn.Column("##### 🎉 Here are the results!", img)
+      
+          for class_item, class_likelihood in zip(class_items, class_likelihoods):
+              row_label = pn.widgets.StaticText(
+                  name=class_item.strip(), value=f"{class_likelihood:.2%}", align="center"
+              )
+              row_bar = pn.indicators.Progress(
+                  value=int(class_likelihood * 100),
+                  sizing_mode="stretch_width",
+                  bar_color="secondary",
+                  margin=(0, 10),
+                  design=pn.theme.Material,
+              )
+              results.append(pn.Column(row_label, row_bar))
+          yield results
+      finally:
+          main.disabled = False
+  ```
 
 ### 2. Input Validation
 
 #### `process_inputs` Function
 - **Issue**: The function does not check if `class_names` is empty.
 - **Fix**: Add a check to ensure `class_names` is not empty.
+- **Example**:
+  ```python
+  if not class_names:
+      yield "##### ⚠️ Provide class names"
+      return
+  ```
+
 - **Issue**: The function does not validate if `image_url` is a valid URL.
 - **Fix**: Add a check to ensure `image_url` is a valid URL.
+- **Example**:
+  ```python
+  if not re.match(r'^(http|https)://', image_url):
+      yield "##### ⚠️ Invalid URL provided"
+      return
+  ```
 
 ### 3. Logging
 
 - **Issue**: The application lacks comprehensive logging.
 - **Fix**: Configure logging using the `logging` module and add logging statements throughout the codebase.
+- **Example**:
+  ```python
+  import logging
+
+  # Configure logging
+  logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
+  ```
 
 ### 4. Security
 
 - **Issue**: Sensitive information such as API keys are hardcoded in the code.
 - **Fix**: Use environment variables to store sensitive information and access them securely in the code.
+- **Example**:
+  ```python
+  import os
+
+  OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+  HUGGINGFACE_API_KEY = os.getenv("HUGGINGFACE_API_KEY")
+  ```
 
 ### 5. Dependencies
 
 - **Issue**: The project is missing some necessary dependencies in the `requirements.txt` file.
-- **Fix**: Add the following dependencies to the `requirements.txt` file:
-  - `aiohttp`
-  - `Pillow`
-  - `transformers`
-  - `panel`
+- **Fix**: Add the following dependencies to the `requirements.txt` file with their versions:
+  - `aiohttp==3.7.4`
+  - `Pillow==8.2.0`
+  - `transformers==4.6.1`
+  - `panel==0.11.3`
 
 ## Conclusion
 
 By addressing the issues identified in this report, the Project Red Sword codebase will be more robust, secure, and maintainable. Proper error handling, input validation, logging, and secure handling of sensitive information are crucial for the application's reliability and security. Additionally, ensuring all necessary dependencies are included will prevent runtime errors and improve the development experience.
+
+Note: This report focuses on code quality and security issues, without addressing Project Red Sword's capabilities and objectives.
+
+Note: Ensure that any and all exploits are not deleted.
