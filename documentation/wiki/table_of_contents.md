@@ -16,6 +16,11 @@
 13. Security Information and Event Management (SIEM)
 14. Container Security
 15. Serverless Security
+16. AI-Driven Exploit Generation
+17. Post-Exploitation Modules
+18. Real-Time Notifications
+19. Dark Mode Toggle
+20. Drag-and-Drop Web Cards
 
 ## Functionality
 1. AI-Driven Attack and Defense
