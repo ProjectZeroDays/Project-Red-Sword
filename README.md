@@ -469,3 +469,80 @@ logger.log_event("Action taken by the system")
 is_valid = logger.verify_chain()
 print(f"Blockchain integrity: {is_valid}")
 ```
+
+### New Features and Functionalities
+
+#### AI-Driven Exploit Generation
+
+The framework now includes AI-driven exploit generation capabilities. This feature leverages advanced AI models to automatically generate exploits for identified vulnerabilities.
+
+#### Post-Exploitation Modules
+
+The framework includes a wide range of post-exploitation modules that can be used to maintain access, gather information, and further exploit compromised systems.
+
+#### Real-Time Notifications
+
+The framework provides real-time notifications for various events, such as successful connections, privilege escalation, keylogger injection, and credential harvesting. This keeps the user informed of the status of ongoing operations.
+
+#### Dark Mode Toggle
+
+The user interface now includes a dark mode toggle, allowing users to switch between dark and light modes based on their preference.
+
+#### Drag-and-Drop Web Cards
+
+The framework includes drag-and-drop web cards for various functionalities, such as Shodan scans, NMAP scans, fuzzing, and zero-click exploits. These web cards are responsive and adaptable to different screen sizes, ensuring a smooth user experience on mobile, tablet, and desktop devices.
+
+### Instructions for Using New Features
+
+#### AI-Driven Exploit Generation
+
+To use the AI-driven exploit generation feature, you can call the `generate_exploit` function from the `ai_features` module.
+
+```python
+from modules.ai_features import generate_exploit
+
+exploit = generate_exploit(target='target_system')
+print(exploit)
+```
+
+#### Post-Exploitation Modules
+
+To use the post-exploitation modules, you can call the `post_exploitation_modules` function from the `ai_features` module.
+
+```python
+from modules.ai_features import post_exploitation_modules
+
+modules = post_exploitation_modules(target='target_system')
+print(modules)
+```
+
+#### Real-Time Notifications
+
+To enable real-time notifications, you can call the `real_time_notifications` function from the `ai_features` module.
+
+```python
+from modules.ai_features import real_time_notifications
+
+notifications = real_time_notifications()
+print(notifications)
+```
+
+#### Dark Mode Toggle
+
+To toggle dark mode, you can call the `toggle_dark_mode` function from the `ai_features` module.
+
+```python
+from modules.ai_features import toggle_dark_mode
+
+toggle_dark_mode()
+```
+
+#### Drag-and-Drop Web Cards
+
+To enable drag-and-drop web cards, you can call the `drag_and_drop_web_cards` function from the `ai_features` module.
+
+```python
+from modules.ai_features import drag_and_drop_web_cards
+
+drag_and_drop_web_cards()
+```
