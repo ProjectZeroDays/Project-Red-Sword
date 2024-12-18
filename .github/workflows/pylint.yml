@@ -18,6 +18,26 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install pylint
+    - name: Merge branches
+      run: |
+        git fetch origin
+        git checkout main
+        git merge feature-advanced-threat-intelligence
+        git merge feature-predictive-analytics
+        git merge feature-automated-incident-response
+        git merge feature-ai-red-teaming
+        git merge feature-cloud-security
+        git merge feature-iot-security
+        git merge feature-network-traffic-analysis
+        git merge feature-deception-technology
+        git merge feature-soar
+        git merge feature-continuous-authentication
+        git merge feature-quantum-cryptography
+        git merge feature-dlp
+        git merge feature-siem
+        git merge feature-container-security
+        git merge feature-serverless-security
+        git push origin main
     - name: Analysing the code with pylint
       run: |
         pylint $(git ls-files '*.py')

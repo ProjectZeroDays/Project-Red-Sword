@@ -24,5 +24,39 @@ class AdvancedDecryption:
         decrypted_data = self.decrypt_data(encrypted_data, key, iv)
         return decrypted_data
 
+    def decrypt_rsa(self, encrypted_data, private_key):
+        """
+        Decrypt data encrypted with RSA using the provided private key.
+
+        Args:
+            encrypted_data (bytes): The encrypted data to decrypt.
+            private_key (RSAPrivateKey): The private key to use for decryption.
+
+        Returns:
+            bytes: The decrypted data.
+        """
+        return private_key.decrypt(
+            encrypted_data,
+            padding.OAEP(
+                mgf=padding.MGF1(algorithm=hashes.SHA256()),
+                algorithm=hashes.SHA256(),
+                label=None
+            )
+        )
+
+    def decrypt_rsa_collected_data(self, encrypted_data, private_key):
+        """
+        Decrypt collected data encrypted with RSA using the provided private key.
+
+        Args:
+            encrypted_data (bytes): The encrypted data to decrypt.
+            private_key (RSAPrivateKey): The private key to use for decryption.
+
+        Returns:
+            bytes: The decrypted data.
+        """
+        decrypted_data = self.decrypt_rsa(encrypted_data, private_key)
+        return decrypted_data
+
     def render(self):
         return "Advanced Decryption Module: Ready to automatically decrypt collected data, including encryption downgrading and decryption of encrypted data."
