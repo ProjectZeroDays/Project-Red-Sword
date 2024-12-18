@@ -1,25 +1,10 @@
-# Use a slim Python base image
 FROM python:3.9-slim
 
-# Set the working directory
 WORKDIR /app
 
-# Create a non-root user and switch to it
-RUN useradd -m appuser
-USER appuser
-
-# Copy project files
 COPY . /app
 
-# Install dependencies
+RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expose the Gradio default port
-EXPOSE 7860
-
-# Set environment variables for API keys
-ENV OPENAI_API_KEY=${OPENAI_API_KEY}
-ENV HUGGINGFACE_API_KEY=${HUGGINGFACE_API_KEY}
-
-# Command to start the Gradio app
-CMD ["python", "src/frontend/archive_gui.py"]
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "app:app"]
