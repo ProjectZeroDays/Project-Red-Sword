@@ -40,3 +40,13 @@ class AlertsNotifications:
         subject = "Device Disconnected"
         body = f"Device {device_id} has been disconnected."
         self.send_email("admin@example.com", subject, body)
+
+    def integrate_with_new_components(self, new_component_data):
+        subject = "New Component Integration"
+        body = f"New component data: {new_component_data}"
+        self.send_email("admin@example.com", subject, body)
+
+    def ensure_compatibility(self, existing_data, new_component_data):
+        subject = "Compatibility Check"
+        body = f"Existing data: {existing_data}\nNew component data: {new_component_data}"
+        self.send_email("admin@example.com", subject, body)

@@ -224,3 +224,89 @@ We welcome contributions to Project Red Sword. If you'd like to contribute, plea
 6. **Open a Pull Request**: Open a pull request to merge your changes into the main repository. Provide a clear description of the changes you have made.
 
 By contributing to the Project Red Sword, you help improve the framework and make it more robust and effective for the cybersecurity community.
+
+## New Components
+
+### Advanced Decryption
+The `AdvancedDecryption` module provides advanced decryption capabilities, including encryption downgrading and decryption of encrypted data. It ensures compatibility with existing decryption logic and integrates with new components.
+
+### Advanced Malware Analysis
+The `AdvancedMalwareAnalysis` module offers advanced malware analysis capabilities, including sandboxing, reverse engineering, and behavioral analysis. It ensures compatibility with existing malware analysis logic and integrates with new components.
+
+### Advanced Social Engineering
+The `AdvancedSocialEngineering` module provides advanced social engineering capabilities, including phishing, spear phishing, and whaling attacks. It ensures compatibility with existing social engineering logic and integrates with new components.
+
+### AI Red Teaming
+The `AIRedTeaming` module offers AI-powered red teaming capabilities, simulating advanced attacks and identifying vulnerabilities. It ensures compatibility with existing red teaming logic and integrates with new components.
+
+### Alerts and Notifications
+The `AlertsNotifications` module provides alerts and notifications capabilities, including email notifications for device connections, disconnections, and other events. It ensures compatibility with existing alerts and notifications logic and integrates with new components.
+
+### APT Simulation
+The `APTSimulation` module simulates advanced persistent threats (APTs), including targeted attacks, spear phishing, and watering hole attacks. It ensures compatibility with existing APT simulation logic and integrates with new components.
+
+### Automated Incident Response
+The `AutomatedIncidentResponse` module offers automated incident response capabilities, including handling malware, phishing, and data breach incidents. It ensures compatibility with existing incident response logic and integrates with new components.
+
+### Blockchain Logger
+The `BlockchainLogger` module provides blockchain-based logging capabilities, ensuring the integrity and immutability of logs. It ensures compatibility with existing blockchain logging logic and integrates with new components.
+
+### C2 Dashboard
+The `C2Dashboard` module offers a command and control dashboard for managing and monitoring operations. It ensures compatibility with existing C2 dashboard logic and integrates with new components.
+
+### Cloud Exploitation
+The `CloudExploitation` module provides cloud exploitation capabilities, including cloud storage hacking, cloud computing hacking, and cloud security hacking. It ensures compatibility with existing cloud exploitation logic and integrates with new components.
+
+### Custom Dashboards
+The `CustomDashboards` module offers customizable dashboards for various security operations, including MITM Stingray, device fingerprinting, advanced social engineering, zero-day exploits, and more. It ensures compatibility with existing custom dashboards logic and integrates with new components.
+
+### Dark Web Scraper
+The `DarkWebScraper` module provides dark web scraping capabilities, collecting intelligence from dark web sources. It ensures compatibility with existing dark web scraper logic and integrates with new components.
+
+### Data Exfiltration
+The `DataExfiltration` module offers data exfiltration capabilities, including HTTP, FTP, and cloud exfiltration methods. It ensures compatibility with existing data exfiltration logic and integrates with new components.
+
+### Data Visualization
+The `DataVisualization` module provides data visualization capabilities, including plotting device information, network traffic, system logs, threat detection, and defcon level status. It ensures compatibility with existing data visualization logic and integrates with new components.
+
+### Device Fingerprinting
+The `DeviceFingerprinting` module offers device fingerprinting capabilities, collecting and analyzing device fingerprints. It ensures compatibility with existing device fingerprinting logic and integrates with new components.
+
+### Exploit Payloads
+The `ExploitPayloads` module provides exploit payload generation capabilities, including polymorphic, encrypted, and specific vulnerability payloads. It ensures compatibility with existing exploit payloads logic and integrates with new components.
+
+### Fuzzing Engine
+The `FuzzingEngine` module offers fuzz testing capabilities, including mutation, generation, and protocol-based fuzzing. It ensures compatibility with existing fuzzing engine logic and integrates with new components.
+
+### IoT Exploitation
+The `IoTExploitation` module provides IoT exploitation capabilities, including device hacking, network hacking, and data hacking. It ensures compatibility with existing IoT exploitation logic and integrates with new components.
+
+### Machine Learning AI
+The `MachineLearningAI` module offers machine learning and AI capabilities, including training models, making predictions, and improving the accuracy and efficiency of the framework. It ensures compatibility with existing machine learning AI logic and integrates with new components.
+
+### MITM Stingray
+The `MITMStingray` module provides MITM Stingray capabilities, including intercepting mobile device communications, collecting sensitive data, and analyzing threats using real-time threat intelligence and decryption. It ensures compatibility with existing MITM Stingray logic and integrates with new components.
+
+### Network Exploitation
+The `NetworkExploitation` module offers network exploitation capabilities, including DNS tunneling, ICMP tunneling, and TCP/IP stack exploitation. It ensures compatibility with existing network exploitation logic and integrates with new components.
+
+### Predictive Analytics
+The `PredictiveAnalytics` module provides predictive analytics capabilities, including predicting potential threats and vulnerabilities. It ensures compatibility with existing predictive analytics logic and integrates with new components.
+
+### Real-Time Monitoring
+The `RealTimeMonitoring` module offers real-time monitoring capabilities, including monitoring data exfiltration, detecting anomalies, and triggering alerts. It ensures compatibility with existing real-time monitoring logic and integrates with new components.
+
+### Real-Time Threat Intelligence
+The `RealTimeThreatIntelligence` module provides real-time threat intelligence capabilities, including fetching threat data, analyzing threats, and updating attack simulations. It ensures compatibility with existing real-time threat intelligence logic and integrates with new components.
+
+### Threat Intelligence
+The `ThreatIntelligence` module offers threat intelligence capabilities, including fetching data from multiple sources, processing data, and generating attack simulations. It ensures compatibility with existing threat intelligence logic and integrates with new components.
+
+### Vulnerability Scanner
+The `VulnerabilityScanner` module provides vulnerability scanning capabilities, including scanning targets, detecting vulnerabilities, and reporting vulnerabilities. It ensures compatibility with existing vulnerability scanner logic and integrates with new components.
+
+### Wireless Exploitation
+The `WirelessExploitation` module offers wireless exploitation capabilities, including Wi-Fi hacking, Bluetooth hacking, and RFID hacking. It ensures compatibility with existing wireless exploitation logic and integrates with new components.
+
+### Zero-Day Exploits
+The `ZeroDayExploits` module provides zero-day exploit capabilities, including identifying vulnerabilities, developing exploits, and deploying exploits. It ensures compatibility with existing zero-day exploits logic and integrates with new components.

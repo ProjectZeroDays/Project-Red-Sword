@@ -16,6 +16,27 @@ from modules.predictive_analytics import PredictiveAnalytics
 from modules.automated_incident_response import AutomatedIncidentResponse
 from modules.ai_red_teaming import AIRedTeaming
 from modules.blockchain_logger import BlockchainLogger
+from modules.advanced_decryption import AdvancedDecryption
+from modules.advanced_malware_analysis import AdvancedMalwareAnalysis
+from modules.advanced_social_engineering import AdvancedSocialEngineering
+from modules.alerts_notifications import AlertsNotifications
+from modules.apt_simulation import APTSimulation
+from modules.c2_dashboard import C2Dashboard
+from modules.cloud_exploitation import CloudExploitation
+from modules.custom_dashboards import CustomDashboards
+from modules.dark_web_scraper import DarkWebScraper
+from modules.data_exfiltration import DataExfiltration
+from modules.data_visualization import DataVisualization
+from modules.device_fingerprinting import DeviceFingerprinting
+from modules.exploit_payloads import ExploitPayloads
+from modules.fuzzing_engine import FuzzingEngine
+from modules.iot_exploitation import IoTExploitation
+from modules.machine_learning_ai import MachineLearningAI
+from modules.mitm_stingray import MITMStingray
+from modules.network_exploitation import NetworkExploitation
+from modules.vulnerability_scanner import VulnerabilityScanner
+from modules.wireless_exploitation import WirelessExploitation
+from modules.zero_day_exploits import ZeroDayExploits
 
 pn.extension(design="bootstrap", sizing_mode="stretch_width")
 
@@ -191,6 +212,27 @@ predictive_analytics = PredictiveAnalytics()
 automated_incident_response = AutomatedIncidentResponse()
 ai_red_teaming = AIRedTeaming()
 blockchain_logger = BlockchainLogger()
+advanced_decryption = AdvancedDecryption()
+advanced_malware_analysis = AdvancedMalwareAnalysis()
+advanced_social_engineering = AdvancedSocialEngineering()
+alerts_notifications = AlertsNotifications(smtp_server="smtp.example.com", smtp_port=587, smtp_user="user@example.com", smtp_password="password")
+apt_simulation = APTSimulation()
+c2_dashboard = C2Dashboard()
+cloud_exploitation = CloudExploitation()
+custom_dashboards = CustomDashboards()
+dark_web_scraper = DarkWebScraper()
+data_exfiltration = DataExfiltration()
+data_visualization = DataVisualization()
+device_fingerprinting = DeviceFingerprinting()
+exploit_payloads = ExploitPayloads()
+fuzzing_engine = FuzzingEngine()
+iot_exploitation = IoTExploitation()
+machine_learning_ai = MachineLearningAI()
+mitm_stingray = MITMStingray(interface="wlan0")
+network_exploitation = NetworkExploitation()
+vulnerability_scanner = VulnerabilityScanner()
+wireless_exploitation = WirelessExploitation()
+zero_day_exploits = ZeroDayExploits()
 
 # Update the dashboard to display real-time insights and analytics
 dashboard = pn.Column(
@@ -200,7 +242,28 @@ dashboard = pn.Column(
     predictive_analytics.render(),
     automated_incident_response.render(),
     ai_red_teaming.render(),
-    blockchain_logger.render()
+    blockchain_logger.render(),
+    advanced_decryption.render(),
+    advanced_malware_analysis.render(),
+    advanced_social_engineering.render(),
+    alerts_notifications.render(),
+    apt_simulation.render(),
+    c2_dashboard.render(),
+    cloud_exploitation.render(),
+    custom_dashboards.render(),
+    dark_web_scraper.render(),
+    data_exfiltration.render(),
+    data_visualization.render(),
+    device_fingerprinting.render(),
+    exploit_payloads.render(),
+    fuzzing_engine.render(),
+    iot_exploitation.render(),
+    machine_learning_ai.render(),
+    mitm_stingray.render(),
+    network_exploitation.render(),
+    vulnerability_scanner.render(),
+    wireless_exploitation.render(),
+    zero_day_exploits.render()
 )
 
 main.append(dashboard)
