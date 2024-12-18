@@ -16,6 +16,17 @@ from modules.predictive_analytics import PredictiveAnalytics
 from modules.automated_incident_response import AutomatedIncidentResponse
 from modules.ai_red_teaming import AIRedTeaming
 from modules.blockchain_logger import BlockchainLogger
+from modules.exploit_payloads import ExploitPayloads
+from modules.network_exploitation import NetworkExploitation
+from modules.advanced_decryption import AdvancedDecryption
+from modules.apt_simulation import APTSimulation
+from modules.cloud_exploitation import CloudExploitation
+from modules.custom_dashboards import CustomDashboards
+from modules.dark_web_scraper import DarkWebScraper
+from modules.data_visualization import DataVisualization
+from modules.iot_exploitation import IoTExploitation
+from modules.wireless_exploitation import WirelessExploitation
+from modules.zero_day_exploits import ZeroDayExploits
 
 pn.extension(design="bootstrap", sizing_mode="stretch_width")
 
@@ -191,6 +202,17 @@ predictive_analytics = PredictiveAnalytics()
 automated_incident_response = AutomatedIncidentResponse()
 ai_red_teaming = AIRedTeaming()
 blockchain_logger = BlockchainLogger()
+exploit_payloads = ExploitPayloads()
+network_exploitation = NetworkExploitation()
+advanced_decryption = AdvancedDecryption()
+apt_simulation = APTSimulation()
+cloud_exploitation = CloudExploitation()
+custom_dashboards = CustomDashboards()
+dark_web_scraper = DarkWebScraper()
+data_visualization = DataVisualization()
+iot_exploitation = IoTExploitation()
+wireless_exploitation = WirelessExploitation()
+zero_day_exploits = ZeroDayExploits()
 
 # Update the dashboard to display real-time insights and analytics
 dashboard = pn.Column(
@@ -200,7 +222,18 @@ dashboard = pn.Column(
     predictive_analytics.render(),
     automated_incident_response.render(),
     ai_red_teaming.render(),
-    blockchain_logger.render()
+    blockchain_logger.render(),
+    exploit_payloads.render(),
+    network_exploitation.render(),
+    advanced_decryption.render(),
+    apt_simulation.render(),
+    cloud_exploitation.render(),
+    custom_dashboards.render(),
+    dark_web_scraper.render(),
+    data_visualization.render(),
+    iot_exploitation.render(),
+    wireless_exploitation.render(),
+    zero_day_exploits.render()
 )
 
 main.append(dashboard)
