@@ -19,6 +19,13 @@ from modules.apt_simulation import APTSimulation
 from modules.machine_learning_ai import MachineLearningAI
 from modules.data_visualization import DataVisualization
 from modules.blockchain_logger import BlockchainLogger
+from modules.cloud_exploitation import CloudExploitation
+from modules.iot_exploitation import IoTExploitation
+from modules.quantum_computing import QuantumComputing
+from modules.edge_computing import EdgeComputing
+from modules.serverless_computing import ServerlessComputing
+from modules.microservices_architecture import MicroservicesArchitecture
+from modules.cloud_native_applications import CloudNativeApplications
 
 pn.extension(design="bootstrap", sizing_mode="stretch_width")
 
@@ -197,6 +204,13 @@ apt_simulation = APTSimulation()
 machine_learning_ai = MachineLearningAI()
 data_visualization = DataVisualization()
 blockchain_logger = BlockchainLogger()
+cloud_exploitation = CloudExploitation()
+iot_exploitation = IoTExploitation()
+quantum_computing = QuantumComputing()
+edge_computing = EdgeComputing()
+serverless_computing = ServerlessComputing()
+microservices_architecture = MicroservicesArchitecture()
+cloud_native_applications = CloudNativeApplications()
 
 # Integrate the ThreatIntelligence module with RealTimeMonitoring
 monitoring.threat_intelligence_module = advanced_threat_intelligence
@@ -236,6 +250,27 @@ monitoring.machine_learning_ai = machine_learning_ai
 # Integrate the DataVisualization module with RealTimeMonitoring
 monitoring.data_visualization = data_visualization
 
+# Integrate the CloudExploitation module with RealTimeMonitoring
+monitoring.cloud_exploitation = cloud_exploitation
+
+# Integrate the IoTExploitation module with RealTimeMonitoring
+monitoring.iot_exploitation = iot_exploitation
+
+# Integrate the QuantumComputing module with RealTimeMonitoring
+monitoring.quantum_computing = quantum_computing
+
+# Integrate the EdgeComputing module with RealTimeMonitoring
+monitoring.edge_computing = edge_computing
+
+# Integrate the ServerlessComputing module with RealTimeMonitoring
+monitoring.serverless_computing = serverless_computing
+
+# Integrate the MicroservicesArchitecture module with RealTimeMonitoring
+monitoring.microservices_architecture = microservices_architecture
+
+# Integrate the CloudNativeApplications module with RealTimeMonitoring
+monitoring.cloud_native_applications = cloud_native_applications
+
 # Update the dashboard to display real-time insights and analytics
 dashboard = pn.Column(
     "### Advanced Capabilities Dashboard",
@@ -247,7 +282,14 @@ dashboard = pn.Column(
     apt_simulation.render(),
     machine_learning_ai.render(),
     data_visualization.render(),
-    blockchain_logger.render()
+    blockchain_logger.render(),
+    cloud_exploitation.render(),
+    iot_exploitation.render(),
+    quantum_computing.render(),
+    edge_computing.render(),
+    serverless_computing.render(),
+    microservices_architecture.render(),
+    cloud_native_applications.render()
 )
 
 main.append(dashboard)
