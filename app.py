@@ -15,6 +15,9 @@ from modules.threat_intelligence import ThreatIntelligence
 from modules.predictive_analytics import PredictiveAnalytics
 from modules.automated_incident_response import AutomatedIncidentResponse
 from modules.ai_red_teaming import AIRedTeaming
+from modules.apt_simulation import APTSimulation
+from modules.machine_learning_ai import MachineLearningAI
+from modules.data_visualization import DataVisualization
 from modules.blockchain_logger import BlockchainLogger
 
 pn.extension(design="bootstrap", sizing_mode="stretch_width")
@@ -190,6 +193,9 @@ advanced_threat_intelligence = ThreatIntelligence()
 predictive_analytics = PredictiveAnalytics()
 automated_incident_response = AutomatedIncidentResponse()
 ai_red_teaming = AIRedTeaming()
+apt_simulation = APTSimulation()
+machine_learning_ai = MachineLearningAI()
+data_visualization = DataVisualization()
 blockchain_logger = BlockchainLogger()
 
 # Integrate the ThreatIntelligence module with RealTimeMonitoring
@@ -212,6 +218,24 @@ async def monitor_threat_data():
         if threat["severity"] > 0.8:
             monitoring.trigger_alert(threat)
 
+# Integrate the AutomatedIncidentResponse module with RealTimeMonitoring
+monitoring.automated_incident_response = automated_incident_response
+
+# Integrate the AIRedTeaming module with RealTimeMonitoring
+monitoring.ai_red_teaming = ai_red_teaming
+
+# Integrate the APTSimulation module with RealTimeMonitoring
+monitoring.apt_simulation = apt_simulation
+
+# Integrate the PredictiveAnalytics module with RealTimeMonitoring
+monitoring.predictive_analytics = predictive_analytics
+
+# Integrate the MachineLearningAI module with RealTimeMonitoring
+monitoring.machine_learning_ai = machine_learning_ai
+
+# Integrate the DataVisualization module with RealTimeMonitoring
+monitoring.data_visualization = data_visualization
+
 # Update the dashboard to display real-time insights and analytics
 dashboard = pn.Column(
     "### Advanced Capabilities Dashboard",
@@ -220,6 +244,9 @@ dashboard = pn.Column(
     predictive_analytics.render(),
     automated_incident_response.render(),
     ai_red_teaming.render(),
+    apt_simulation.render(),
+    machine_learning_ai.render(),
+    data_visualization.render(),
     blockchain_logger.render()
 )
 
