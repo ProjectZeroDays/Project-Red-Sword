@@ -1,0 +1,23 @@
+{
+    "system": {
+        "api_key": "your_api_key",
+        "log_level": "DEBUG",
+        "alert_email": "admin@example.com",
+        "report_frequency": "daily"
+    },
+    "modules": {
+        "offensive": {
+            "enabled": true,
+            "attack_types": [
+                "sql_injection",
+                "phishing",
+                "ransomware"
+            ]
+        },
+        "defensive": {
+            "enabled": true,
+            "anomaly_detection": true,
+            "incident_response": true
+        }
+    }
+}

