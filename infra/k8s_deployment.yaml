@@ -1,0 +1,26 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cybersecurity-framework
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cybersecurity
+  template:
+    metadata:
+      labels:
+        app: cybersecurity
+    spec:
+      containers:
+      - name: cybersecurity-app
+        image: cybersecurity/framework:latest
+        ports:
+        - containerPort: 5000
+        env:
+        - name: OPENAI_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: openai-secret
+              key: api_key
