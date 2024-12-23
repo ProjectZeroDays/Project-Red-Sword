@@ -52,3 +52,43 @@ async def test_error_handling():
     # Test error handling in process_inputs
     async for result in process_inputs(class_names, invalid_image_url):
         assert "Something went wrong" in result
+
+@pytest.mark.asyncio
+async def test_input_validation():
+    valid_image_url = "https://example.com/valid_image.jpg"
+    invalid_image_url = "invalid_url"
+    class_names = "cat, dog"
+    
+    # Test with valid inputs
+    async for result in process_inputs(class_names, valid_image_url):
+        assert "results" in result or "Fetching image and running model" in result
+    
+    # Test with invalid image URL
+    async for result in process_inputs(class_names, invalid_image_url):
+        assert "Invalid URL provided" in result
+    
+    # Test with empty class names
+    async for result in process_inputs("", valid_image_url):
+        assert "Provide class names" in result
+
+def test_logging_configuration():
+    import logging
+    logger = logging.getLogger()
+    assert logger.level == logging.ERROR, "Logging level is not set to ERROR"
+    assert len(logger.handlers) > 0, "No logging handlers are configured"
+
+def test_input_validation_for_class_names():
+    valid_image_url = "https://example.com/valid_image.jpg"
+    invalid_class_names = ""
+    
+    # Test with empty class names
+    async for result in process_inputs(invalid_class_names, valid_image_url):
+        assert "Provide class names" in result
+
+def test_input_validation_for_image_url():
+    invalid_image_url = "invalid_url"
+    class_names = "cat, dog"
+    
+    # Test with invalid image URL
+    async for result in process_inputs(class_names, invalid_image_url):
+        assert "Invalid URL provided" in result
