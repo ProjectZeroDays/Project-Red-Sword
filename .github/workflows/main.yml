@@ -60,6 +60,8 @@ jobs:
           # Example: Run linter and tests
           npm run lint
           npm test
+          pylint $(git ls-files '*.py')
+          pytest
 
   deploy:
     runs-on: ubuntu-latest

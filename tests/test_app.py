@@ -9,8 +9,8 @@ async def test_random_url():
 
 @pytest.mark.asyncio
 async def test_open_image_url():
-    valid_url = "https://example.com/valid_image.jpg"
-    invalid_url = "https://example.com/invalid_image.jpg"
+    valid_url = "https://via.placeholder.com/150"
+    invalid_url = "https://via.placeholder.com/invalid_image.jpg"
     
     image = await open_image_url(valid_url)
     assert image is not None
@@ -20,7 +20,7 @@ async def test_open_image_url():
 
 @pytest.mark.asyncio
 async def test_process_inputs():
-    valid_image_url = "https://example.com/valid_image.jpg"
+    valid_image_url = "https://via.placeholder.com/150"
     invalid_image_url = "invalid_url"
     class_names = "cat, dog"
     
@@ -38,7 +38,7 @@ async def test_process_inputs():
 
 @pytest.mark.asyncio
 async def test_error_handling():
-    invalid_image_url = "https://example.com/invalid_image.jpg"
+    invalid_image_url = "https://via.placeholder.com/invalid_image.jpg"
     class_names = "cat, dog"
     
     # Test error handling in random_url
@@ -55,7 +55,7 @@ async def test_error_handling():
 
 @pytest.mark.asyncio
 async def test_input_validation():
-    valid_image_url = "https://example.com/valid_image.jpg"
+    valid_image_url = "https://via.placeholder.com/150"
     invalid_image_url = "invalid_url"
     class_names = "cat, dog"
     
@@ -78,7 +78,7 @@ def test_logging_configuration():
     assert len(logger.handlers) > 0, "No logging handlers are configured"
 
 def test_input_validation_for_class_names():
-    valid_image_url = "https://example.com/valid_image.jpg"
+    valid_image_url = "https://via.placeholder.com/150"
     invalid_class_names = ""
     
     # Test with empty class names
