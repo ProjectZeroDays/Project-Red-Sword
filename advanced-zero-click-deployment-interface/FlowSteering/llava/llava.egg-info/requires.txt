@@ -1,6 +1,6 @@
 einops
 fastapi
-gradio==3.35.2
+gradio==5.5.0
 markdown2[all]
 numpy
 requests
