@@ -1,0 +1,28 @@
+# Compiled object files
+*.o
+
+# Compiled binary files
+CVE-2021-1965-poc
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.swp
+
+# Backup files
+*.bak
+*.old
+
+# Dependency directories
+node_modules/
+vendor/
+
+# Build directories
+build/
+dist/
+
+# System files
+.DS_Store
+Thumbs.db
