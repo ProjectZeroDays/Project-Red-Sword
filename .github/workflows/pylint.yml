@@ -17,11 +17,9 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pylint
+        pip install pylint pytest
     - name: Review and fix errors
       run: |
         echo "Reviewing and fixing errors..."
-        # Add commands to review and fix errors here
-        # Example: Run linter and tests
         pylint $(git ls-files '*.py')
         pytest
