@@ -10,7 +10,7 @@ def test_api_key_handling():
     assert huggingface_api_key is not None, "HUGGINGFACE_API_KEY is not set"
 
 @pytest.mark.asyncio
-async def test_input_validation():
+async def test_input_validation_and_error_handling():
     valid_image_url = "https://example.com/valid_image.jpg"
     invalid_image_url = "invalid_url"
     class_names = "cat, dog"
@@ -27,11 +27,6 @@ async def test_input_validation():
     async for result in process_inputs("", valid_image_url):
         assert "Provide class names" in result
 
-@pytest.mark.asyncio
-async def test_error_handling():
-    invalid_image_url = "https://example.com/invalid_image.jpg"
-    class_names = "cat, dog"
-    
     # Test error handling in random_url
     url = await random_url(None)
     assert url is not None
@@ -49,22 +44,6 @@ def test_logging_configuration():
     logger = logging.getLogger()
     assert logger.level == logging.ERROR, "Logging level is not set to ERROR"
     assert len(logger.handlers) > 0, "No logging handlers are configured"
-
-def test_input_validation_for_class_names():
-    valid_image_url = "https://example.com/valid_image.jpg"
-    invalid_class_names = ""
-    
-    # Test with empty class names
-    async for result in process_inputs(invalid_class_names, valid_image_url):
-        assert "Provide class names" in result
-
-def test_input_validation_for_image_url():
-    invalid_image_url = "invalid_url"
-    class_names = "cat, dog"
-    
-    # Test with invalid image URL
-    async for result in process_inputs(class_names, invalid_image_url):
-        assert "Invalid URL provided" in result
 
 def test_security_headers():
     from app import app
