@@ -21,3 +21,11 @@ jobs:
     - name: Analysing the code with pylint
       run: |
         pylint $(git ls-files '*.py')
+  prevent_deletion:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Prevent deletion of exploits or resources/tools
+        run: |
+          echo "Preventing deletion of exploits or resources/tools..."
+          # Add preventive measures here
