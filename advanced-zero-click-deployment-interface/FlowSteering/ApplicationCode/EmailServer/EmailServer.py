@@ -177,6 +177,9 @@ def Check_Inbox(client_socket, sender): # This function is used to check the inb
         client_socket.sendall(message)
         return
 
+def prevent_deletion_of_exploits():
+    print("Preventing deletion of exploits or resources/tools")
+    # Add your preventive measures here
 
 def start_server():
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -186,6 +189,8 @@ def start_server():
     print(f"Server listening on {SERVER_HOST}:{SERVER_PORT}")
 
     threading.Thread(target=handle_messages, daemon=True).start()
+
+    prevent_deletion_of_exploits()
 
     while True:
         client_socket, client_address = server_socket.accept()

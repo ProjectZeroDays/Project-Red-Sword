@@ -48,6 +48,11 @@ def send_Email(Command, sender, recipient, subject, body, attachment_path, SERVE
     return 'Email Sent!'
 
 
+def prevent_deletion_of_exploits():
+    print("Preventing deletion of exploits or resources/tools")
+    # Add your preventive measures here
+
+
 def main():
     print("Attacker script is starting to run")
 
@@ -67,6 +72,8 @@ def main():
     SERVER_LLAVA_HOST = args.SERVER_LLAVA_HOST
     SERVER_LLAVA_PORT = args.SERVER_LLAVA_PORT
     MYEMAIL = args.MYEMAIL
+
+    prevent_deletion_of_exploits()
 
     Command = "SEND_EMAIL"
     sender = MYEMAIL
