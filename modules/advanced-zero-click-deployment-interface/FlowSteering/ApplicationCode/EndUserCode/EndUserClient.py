@@ -26,7 +26,7 @@ MyEmails = None
 CycleNewEmails = None
 BaseEmails_directory = None
 # Define the default image to be sent in case of network errors
-default_image=''
+default_image='FlowSteering/assets/PerturbatedImages/DjiPerturbClassForward.png'
 
 
 def receive_complete_data(client_socket): # this function is used to receive the complete data from the client, adjust the parameters as needed based on your network conditions

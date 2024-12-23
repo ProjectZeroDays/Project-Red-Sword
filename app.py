@@ -68,7 +68,7 @@ async def random_url(_):
 def load_processor_model(
     processor_name: str, model_name: str
 ) -> Tuple[CLIPProcessor, CLIPModel]:
-    processor = CLIPProcessor.from_pretrained(processor_name)
+    processor = CLIPProcessor.from_pretrained(process_name)
     model = CLIPModel.from_pretrained(model_name)
     return processor, model
 
