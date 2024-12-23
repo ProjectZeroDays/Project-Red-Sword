@@ -43,3 +43,51 @@ async def test_error_handling():
     # Test error handling in process_inputs
     async for result in process_inputs(class_names, invalid_image_url):
         assert "Something went wrong" in result
+
+def test_logging_configuration():
+    import logging
+    logger = logging.getLogger()
+    assert logger.level == logging.ERROR, "Logging level is not set to ERROR"
+    assert len(logger.handlers) > 0, "No logging handlers are configured"
+
+def test_input_validation_for_class_names():
+    valid_image_url = "https://example.com/valid_image.jpg"
+    invalid_class_names = ""
+    
+    # Test with empty class names
+    async for result in process_inputs(invalid_class_names, valid_image_url):
+        assert "Provide class names" in result
+
+def test_input_validation_for_image_url():
+    invalid_image_url = "invalid_url"
+    class_names = "cat, dog"
+    
+    # Test with invalid image URL
+    async for result in process_inputs(class_names, invalid_image_url):
+        assert "Invalid URL provided" in result
+
+def test_security_headers():
+    from app import app
+    with app.test_client() as client:
+        response = client.get('/')
+        assert 'Content-Security-Policy' in response.headers
+        assert 'Strict-Transport-Security' in response.headers
+        assert 'X-Content-Type-Options' in response.headers
+        assert 'X-Frame-Options' in response.headers
+        assert 'X-XSS-Protection' in response.headers
+
+def test_rate_limiting():
+    from app import app
+    with app.test_client() as client:
+        for _ in range(10):
+            response = client.get('/login')
+            assert response.status_code == 200
+        response = client.get('/login')
+        assert response.status_code == 429
+
+def test_ssl_redirect():
+    from app import app
+    with app.test_client() as client:
+        response = client.get('/', base_url='http://localhost')
+        assert response.status_code == 302
+        assert response.headers['Location'].startswith('https://')
