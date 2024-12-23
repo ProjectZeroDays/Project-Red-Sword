@@ -16,6 +16,7 @@ from modules.predictive_analytics import PredictiveAnalytics
 from modules.automated_incident_response import AutomatedIncidentResponse
 from modules.ai_red_teaming import AIRedTeaming
 from modules.blockchain_logger import BlockchainLogger
+from modules.ai_features import ai_chat_pipeline
 
 pn.extension(design="bootstrap", sizing_mode="stretch_width")
 
@@ -226,3 +227,18 @@ def toggle_dark_mode():
 def drag_and_drop_web_cards():
     # Placeholder for drag-and-drop web cards logic
     return "Drag-and-drop web cards enabled."
+
+# New function for AI chat pipeline
+
+def ai_chat_pipeline():
+    # Placeholder for AI chat pipeline logic
+    return "AI chat pipeline initiated."
+
+# Integrate AI chat pipeline into the main dashboard
+
+chat_pipeline_result = pn.panel(
+    pn.bind(ai_chat_pipeline),
+    height=600,
+)
+
+main.append(chat_pipeline_result)

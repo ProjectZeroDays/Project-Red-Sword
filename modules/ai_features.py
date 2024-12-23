@@ -82,3 +82,22 @@ def drag_and_drop_web_cards(user_id, cards):
     result = f"Drag-and-drop web cards for user {user_id}: {cards}"
     # Placeholder for drag-and-drop logic
     return result
+
+def ai_chat_pipeline(user_input):
+    """
+    Handle AI chat interactions using OpenAI's GPT-3.5.
+
+    Args:
+        user_input (str): The user's input message.
+
+    Returns:
+        str: The AI's response.
+    """
+    prompt = f"User: {user_input}\nAI:"
+    response = openai.Completion.create(
+        engine="text-davinci-003",
+        prompt=prompt,
+        max_tokens=150
+    )
+    ai_response = response.choices[0].text.strip()
+    return ai_response

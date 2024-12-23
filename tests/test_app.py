@@ -1,5 +1,6 @@
 import pytest
 from app import random_url, open_image_url, process_inputs
+from modules.ai_features import ai_chat_pipeline
 
 @pytest.mark.asyncio
 async def test_random_url():
@@ -52,3 +53,10 @@ async def test_error_handling():
     # Test error handling in process_inputs
     async for result in process_inputs(class_names, invalid_image_url):
         assert "Something went wrong" in result
+
+def test_ai_chat_pipeline():
+    user_input = "Hello, AI!"
+    response = ai_chat_pipeline(user_input)
+    assert response is not None
+    assert isinstance(response, str)
+    assert len(response) > 0

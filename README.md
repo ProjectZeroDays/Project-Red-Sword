@@ -546,3 +546,15 @@ from modules.ai_features import drag_and_drop_web_cards
 
 drag_and_drop_web_cards()
 ```
+
+#### AI Chat Pipeline
+
+To use the AI chat pipeline feature, you can call the `ai_chat_pipeline` function from the `ai_features` module.
+
+```python
+from modules.ai_features import ai_chat_pipeline
+
+user_input = "Hello, AI!"
+response = ai_chat_pipeline(user_input)
+print(response)
+```
