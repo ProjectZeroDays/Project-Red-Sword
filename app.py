@@ -19,6 +19,42 @@ from modules.apt_simulation import APTSimulation
 from modules.machine_learning_ai import MachineLearningAI
 from modules.data_visualization import DataVisualization
 from modules.blockchain_logger import BlockchainLogger
+from modules.cloud_exploitation import CloudExploitation
+from modules.iot_exploitation import IoTExploitation
+from modules.quantum_computing import QuantumComputing
+from modules.edge_computing import EdgeComputing
+from modules.serverless_computing import ServerlessComputing
+from modules.microservices_architecture import MicroservicesArchitecture
+from modules.cloud_native_applications import CloudNativeApplications
+from modules.secure_coding_frameworks import (
+    ruby_secure_coding_framework,
+    php_secure_coding_framework,
+    go_secure_coding_framework,
+    rust_secure_coding_framework,
+)
+from modules.secure_coding_tools import (
+    java_secure_coding_tools,
+    python_secure_coding_tools,
+    cpp_secure_coding_tools,
+    javascript_secure_coding_tools,
+    ruby_secure_coding_tools,
+    php_secure_coding_tools,
+    go_secure_coding_tools,
+    rust_secure_coding_tools,
+)
+from modules.secure_coding_cloud import (
+    use_secure_cloud_storage,
+    implement_secure_cloud_authentication,
+    use_secure_cloud_communication_protocols,
+    implement_secure_cloud_data_storage,
+    use_secure_cloud_key_management,
+)
+from modules.secure_coding_cloud_tools import (
+    aws_secure_coding_guidelines,
+    azure_secure_coding_guidelines,
+    google_cloud_secure_coding_guidelines,
+    cloud_security_frameworks,
+)
 
 pn.extension(design="bootstrap", sizing_mode="stretch_width")
 
@@ -197,6 +233,13 @@ apt_simulation = APTSimulation()
 machine_learning_ai = MachineLearningAI()
 data_visualization = DataVisualization()
 blockchain_logger = BlockchainLogger()
+cloud_exploitation = CloudExploitation()
+iot_exploitation = IoTExploitation()
+quantum_computing = QuantumComputing()
+edge_computing = EdgeComputing()
+serverless_computing = ServerlessComputing()
+microservices_architecture = MicroservicesArchitecture()
+cloud_native_applications = CloudNativeApplications()
 
 # Integrate the ThreatIntelligence module with RealTimeMonitoring
 monitoring.threat_intelligence_module = advanced_threat_intelligence
@@ -236,6 +279,27 @@ monitoring.machine_learning_ai = machine_learning_ai
 # Integrate the DataVisualization module with RealTimeMonitoring
 monitoring.data_visualization = data_visualization
 
+# Integrate the CloudExploitation module with RealTimeMonitoring
+monitoring.cloud_exploitation = cloud_exploitation
+
+# Integrate the IoTExploitation module with RealTimeMonitoring
+monitoring.iot_exploitation = iot_exploitation
+
+# Integrate the QuantumComputing module with RealTimeMonitoring
+monitoring.quantum_computing = quantum_computing
+
+# Integrate the EdgeComputing module with RealTimeMonitoring
+monitoring.edge_computing = edge_computing
+
+# Integrate the ServerlessComputing module with RealTimeMonitoring
+monitoring.serverless_computing = serverless_computing
+
+# Integrate the MicroservicesArchitecture module with RealTimeMonitoring
+monitoring.microservices_architecture = microservices_architecture
+
+# Integrate the CloudNativeApplications module with RealTimeMonitoring
+monitoring.cloud_native_applications = cloud_native_applications
+
 # Update the dashboard to display real-time insights and analytics
 dashboard = pn.Column(
     "### Advanced Capabilities Dashboard",
@@ -247,7 +311,36 @@ dashboard = pn.Column(
     apt_simulation.render(),
     machine_learning_ai.render(),
     data_visualization.render(),
-    blockchain_logger.render()
+    blockchain_logger.render(),
+    cloud_exploitation.render(),
+    iot_exploitation.render(),
+    quantum_computing.render(),
+    edge_computing.render(),
+    serverless_computing.render(),
+    microservices_architecture.render(),
+    cloud_native_applications.render(),
+    pn.pane.Markdown("### Secure Coding Insights"),
+    pn.pane.Markdown(f"**Ruby Secure Coding Framework:** {ruby_secure_coding_framework()}"),
+    pn.pane.Markdown(f"**PHP Secure Coding Framework:** {php_secure_coding_framework()}"),
+    pn.pane.Markdown(f"**Go Secure Coding Framework:** {go_secure_coding_framework()}"),
+    pn.pane.Markdown(f"**Rust Secure Coding Framework:** {rust_secure_coding_framework()}"),
+    pn.pane.Markdown(f"**Java Secure Coding Tools:** {java_secure_coding_tools()}"),
+    pn.pane.Markdown(f"**Python Secure Coding Tools:** {python_secure_coding_tools()}"),
+    pn.pane.Markdown(f"**C++ Secure Coding Tools:** {cpp_secure_coding_tools()}"),
+    pn.pane.Markdown(f"**JavaScript Secure Coding Tools:** {javascript_secure_coding_tools()}"),
+    pn.pane.Markdown(f"**Ruby Secure Coding Tools:** {ruby_secure_coding_tools()}"),
+    pn.pane.Markdown(f"**PHP Secure Coding Tools:** {php_secure_coding_tools()}"),
+    pn.pane.Markdown(f"**Go Secure Coding Tools:** {go_secure_coding_tools()}"),
+    pn.pane.Markdown(f"**Rust Secure Coding Tools:** {rust_secure_coding_tools()}"),
+    pn.pane.Markdown(f"**Secure Cloud Storage:** {use_secure_cloud_storage()}"),
+    pn.pane.Markdown(f"**Secure Cloud Authentication:** {implement_secure_cloud_authentication()}"),
+    pn.pane.Markdown(f"**Secure Cloud Communication Protocols:** {use_secure_cloud_communication_protocols()}"),
+    pn.pane.Markdown(f"**Secure Cloud Data Storage:** {implement_secure_cloud_data_storage()}"),
+    pn.pane.Markdown(f"**Secure Cloud Key Management:** {use_secure_cloud_key_management()}"),
+    pn.pane.Markdown(f"**AWS Secure Coding Guidelines:** {aws_secure_coding_guidelines()}"),
+    pn.pane.Markdown(f"**Azure Secure Coding Guidelines:** {azure_secure_coding_guidelines()}"),
+    pn.pane.Markdown(f"**Google Cloud Secure Coding Guidelines:** {google_cloud_secure_coding_guidelines()}"),
+    pn.pane.Markdown(f"**Cloud Security Frameworks:** {cloud_security_frameworks()}")
 )
 
 main.append(dashboard)
