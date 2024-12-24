@@ -29,3 +29,14 @@ jobs:
         run: |
           echo "Preventing deletion of exploits or resources/tools..."
           # Add preventive measures here
+  update_file_structure:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Update file structure
+        run: |
+          echo "Updating file structure..."
+          python3 scripts/update_file_structure.py
