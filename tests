@@ -1,0 +1,75 @@
+import unittest
+from advanced_zero_click_deployment_interface.FlowSteering.ApplicationCode.EmailServer import EmailServer
+from advanced_zero_click_deployment_interface.FlowSteering.ApplicationCode.EndUserCode import AttackerClient, EndUserClient
+from advanced_zero_click_deployment_interface.FlowSteering.ApplicationCode.LLaVaServer import LLaVaServer
+
+class TestEmailServer(unittest.TestCase):
+    def test_receive_complete_data(self):
+        # Add test cases for receive_complete_data function
+        pass
+
+    def test_handle_messages(self):
+        # Add test cases for handle_messages function
+        pass
+
+    def test_save_email_to_recipient(self):
+        # Add test cases for Save_Email_To_Recipient function
+        pass
+
+    def test_check_inbox(self):
+        # Add test cases for Check_Inbox function
+        pass
+
+class TestAttackerClient(unittest.TestCase):
+    def test_send_email(self):
+        # Add test cases for send_Email function
+        pass
+
+    def test_prevent_deletion_of_exploits(self):
+        # Add test cases for prevent_deletion_of_exploits function
+        pass
+
+class TestEndUserClient(unittest.TestCase):
+    def test_receive_complete_data(self):
+        # Add test cases for receive_complete_data function
+        pass
+
+    def test_parse_email_data(self):
+        # Add test cases for parse_email_data function
+        pass
+
+    def test_send_email(self):
+        # Add test cases for send_Email function
+        pass
+
+    def test_show_email_popup(self):
+        # Add test cases for show_email_popup function
+        pass
+
+    def test_check_email_inbox(self):
+        # Add test cases for check_email_inbox function
+        pass
+
+    def test_read_emails_from_file(self):
+        # Add test cases for read_emails_from_file function
+        pass
+
+    def test_handle_new_inbox_email(self):
+        # Add test cases for Handle_New_Inbox_Email function
+        pass
+
+class TestLLaVaServer(unittest.TestCase):
+    def test_receive_complete_data(self):
+        # Add test cases for receive_complete_data function
+        pass
+
+    def test_handle_messages(self):
+        # Add test cases for handle_messages function
+        pass
+
+    def test_send_to_llava(self):
+        # Add test cases for SendToLLaVa function
+        pass
+
+if __name__ == '__main__':
+    unittest.main()

@@ -1,0 +1,489 @@
+ProjectZeroDays/Project-Red-Sword
+├── advanced-zero-click-deployment-interface
+│   ├── FlowSteering
+│   │   ├── ApplicationCode
+│   │   │   ├── EmailServer
+│   │   │   │   ├── EmailServer.py
+│   │   │   │   └── EmailServerMailDatabase
+│   │   │   ├── EndUserCode
+│   │   │   │   ├── AttackerClient.py
+│   │   │   │   ├── EndUserClient.py
+│   │   │   │   ├── EndUserClientBaseEmails
+│   │   │   │   │   └── EndUserBaseEmails.csv
+│   │   │   │   └── EndUserPersonalEmailDir
+│   │   │   ├── LLaVaServer
+│   │   │   │   ├── LLaVaServer.py
+│   │   │   │   └── Run_LLaVa.py
+│   │   │   └── README.md
+│   │   ├── EmailsCSV
+│   │   ├── ImgPerturbation.ipynb
+│   │   ├── JsonOutPut
+│   │   └── llava
+│   │       ├── __init__.py
+│   │       ├── constants.py
+│   │       ├── conversation.py
+│   │       ├── data
+│   │       │   ├── __init__.py
+│   │       │   ├── alpaca-converter.py
+│   │       │   ├── clean_sharegpt.py
+│   │       │   ├── inspect.py
+│   │       │   ├── optional_clean.py
+│   │       │   ├── pretty_json.py
+│   │       │   └── split_long_conversation.py
+│   │       ├── llava_weights
+│   │       ├── llava.egg-info
+│   │       │   ├── dependency_links.txt
+│   │       │   ├── PKG-INFO
+│   │       │   ├── requires.txt
+│   │       │   ├── SOURCES.txt
+│   │       │   └── top_level.txt
+│   │       ├── model
+│   │       │   ├── __init__.py
+│   │       │   ├── apply_delta.py
+│   │       │   ├── consolidate.py
+│   │       │   ├── llava_mpt.py
+│   │       │   ├── llava.py
+│   │       │   ├── make_delta.py
+│   │       │   ├── mpt
+│   │       │   │   ├── adapt_tokenizer.py
+│   │       │   │   ├── attention.py
+│   │       │   │   ├── blocks.py
+│   │       │   │   ├── configuration_mpt.py
+│   │       │   │   ├── hf_prefixlm_converter.py
+│   │       │   │   ├── meta_init_context.py
+│   │       │   │   ├── modeling_mpt.py
+│   │       │   │   ├── norm.py
+│   │       │   │   └── param_init_fns.py
+│   │       │   └── utils.py
+│   │       ├── pyproject.toml
+│   │       ├── serve
+│   │       │   ├── __init__.py
+│   │       │   ├── cli.py
+│   │       │   ├── controller.py
+│   │       │   ├── gateway
+│   │       │   │   ├── nginx.conf
+│   │       │   │   └── README.md
+│   │       │   ├── gradio_css.py
+│   │       │   ├── gradio_patch.py
+│   │       │   ├── gradio_web_server.py
+│   │       │   ├── model_worker.py
+│   │       │   ├── register_worker.py
+│   │       │   └── test_message.py
+│   │       ├── train
+│   │       │   ├── llama_flash_attn_monkey_patch.py
+│   │       │   ├── llava_trainer.py
+│   │       │   ├── train_mem.py
+│   │       │   └── train.py
+│   │       └── utils.py
+│   ├── PerturbOutput
+│   ├── RAG-based Worm
+│   │   ├── RAG Emails
+│   │   │   └── Emails.csv
+│   │   ├── RagPipeline.ipynb
+│   │   └── VectorStore
+│   └── README.md
+├── ai
+│   └── ai_simulations.py
+├── analytics
+│   ├── behavioral_analysis.py
+│   └── behavioral_analytics.py
+├── app_security
+│   └── app_vulnerability_scanner.py
+├── app.py
+├── archive
+│   ├── archive_analyzer.py
+│   ├── archive_parser.py
+│   └── cross_reference.py
+├── atp
+│   └── atp_integration.py
+├── auth
+│   └── passkeys.py
+├── backend
+│   ├── ai_chat.py
+│   ├── code_parser.py
+│   ├── pipeline_manager.py
+│   └── sentiment_analysis.py
+├── c2_dashboard.py
+├── cli
+│   └── cli_dashboard.py
+├── cloud_security
+│   └── cloud_compliance.py
+├── code_analysis_report.txt
+├── codespace_user_secrets.json
+├── config
+│   ├── config.json
+│   └── config.py
+├── dark_web_scraper.py
+├── dashboard
+│   └── dashboard.py
+├── data_exfiltration.py
+├── database
+│   └── models.py
+├── defense
+│   ├── active_defense.py
+│   └── memory_forensics.py
+├── deploy.sh
+├── deploy
+│   └── digitalocean_deploy.py
+├── devcontainer.json
+├── Dockerfile
+├── docs
+│   ├── api_reference.md
+│   ├── feature_overview.md
+│   ├── post_project_evaluation.md
+│   └── training
+│       ├── admin_training.md
+│       ├── user_training.md
+│       └── troubleshooting.md
+├── documentation
+│   └── wiki
+│       └── table_of_contents.md
+├── edr
+│   └── edr_management.py
+├── exploit_payloads.py
+├── exploits
+│   ├── android
+│   │   └── android_bluetooth_exploit.py
+│   ├── bash_bunny
+│   │   └── reverse_shell_payload.txt
+│   ├── CVE-2021-1965
+│   │   ├── auto_execute.sh
+│   │   ├── CHANGELOG.md
+│   │   ├── cli.c
+│   │   ├── CODE_OF_CONDUCT.md
+│   │   ├── config.json
+│   │   ├── CONTRIBUTING.md
+│   │   ├── CVE-2021-1965-poc.c
+│   │   ├── gitignore
+│   │   ├── logging.h
+│   │   ├── Makefile
+│   │   ├── package.json
+│   │   ├── README.md
+│   │   ├── SECURITY.md
+│   │   └── test_CVE-2021-1965-poc.c
+│   ├── dia_framework_extracted
+│   │   ├── DIA Framework
+│   │   │   ├── config
+│   │   │   │   └── config.json
+│   │   │   └── src
+│   │   │       ├── exploits
+│   │   │       │   ├── android
+│   │   │       │   │   └── android_bluetooth_exploit.py
+│   │   │       │   ├── bash_bunny
+│   │   │       │   │   └── reverse_shell_payload.txt
+│   │   │       │   ├── exploits.py
+│   │   │       │   ├── exploits2.py
+│   │   │       │   ├── ios
+│   │   │       │   │   └── ios_webkit_exploit.py
+│   │   │       │   ├── linux
+│   │   │       │   │   ├── linux_bluetooth_exploit.sh
+│   │   │       │   │   └── linux_linux_bluetooth_exploit.sh
+│   │   │       │   ├── omg_hot_plug
+│   │   │       │   │   └── reverse_shell_payload.txt.txt
+│   │   │       │   ├── omg_usb_c
+│   │   │       │   │   └── reverse_shell_payload.txt
+│   │   │       │   ├── payloads
+│   │   │       │   │   └── reverse_shell_payload.txt
+│   │   │       │   ├── post_exploitation.py
+│   │   │       ├── main.py
+│   │   │       ├── pen_testing
+│   │   │       │   └── penetration_testing.py
+│   │   ├── exploits
+│   │   │   ├── exploits.py
+│   │   │   ├── exploits2.py
+│   │   │   ├── ios_framework_extracted
+│   │   │   │   ├── iOS Zero-Click Framework (Updated)
+│   │   │   │   │   ├── bash_bunny
+│   │   │   │   │   │   └── reverse_shell_payload.txt
+│   │   │   │   │   ├── exploits.py
+│   │   │   │   │   ├── omg_usb_c
+│   │   │   │   │   │   └── reverse_shell_payload.txt
+│   │   │   │   │   ├── payloads
+│   │   │   │   │   │   └── reverse_shell_payload.txt
+│   │   │   │   │   ├── route.py
+│   │   │   ├── ios
+│   │   │   │   └── ios_webkit_exploit.py
+│   │   │   ├── linux
+│   │   │   │   ├── linux_bluetooth_exploit.sh
+│   │   │   │   └── linux_linux_bluetooth_exploit.sh
+│   │   │   ├── omg_usb_c
+│   │   │   │   └── reverse_shell_payload.txt
+│   │   │   ├── payloads
+│   │   │   │   └── reverse_shell_payload.txt
+│   │   │   └── reverse_shell_payload.txt
+├── forensics
+│   ├── malware_analysis.py
+│   └── memory_analysis.py
+├── frontend
+│   ├── archive_gui.py
+│   ├── export_history.py
+│   └── gui_chat_interface.py
+├── fuzzing_engine.py
+├── gui
+│   └── dashboard.py
+├── incident_response
+│   └── playbook.py
+├── infra
+│   ├── docker-compose.yml
+│   ├── Dockerfile
+│   ├── k8s_deployment.yaml
+│   ├── k8s
+│   │   └── deployment.yaml
+│   └── test_deployment.sh
+├── integrated_exploits
+│   ├── extracted_code_19.py
+│   ├── extracted_code_28.py
+│   ├── extracted_code_29.py
+│   ├── extracted_code_38.py
+│   ├── extracted_code_39.py
+│   └── extracted_code_48.py
+├── integration
+│   └── api_security.py
+├── intel
+│   └── threat_feeds.py
+├── LICENSE
+├── main.py
+├── models
+│   ├── models.py
+│   └── models2.py
+├── modules
+│   ├── 5g_networks.py
+│   ├── advanced_decryption.py
+│   ├── advanced_malware_analysis.py
+│   ├── advanced_social_engineering.py
+│   ├── advanced-zero-click-deployment-interface
+│   │   ├── FlowSteering
+│   │   │   ├── ApplicationCode
+│   │   │   │   ├── EmailServer
+│   │   │   │   │   ├── EmailServer.py
+│   │   │   │   │   └── EmailServerMailDatabase
+│   │   │   │   ├── EndUserCode
+│   │   │   │   │   ├── AttackerClient.py
+│   │   │   │   │   ├── EndUserClient.py
+│   │   │   │   │   ├── EndUserClientBaseEmails
+│   │   │   │   │   │   └── EndUserBaseEmails.csv
+│   │   │   │   │   └── EndUserPersonalEmailDir
+│   │   │   │   ├── LLaVaServer
+│   │   │   │   │   ├── LLaVaServer.py
+│   │   │   │   │   └── Run_LLaVa.py
+│   │   │   │   └── README.md
+│   │   │   ├── EmailsCSV
+│   │   │   ├── ImgPerturbation.ipynb
+│   │   │   ├── JsonOutPut
+│   │   │   └── llava
+│   │   │       ├── __init__.py
+│   │   │       ├── constants.py
+│   │   │       ├── conversation.py
+│   │   │       ├── data
+│   │   │       │   ├── __init__.py
+│   │   │       │   ├── alpaca-converter.py
+│   │   │       │   ├── clean_sharegpt.py
+│   │   │       │   ├── inspect.py
+│   │   │       │   ├── optional_clean.py
+│   │   │       │   ├── pretty_json.py
+│   │   │       │   └── split_long_conversation.py
+│   │   │       ├── llava_weights
+│   │   │       ├── llava.egg-info
+│   │   │       │   ├── dependency_links.txt
+│   │   │       │   ├── PKG-INFO
+│   │   │       │   ├── requires.txt
+│   │   │       │   ├── SOURCES.txt
+│   │   │       │   └── top_level.txt
+│   │   │       ├── model
+│   │   │       │   ├── __init__.py
+│   │   │       │   ├── apply_delta.py
+│   │   │       │   ├── consolidate.py
+│   │   │       │   ├── llava_mpt.py
+│   │   │       │   ├── llava.py
+│   │   │       │   ├── make_delta.py
+│   │   │       │   ├── mpt
+│   │   │       │   │   ├── adapt_tokenizer.py
+│   │   │       │   │   ├── attention.py
+│   │   │       │   │   ├── blocks.py
+│   │   │       │   │   ├── configuration_mpt.py
+│   │   │       │   │   ├── hf_prefixlm_converter.py
+│   │   │       │   │   ├── meta_init_context.py
+│   │   │       │   │   ├── modeling_mpt.py
+│   │   │       │   │   ├── norm.py
+│   │   │       │   │   └── param_init_fns.py
+│   │   │       │   └── utils.py
+│   │   │       ├── pyproject.toml
+│   │   │       ├── serve
+│   │   │       │   ├── __init__.py
+│   │   │       │   ├── cli.py
+│   │   │       │   ├── controller.py
+│   │   │       │   ├── gateway
+│   │   │       │   │   ├── nginx.conf
+│   │   │       │   │   └── README.md
+│   │   │       │   ├── gradio_css.py
+│   │   │       │   ├── gradio_patch.py
+│   │   │       │   ├── gradio_web_server.py
+│   │   │       │   ├── model_worker.py
+│   │   │       │   ├── register_worker.py
+│   │   │       │   └── test_message.py
+│   │   │       ├── train
+│   │   │       │   ├── llama_flash_attn_monkey_patch.py
+│   │   │       │   ├── llava_trainer.py
+│   │   │       │   ├── train_mem.py
+│   │   │       │   └── train.py
+│   │   │       └── utils.py
+│   ├── baize-ai
+│   │   ├── app_modules
+│   │   │   ├── overwrites.py
+│   │   │   ├── presets.py
+│   │   │   └── utils.py
+│   │   ├── app.py
+│   │   ├── assets
+│   │   │   ├── custom.css
+│   │   │   ├── custom.js
+│   │   │   └── Kelpy-Codos.js
+│   │   ├── README.md
+│   │   └── requirements.txt
+│   ├── blockchain_logger.py
+│   ├── c2_dashboard.py
+│   ├── cloud_exploitation.py
+│   ├── cloud_native_applications.py
+│   ├── custom_dashboards.py
+│   ├── CVE-2021-1965
+│   │   ├── CVE-2021-1965-poc.c
+│   │   ├── LICENSE.md
+│   │   └── README.md
+│   ├── dark_web_scraper.py
+│   ├── dark_web_scraper2.py
+│   ├── data_exfiltration.py
+│   ├── data_exfiltration2.py
+│   ├── data_visualization.py
+│   ├── db2.py
+│   ├── device_fingerprinting.py
+│   ├── drysploit.sh
+│   ├── edge_computing.py
+│   ├── exploit_payloads.py
+│   ├── exploit_payloads2.py
+│   ├── exploiter 2.py
+│   ├── exploits2.py
+│   ├── framework2.py
+│   ├── fuzzing_engine-2.py
+│   ├── fuzzing_engine.py
+│   ├── fuzzing_engine2.py
+│   ├── get-info.sh
+│   ├── Help_Crack.py
+│   ├── install_puppet.py
+│   ├── iot_exploitation.py
+│   ├── machine_learning_ai.py
+│   ├── microservices_architecture.py
+│   ├── mitm_stingray.py
+│   ├── network_exploitation.py
+│   ├── nmap 2.py
+│   ├── openai_chatbot.py
+│   ├── paracosme
+│   │   ├── LICENSE
+│   │   ├── README.md
+│   │   └── src
+│   │       ├── paracosme-poc.py
+│   │       ├── paracosme.py
+│   │       ├── payload
+│   │       │   ├── payload.cc
+│   │       │   ├── payload.sln
+│   │       │   ├── payload.vcxproj
+│   │       │   ├── Resource.aps
+│   │       │   ├── resource.h
+│   │       │   └── Resource.rc
+│   │       └── smbserver.py
+│   ├── Photo-Genetator-AI
+│   │   ├── images
+│   │   │   ├── download.svg
+│   │   │   ├── loader.svg
+│   │   ├── index.html
+│   │   ├── README.md
+│   │   ├── script.js
+│   │   └── style.css
+│   ├── predictive_analytics.py
+│   ├── quantum_computing.py
+│   ├── real_time_monitoring.py
+│   ├── real_time_monitoring2.py
+│   ├── real_time_threat_intelligence.py
+│   ├── real_time_threat_intelligence2.py
+│   ├── secure_coding_cloud_tools.py
+│   ├── secure_coding_cloud.py
+│   ├── secure_coding_frameworks.py
+│   ├── secure_coding_tools.py
+│   ├── serverless_computing.py
+│   ├── threat_intelligence.py
+│   ├── vulnerability_scanner.py
+│   ├── vulnerability_scanner2.py
+│   ├── wireless_exploitation.py
+│   └── zero_day_exploits.py
+├── network
+│   └── traffic_analysis.py
+├── offense
+│   └── privilege_escalation.py
+├── payloads
+│   ├── android
+│   │   └── android_bluetooth_exploit.py
+│   ├── bash_bunny
+│   │   └── reverse_shell_payload.txt
+│   ├── ios
+│   │   └── ios_webkit_exploit.py
+│   ├── linux
+│   │   ├── linux_bluetooth_exploit.sh
+│   │   └── linux_linux_bluetooth_exploit.sh
+│   ├── omg_hot_plug
+│   │   └── reverse_shell_payload.txt.txt
+│   ├── omg_usb_c
+│   │   └── reverse_shell_payload.txt
+│   ├── payloads
+│   │   └── reverse_shell_payload.txt
+│   └── reverse_shell_payload.txt
+├── pen_testing
+│   └── penetration_testing.py
+├── prompts
+│   └── Generate_Master_Workflow
+├── PROPOSAL.md
+├── README.md
+├── requirements.txt
+├── scripts
+│   ├── Automated_Coud_Deployment
+│   │   ├── azure-k8s.yaml
+│   │   ├── digitalocean-app.yaml
+│   │   └── google-k8s.yaml
+│   ├── setup_ai_tools.sh
+│   └── start.sh
+├── security
+│   └── malware_emulation.py
+├── setup.sh
+├── simulation
+│   └── red_vs_blue.py
+├── templates
+│   └── dashboard.html
+├── tests
+│   ├── integration_tests
+│   │   └── test_api_integration.py
+│   ├── test_app.py
+│   ├── test_framework.py
+│   ├── test_security.py
+│   └── unit_tests
+│       ├── test_ai_chat.py
+│       ├── test_code_parser.py
+│       ├── test_core.py
+│       ├── test_pipeline_manager.py
+│       └── test_threat_detection.py
+├── threat_hunting
+│   └── network_threat_hunting.py
+├── tools
+│   └── brute_force.py
+├── user_management
+│   ├── auth.py
+│   └── user_auth.py
+├── utils
+│   ├── config.py
+│   ├── cost_benefit_analysis.py
+│   ├── ddns_manager.py
+│   ├── encryption.py
+│   ├── helpers.py
+│   ├── localization.py
+│   ├── logger.py
+│   ├── notification_delivery.py
+│   ├── threat_feeds.py
+│   └── webhooks.py
+├── vulnerability_scanner.py
+└── Wiki
