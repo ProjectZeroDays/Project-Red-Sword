@@ -1,0 +1,1 @@
+bash scripts/corporate_device_security_audit.sh

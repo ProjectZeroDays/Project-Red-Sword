@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>HasRemovalPasscode</key>
+	<false/>
+	<key>PayloadContent</key>
+	<array>
+		<dict>
+			<key>IfLostReturnToMessage</key>
+			<string>Project Zero Days - projectzerodays@gmail.com</string>
+			<key>PayloadDescription</key>
+			<string>Configures ownership information for a shared device</string>
+			<key>PayloadDisplayName</key>
+			<string>Lock Screen Message</string>
+			<key>PayloadIdentifier</key>
+			<string>com.apple.shareddeviceconfiguration.25139046-AD1F-4498-8D71-819FEFA7A7E5</string>
+			<key>PayloadType</key>
+			<string>com.apple.shareddeviceconfiguration</string>
+			<key>PayloadUUID</key>
+			<string>25139046-AD1F-4498-8D71-819FEFA7A7E5</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>PayloadDescription</key>
+	<string>C3B7BDC5-E9EB-426A-8701-312749F94F60</string>
+	<key>PayloadDisplayName</key>
+	<string>Project Zero Days</string>
+	<key>PayloadIdentifier</key>
+	<string>z3r0days.C3B7BDC5-E9EB-426A-8701-312749F94F60</string>
+	<key>PayloadOrganization</key>
+	<string>Project Zero Days</string>
+	<key>PayloadRemovalDisallowed</key>
+	<false/>
+	<key>PayloadType</key>
+	<string>Configuration</string>
+	<key>PayloadUUID</key>
+	<string>044C22AC-959A-4FF3-BECC-123BD0C7653D</string>
+	<key>PayloadVersion</key>
+	<integer>1</integer>
+</dict>
+</plist>

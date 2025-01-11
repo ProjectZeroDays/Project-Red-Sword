@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scan Report</title>
+</head>
+<body>
+    <h1>Scan Results</h1>
+    {% for target, results in scan_results.items() %}
+        <h2>Target: {{ target }}</h2>
+        {% for module, module_results in results.items() %}
+            <h3>Module: {{ module }}</h3>
+            <pre>{{ module_results }}</pre>
+        {% endfor %}
+    {% endfor %}
+</body>
+</html>
