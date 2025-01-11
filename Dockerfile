@@ -1,17 +1,16 @@
-# Use a slim Python base image
-FROM python:3.9-slim
+# Use the official Python image from Docker Hub
+FROM python:3.9
 
-# Set the working directory
+# Set the working directory in the container to /app
 WORKDIR /app
 
-# Create a non-root user and switch to it
-RUN useradd -m appuser
-USER appuser
-
-# Copy project files
+# Copy the current directory contents into the container at /app
 COPY . /app
 
-# Install dependencies
+# Upgrade pip to the latest version
+RUN pip install --upgrade pip
+
+# Install the dependencies specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Expose the Gradio default port
@@ -21,5 +20,5 @@ EXPOSE 7860
 ENV OPENAI_API_KEY=${OPENAI_API_KEY}
 ENV HUGGINGFACE_API_KEY=${HUGGINGFACE_API_KEY}
 
-# Command to start the Gradio app
-CMD ["python", "src/frontend/archive_gui.py"]
+# Define the command to run the application using Gunicorn
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:7860", "src.frontend.archive_gui:app"]
