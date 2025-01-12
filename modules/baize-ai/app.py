@@ -1,4 +1,3 @@
-# -*- coding:utf-8 -*-
 import os
 import logging
 import sys
@@ -16,7 +15,7 @@ logging.basicConfig(
 
 base_model = "project-baize/baize-v2-7b"
 adapter_model = None
-tokenizer,model,device = load_tokenizer_and_model(base_model,adapter_model)
+tokenizer, model, device = load_tokenizer_and_model(base_model, adapter_model)
 
 total_count = 0
 def predict(text,
@@ -27,22 +26,22 @@ def predict(text,
             max_length_tokens,
             max_context_length_tokens,):
     if text=="":
-        yield chatbot,history,"Empty context."
+        yield chatbot, history, "Empty context."
         return 
     try:
         model
     except:
-        yield [[text,"No Model Found"]],[],"No Model Found"
+        yield [[text,"No Model Found"]],[], "No Model Found"
         return
 
-    inputs = generate_prompt_with_history(text,history,tokenizer,max_length=max_context_length_tokens)
+    inputs = generate_prompt_with_history(text, history, tokenizer, max_length=max_context_length_tokens)
     if inputs is None:
-        yield chatbot,history,"Input too long."
+        yield chatbot, history, "Input too long."
         return 
     else:
-        prompt,inputs=inputs
+        prompt, inputs = inputs
         begin_length = len(prompt)
-    input_ids = inputs["input_ids"][:,-max_context_length_tokens:].to(device)
+    input_ids = inputs["input_ids"][:, -max_context_length_tokens:].to(device)
     torch.cuda.empty_cache()
     global total_count
     total_count += 1
@@ -50,14 +49,14 @@ def predict(text,
     if total_count % 50 == 0 :
         os.system("nvidia-smi")
     with torch.no_grad():
-        for x in greedy_search(input_ids,model,tokenizer,stop_words=["[|Human|]", "[|AI|]"],max_length=max_length_tokens,temperature=temperature,top_p=top_p):
-            if is_stop_word_or_prefix(x,["[|Human|]", "[|AI|]"]) is False:
+        for x in greedy_search(input_ids, model, tokenizer, stop_words=["[|Human|]", "[|AI|]"], max_length=max_length_tokens, temperature=temperature, top_p=top_p):
+            if is_stop_word_or_prefix(x, ["[|Human|]", "[|AI|]"]) is False:
                 if "[|Human|]" in x:
                     x = x[:x.index("[|Human|]")].strip()
                 if "[|AI|]" in x:
                     x = x[:x.index("[|AI|]")].strip() 
                 x = x.strip()   
-                a, b=   [[y[0],convert_to_markdown(y[1])] for y in history]+[[text, convert_to_markdown(x)]],history + [[text,x]]
+                a, b = [[y[0], convert_to_markdown(y[1])] for y in history] + [[text, convert_to_markdown(x)]], history + [[text, x]]
                 yield a, b, "Generating..."
             if shared_state.interrupted:
                 shared_state.recover()
@@ -69,14 +68,11 @@ def predict(text,
     del input_ids
     gc.collect()
     torch.cuda.empty_cache()
-    #print(text)
-    #print(x)
-    #print("="*80)
     try:
-        yield a,b,"Generate: Success"
+        yield a, b, "Generate: Success"
     except:
         pass
-        
+
 def retry(
         text,
         chatbot,
@@ -92,9 +88,8 @@ def retry(
         return
     chatbot.pop()
     inputs = history.pop()[0]
-    for x in predict(inputs,chatbot,history,top_p,temperature,max_length_tokens,max_context_length_tokens):
+    for x in predict(inputs, chatbot, history, top_p, temperature, max_length_tokens, max_context_length_tokens):
         yield x
-
 
 gr.Chatbot.postprocess = postprocess
 
@@ -126,7 +121,7 @@ with gr.Blocks(css=customCSS, theme=small_and_beautiful_theme) as demo:
                     "🧹 New Conversation",
                 )
                 retryBtn = gr.Button("🔄 Regenerate")
-                delLastBtn = gr.Button("🗑️ Remove Last Turn") 
+                delLastBtn = gr.Button("🗑️ Remove Last Turn")
         with gr.Column():
             with gr.Column(min_width=50, scale=1):
                 with gr.Tab(label="Parameter Setting"):
@@ -197,8 +192,7 @@ with gr.Blocks(css=customCSS, theme=small_and_beautiful_theme) as demo:
     reset_args = dict(
         fn=reset_textbox, inputs=[], outputs=[user_input, status_display]
     )
- 
-    # Chatbot
+
     transfer_input_args = dict(
         fn=transfer_input, inputs=[user_input], outputs=[user_question, user_input, submitBtn], show_progress=True
     )
@@ -225,7 +219,7 @@ with gr.Blocks(css=customCSS, theme=small_and_beautiful_theme) as demo:
     cancelBtn.click(
         cancel_outputing, [], [status_display], 
         cancels=[
-            predict_event1,predict_event2,predict_event3
+            predict_event1, predict_event2, predict_event3
         ]
     )    
 demo.title = "Baize"
