@@ -1,4 +1,3 @@
-
 # Running the GenAI EcoSystem
 
 <p align="center">
@@ -38,7 +37,7 @@ file to set the server configuration.
 ```python
 SERVER_HOST = '0.0.0.0' # Change this to the IP address of the machine where the Email Server will run
 SERVER_PORT = 1234 # Change this to the port where the Email Server will listen
-saveMail_directory = "FlowSteering/ApplicationCode/EmailServer/EmailServerMailDatabase"  # Change this to the directory where you want to save the emails inbox for each user
+saveMail_directory = "FlowSteering/ApplicationCode/EmailServer/Database/EmailServerMailDatabase"  # Change this to the directory where you want to save the emails inbox for each user
 message_queue = Queue()
 default_image = 'FlowSteering/assets/PerturbatedImages/DjiPerturbClassForward.png'
 ```
