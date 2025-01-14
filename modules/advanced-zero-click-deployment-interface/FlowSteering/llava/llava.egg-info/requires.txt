@@ -1,6 +1,6 @@
 einops
 fastapi
-gradio==5.5.0
+gradio==5.11.0
 markdown2[all]
 numpy
 requests
@@ -12,7 +12,7 @@ uvicorn
 wandb
 shortuuid
 httpx==0.24.0
-deepspeed==0.15.1
+deepspeed==0.16.2
 peft==0.4.0
 transformers==4.38.0
 accelerate==0.21.0
