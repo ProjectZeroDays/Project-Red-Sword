@@ -668,4 +668,8 @@ def train():
 
 
 if __name__ == "__main__":
-    train()
+    try:
+        train()
+    except Exception as e:
+        logging.error(f"Error during training: {e}")
+        raise
