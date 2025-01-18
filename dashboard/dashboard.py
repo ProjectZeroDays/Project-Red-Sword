@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from functools import wraps
+from modules.advanced_malware_analysis import AdvancedMalwareAnalysis
+from modules.advanced_social_engineering import AdvancedSocialEngineering
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
@@ -40,7 +42,14 @@ def logout():
 @app.route("/")
 @rbac_required("user")
 def dashboard():
-    return render_template("dashboard.html", data={"threats_detected": 5, "exploits_deployed": 3})
+    malware_analysis = AdvancedMalwareAnalysis()
+    social_engineering = AdvancedSocialEngineering()
+    return render_template("dashboard.html", data={
+        "threats_detected": 5,
+        "exploits_deployed": 3,
+        "malware_analysis": malware_analysis.render(),
+        "social_engineering": social_engineering.render()
+    })
 
 @app.route("/admin")
 @rbac_required("admin")
