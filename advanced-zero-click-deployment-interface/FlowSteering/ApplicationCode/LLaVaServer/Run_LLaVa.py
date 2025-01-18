@@ -77,7 +77,11 @@ def load_image(image_file):
         response = requests.get(image_file)
         image = Image.open(BytesIO(response.content)).convert('RGB')
     else:
-        image = Image.open(image_file).convert('RGB')
+        try:
+            image = Image.open(image_file).convert('RGB')
+        except Exception as e:
+            print(f"Error loading image: {e}")
+            return None
     return image
 
 
@@ -169,6 +173,8 @@ def generate_stream(model, prompt, tokenizer, input_ids, images=None):
 def run_result(X, prompt, initial_query, query_list, model, tokenizer, unnorm, image_processor):
     device = 'cuda'
     X = load_image(X)
+    if X is None:
+        return ["Error loading image"]
 
     print("Image: ")
     # load the image
@@ -234,8 +240,13 @@ def Turn_On_LLaVa():  # Load the LLaVa model
     tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
     dtypePerDevice = torch.float16
 
-    model = LlavaLlamaForCausalLM.from_pretrained(model_name, low_cpu_mem_usage=True, torch_dtype=dtypePerDevice,
-                                                  use_cache=True)
+    try:
+        model = LlavaLlamaForCausalLM.from_pretrained(model_name, low_cpu_mem_usage=True, torch_dtype=dtypePerDevice,
+                                                      use_cache=True)
+    except Exception as e:
+        print(f"Error loading model: {e}")
+        return None, None, None, None
+
     model.to(device=device, dtype=dtypePerDevice)
     image_processor = CLIPImageProcessor.from_pretrained(model.config.mm_vision_tower)
 
@@ -264,7 +275,11 @@ def Turn_On_LLaVa():  # Load the LLaVa model
 def load_param(MODEL_NAME, model, tokenizer, initial_query):
     model_name = os.path.expanduser(MODEL_NAME)
 
-    image_processor = CLIPImageProcessor.from_pretrained(model.config.mm_vision_tower)
+    try:
+        image_processor = CLIPImageProcessor.from_pretrained(model.config.mm_vision_tower)
+    except Exception as e:
+        print(f"Error loading image processor: {e}")
+        return None, None, None, None, None, None, None, None, None
 
     mm_use_im_start_end = getattr(model.config, "mm_use_im_start_end", False)
     tokenizer.add_tokens([DEFAULT_IMAGE_PATCH_TOKEN], special_tokens=True)
