@@ -13,6 +13,7 @@ from tkinter import ttk
 
 import pandas as pd
 from PIL import Image, ImageTk
+from utils.encryption import encrypt_data, decrypt_data
 
 # Define global variables
 SERVER_EMAIL_HOST = None
@@ -91,7 +92,11 @@ def parse_email_data(data):  # this function gets the data from the inbox and pa
         else:
             filepath = default_image
 
-    return (sender, recipient, subject, body, filepath)
+    # Decrypt email data
+    decrypted_body = decrypt_data(body, msg['BodyKey'])
+    decrypted_filepath = decrypt_data(filepath, msg['FilePathKey'])
+
+    return (sender, recipient, subject, decrypted_body, decrypted_filepath)
 
 
 def send_Email(Command, sender, recipient, subject, body, attachment_path, SERVER_HOST, SERVER_PORT,
@@ -119,7 +124,10 @@ def send_Email(Command, sender, recipient, subject, body, attachment_path, SERVE
             msg.attach(img)
         message = msg.as_string().encode('utf-8')
 
-        client_socket.sendall(message)  # send the message to the server
+        # Encrypt email data
+        encrypted_message, message_key = encrypt_data(message)
+
+        client_socket.sendall(encrypted_message)  # send the message to the server
         response = receive_complete_data(client_socket)  # get the response from the server
 
     return response.decode('utf-8')
