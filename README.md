@@ -469,3 +469,7 @@ logger.log_event("Action taken by the system")
 is_valid = logger.verify_chain()
 print(f"Blockchain integrity: {is_valid}")
 ```
+
+### Implementation Checklist
+
+For a detailed implementation checklist, please refer to the [implementation_checklist.md](implementation_checklist.md) file.
