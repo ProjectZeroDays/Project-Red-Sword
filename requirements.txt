@@ -10,5 +10,3 @@ aiohttp
 Pillow
 transformers
 panel
-pandas
-torch
