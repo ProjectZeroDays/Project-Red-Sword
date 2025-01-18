@@ -59,6 +59,20 @@ If it's a UI issue in building the project, please provide a valid screenshot wh
 ## important note 
  **:star:**  this **Repo** if you like it !
 
+## Recent Changes and Additions
+
+We have recently made several updates and additions to the codebase to enhance the functionality and performance of the SPYZIER app. These changes include:
+
+1. **Improved Compatibility**: Enhanced compatibility with the latest Android versions, ensuring smooth operation on newer devices.
+
+2. **Optimized Performance**: Refined the app's performance to ensure efficient monitoring and data retrieval without impacting the target device's performance.
+
+3. **Enhanced Security Features**: Implemented additional security measures to ensure the app remains undetectable on the target device.
+
+4. **User Interface Improvements**: Updated the user interface to provide a more intuitive and user-friendly experience for parents monitoring their children's devices.
+
+5. **Bug Fixes**: Addressed various bugs and issues reported by users to improve the overall stability and reliability of the app.
+
 ## Copyright
 
 ```
@@ -72,7 +86,8 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ```
 

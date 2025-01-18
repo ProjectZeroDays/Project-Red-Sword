@@ -72,13 +72,17 @@ def Save_Email_To_Recipient(client_socket, data, msg, requests, subject, sender,
 
     msg = email.message_from_bytes(data)
 
-    if msg.is_multipart():
-        for part in msg.get_payload():
-            if part.get_content_type() == "text/plain":
-                body = part.get_payload()
-
-    else:
-        print(msg.get_payload())
+    try:
+        if msg.is_multipart():
+            for part in msg.get_payload():
+                if part.get_content_type() == "text/plain":
+                    body = part.get_payload()
+        else:
+            body = msg.get_payload()
+    except Exception as e:
+        print(f"Error processing email message: {e}")
+        client_socket.sendall("Error processing email message".encode('utf-8'))
+        return
 
     for part in msg.walk():
         if part.get_content_maintype() == "multipart":

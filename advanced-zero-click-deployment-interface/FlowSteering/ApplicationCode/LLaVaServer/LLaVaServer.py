@@ -9,7 +9,7 @@ import Run_LLaVa
 SERVER_HOST = '0.0.0.0'
 SERVER_PORT = 1025
 saveMail_directory = "FlowSteering/ApplicationCode/LLaVaServer/EmailLLaVaMailDatabase"
-MODEL_NAME = "FlowSteering/llava/llava_weights/"  # PATH to the LLaVA weights
+MODEL_NAME = "FlowSteering/llava/llava_weights/"  # PATH to the LLaVa weights
 message_queue = Queue()
 # Server configuration
 
@@ -33,7 +33,10 @@ def receive_complete_data(
     except socket.timeout as e:
         print('timeout')
         print(e)
-
+        pass
+    except socket.error as e:
+        print('socket error')
+        print(e)
         pass
 
     return received_data
@@ -70,9 +73,9 @@ def SendToLLaVa(data, client_socket, sender, recipient, subject, model, image_pr
         for part in msg.get_payload():
             if part.get_content_type() == "text/plain":
                 body = part.get_payload()
-
     else:
-        print(msg.get_payload())
+        body = msg.get_payload()
+
     # print the subject
     for part in msg.walk():
         if part.get_content_maintype() == "multipart":
@@ -124,7 +127,11 @@ def SendToLLaVa(data, client_socket, sender, recipient, subject, model, image_pr
 
 def start_server(): # This function is used to start the server and listen for incoming connections
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_socket.bind((SERVER_HOST, SERVER_PORT))
+    try:
+        server_socket.bind((SERVER_HOST, SERVER_PORT))
+    except socket.error as e:
+        print(f"Error binding server socket: {e}")
+        return
     server_socket.listen(1000)
     model, image_processor, tokenizer, device = Run_LLaVa.Turn_On_LLaVa() # Turn on the LLaVa model and get the model, image processor, tokenizer and the device
 

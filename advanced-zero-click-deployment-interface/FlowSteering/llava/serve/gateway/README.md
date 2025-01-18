@@ -55,3 +55,17 @@ sudo nginx -t  # check `/etc/nginx/nginx.conf`
 sudo systemctl reload nginx  # restart Nginx service to load the new config
 sudo systemctl status nginx  # check the status of the Nginx service. It should be active (running).
 ```
+
+## Recent Changes and Additions
+
+We have recently made several updates and additions to the codebase to enhance the functionality and performance of the Nginx gateway. These changes include:
+
+1. **Improved Security Features**: Enhanced the security features of the Nginx gateway to provide better protection for Gradio servers. This includes additional firewall rules and connection limits.
+
+2. **Optimized Load Balancing**: Refined the load balancing capabilities of the Nginx gateway to ensure efficient distribution of traffic across multiple Gradio servers.
+
+3. **Dynamic Server Management**: Updated the Nginx configuration to support dynamic mounting and unmounting of Gradio servers, allowing for more flexible server management.
+
+4. **Simplified Deployment Process**: Streamlined the deployment process for the Nginx gateway, making it easier to set up and configure on various Linux distributions.
+
+These updates aim to provide a more robust and efficient Nginx gateway, ensuring smooth communication and interaction between the various components of the system.
