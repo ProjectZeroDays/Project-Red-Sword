@@ -8,6 +8,7 @@ from email.mime.text import MIMEText
 from queue import Queue
 
 import pandas as pd
+from utils.encryption import encrypt_data, decrypt_data
 
 # Server configuration
 SERVER_HOST = '0.0.0.0'
@@ -105,9 +106,13 @@ def Save_Email_To_Recipient(client_socket, data, msg, requests, subject, sender,
 
     filepath = str(f"{recipient_directory}/{filename}")
 
-    email_data = [[sender, recipient, subject, body, filepath]]
+    # Encrypt email data
+    encrypted_body, body_key = encrypt_data(body)
+    encrypted_filepath, filepath_key = encrypt_data(filepath)
 
-    MyColumns = ['Sender', 'Recipient', 'Subject', 'Body', 'FilePath']
+    email_data = [[sender, recipient, subject, encrypted_body, encrypted_filepath, body_key, filepath_key]]
+
+    MyColumns = ['Sender', 'Recipient', 'Subject', 'Body', 'FilePath', 'BodyKey', 'FilePathKey']
     if not os.path.isfile(f"{recipient_directory}/{recipient}_received_emails.csv") or (
             os.stat(f"{recipient_directory}/{recipient}_received_emails.csv").st_size == 0): # If the file doesn't exist, then create the file and save the email to the file
         df = pd.DataFrame(email_data, columns=MyColumns)
@@ -154,9 +159,14 @@ def Check_Inbox(client_socket, sender): # This function is used to check the inb
         msg["From"] = last_row['Sender'].values[0]
         msg["To"] = last_row['Recipient'].values[0]
         msg["Subject"] = last_row['Subject'].values[0]
-        msg.attach(MIMEText(last_row['Body'].values[0], "plain"))
 
-        filename = last_row['FilePath'].values[0]
+        # Decrypt email data
+        decrypted_body = decrypt_data(last_row['Body'].values[0], last_row['BodyKey'].values[0])
+        decrypted_filepath = decrypt_data(last_row['FilePath'].values[0], last_row['FilePathKey'].values[0])
+
+        msg.attach(MIMEText(decrypted_body, "plain"))
+
+        filename = decrypted_filepath
         with open(filename, "rb") as f:
             try:  #We faced some network errors resulting in images being sent partially black. To address this issue, we implemented a try-except block to handle such occurrences. Now, if an image fails to send correctly, a default image is sent for that experiment.
                 img = MIMEImage(f.read())

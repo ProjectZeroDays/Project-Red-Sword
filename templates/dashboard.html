@@ -1,12 +1,92 @@
-
 <!DOCTYPE html>
 <html>
 <head>
     <title>Dashboard</title>
+    <style>
+        .dashboard-section {
+            margin-bottom: 20px;
+        }
+        .dashboard-section h2 {
+            margin-bottom: 10px;
+        }
+        .dashboard-section p {
+            margin: 5px 0;
+        }
+    </style>
 </head>
 <body>
     <h1>Framework Dashboard</h1>
-    <p>Threats Detected: {{ data["threats_detected"] }}</p>
-    <p>Exploits Deployed: {{ data["exploits_deployed"] }}</p>
+    <div class="dashboard-section">
+        <h2>Threats and Exploits</h2>
+        <p>Threats Detected: {{ data["threats_detected"] }}</p>
+        <p>Exploits Deployed: {{ data["exploits_deployed"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Assets</h2>
+        <p>Asset 1: {{ data["asset_1"] }}</p>
+        <p>Asset 2: {{ data["asset_2"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Message Boards</h2>
+        <p>Message 1: {{ data["message_1"] }}</p>
+        <p>Message 2: {{ data["message_2"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Announcements</h2>
+        <p>Announcement 1: {{ data["announcement_1"] }}</p>
+        <p>Announcement 2: {{ data["announcement_2"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Latest News on Exploits</h2>
+        <p>News 1: {{ data["news_1"] }}</p>
+        <p>News 2: {{ data["news_2"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>AI Interface</h2>
+        <p>AI Status: {{ data["ai_status"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>System Connections</h2>
+        <p>Connection 1: {{ data["connection_1"] }}</p>
+        <p>Connection 2: {{ data["connection_2"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Logs</h2>
+        <p>Log 1: {{ data["log_1"] }}</p>
+        <p>Log 2: {{ data["log_2"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>System Status</h2>
+        <p>Status: {{ data["system_status"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>System Settings</h2>
+        <p>Setting 1: {{ data["setting_1"] }}</p>
+        <p>Setting 2: {{ data["setting_2"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Attack Simulations</h2>
+        <p>Simulation 1: {{ data["simulation_1"] }}</p>
+        <p>Simulation 2: {{ data["simulation_2"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Fuzzing</h2>
+        <p>Fuzzing Status: {{ data["fuzzing_status"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Asset Control</h2>
+        <p>Control 1: {{ data["control_1"] }}</p>
+        <p>Control 2: {{ data["control_2"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Reverse Shell Settings</h2>
+        <p>Shell Setting 1: {{ data["shell_setting_1"] }}</p>
+        <p>Shell Setting 2: {{ data["shell_setting_2"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Advanced Connection Methods</h2>
+        <p>Connection Method 1: {{ data["connection_method_1"] }}</p>
+        <p>Connection Method 2: {{ data["connection_method_2"] }}</p>
+    </div>
 </body>
 </html>

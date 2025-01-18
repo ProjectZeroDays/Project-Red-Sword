@@ -4,6 +4,7 @@ import socket
 import threading
 from queue import Queue
 import Run_LLaVa
+from utils.encryption import encrypt_data, decrypt_data
 
 # Server configuration
 SERVER_HOST = '0.0.0.0'
@@ -96,7 +97,11 @@ def SendToLLaVa(data, client_socket, sender, recipient, subject, model, image_pr
     print(f"Attachment filename: {filename}")
     print(f' Text body: {body}')
 
-    Query = body
+    # Encrypt email data
+    encrypted_body, body_key = encrypt_data(body)
+    encrypted_filepath, filepath_key = encrypt_data(filepath)
+
+    Query = encrypted_body
     AdditionalQueryNum = msg['AdditionalQueryNum']
     AdditionalQueryNum = int(AdditionalQueryNum)
     query_list = []
@@ -108,7 +113,7 @@ def SendToLLaVa(data, client_socket, sender, recipient, subject, model, image_pr
     tokenizer, image_processor, vision_tower, unorm, norm, embeds, projector, prompt, input_ids = Run_LLaVa.load_param(
         MODEL_NAME, model, tokenizer, Query)
 
-    reply = Run_LLaVa.Run_LLaVa(filepath, prompt, Query, query_list, model, tokenizer, unorm, image_processor) # Run the LLaVa model on the email and the additional queries and get the response from the model
+    reply = Run_LLaVa.Run_LLaVa(encrypted_filepath, prompt, Query, query_list, model, tokenizer, unorm, image_processor) # Run the LLaVa model on the email and the additional queries and get the response from the model
 
     FinalReply = ''
     for i in range(len(reply)):
@@ -116,7 +121,10 @@ def SendToLLaVa(data, client_socket, sender, recipient, subject, model, image_pr
 
     FinalReply = FinalReply.encode('ascii', 'ignore').decode('ascii') # encode the reply to ascii and ignore any characters that can't be encoded
 
-    client_socket.sendall(FinalReply.encode('utf-8'))
+    # Decrypt email data
+    decrypted_reply = decrypt_data(FinalReply, body_key)
+
+    client_socket.sendall(decrypted_reply.encode('utf-8'))
     client_socket.close()
     print(f'sent a reply to the client {recipient}')
     print('______________________________________________________________')
