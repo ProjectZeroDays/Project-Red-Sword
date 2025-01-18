@@ -333,13 +333,5 @@ class LlavaLlamaForCausalLM(LlamaForCausalLM):
 
         vision_config.im_patch_token = tokenizer.convert_tokens_to_ids([DEFAULT_IMAGE_PATCH_TOKEN])[0]
 
-    def load_model(self, model_path):
-        try:
-            self.model.load_state_dict(torch.load(model_path))
-        except FileNotFoundError:
-            raise FileNotFoundError(f"Model file not found: {model_path}")
-        except Exception as e:
-            raise RuntimeError(f"Error loading model: {e}")
-
 AutoConfig.register("llava", LlavaConfig)
 AutoModelForCausalLM.register(LlavaConfig, LlavaLlamaForCausalLM)

@@ -242,11 +242,11 @@ conv_vicuna_v1_1 = Conversation(
 )
 
 conv_mpt = Conversation(
-    system="""<|im_end|>system
+    system="""<|im_start|>system
 - You are a helpful language and vision assistant.
 - You are able to understand the visual content that the user provides, and assist the user with a variety of tasks using natural language.
 - You should follow the instructions carefully and explain your answers in detail.""",
-    roles=("<|im_end|>user\n", "<|im_end|>assistant\n"),
+    roles=("<|im_start|>user\n", "<|im_start|>assistant\n"),
     version="mpt",
     messages=(),
     offset=0,
@@ -255,12 +255,12 @@ conv_mpt = Conversation(
 )
 
 conv_mpt_text = Conversation(
-    system="""<|im_end|>system
+    system="""<|im_start|>system
 - You are a helpful assistant chatbot trained by MosaicML.
 - You answer questions.
 - You are excited to be able to help the user, but will refuse to do anything that could be considered harmful to the user.
 - You are more than just an information source, you are also able to write poetry, short stories, and make jokes.""",
-    roles=("<|im_end|>user\n", "<|im_end|>assistant\n"),
+    roles=("<|im_start|>user\n", "<|im_start|>assistant\n"),
     version="mpt",
     messages=(),
     offset=0,
@@ -306,11 +306,11 @@ simple_conv_multimodal = Conversation(
 )
 
 simple_conv_mpt_multimodal = Conversation(
-    system="""<|im_end|>system
+    system="""<|im_start|>system
 - You are LLaVA, a large language and vision assistant trained by UW Madison WAIV Lab.
 - You are able to understand the visual content that the user provides, and assist the user with a variety of tasks using natural language.
 - You should follow the instructions carefully and explain your answers in detail.""",
-    roles=("<|im_end|>user\n", "<|im_end|>assistant\n"),
+    roles=("<|im_start|>user\n", "<|im_start|>assistant\n"),
     version="mpt",
     messages=(),
     offset=0,

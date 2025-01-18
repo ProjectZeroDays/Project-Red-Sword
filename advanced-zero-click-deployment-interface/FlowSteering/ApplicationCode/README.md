@@ -203,10 +203,17 @@ Next, the Attacker Client will send two identical emails to the Email Server, wi
 python3 AttackerClient.py --SERVER_EMAIL_HOST 111.88.88.33 --SERVER_EMAIL_PORT 1234 --SERVER_LLAVA_HOST 111.55.55.33 --SERVER_LLAVA_PORT 1025 --MYEMAIL Attacker@example.com 
 ```
 
-## Implementation Checklist
-
-For a detailed implementation checklist, please refer to the [implementation_checklist.md](../../../../implementation_checklist.md) file.
 
 ## Conclusion
 
 In our experiments, we developed a basic GenAI email application consisting of several components. You are welcome to modify any part of the system and tailor it to your own requirements and preferences.
+
+
+
+
+
+
+
+
+
+
