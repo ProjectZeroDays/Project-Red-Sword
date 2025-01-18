@@ -76,8 +76,4 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ```
 
-
-
-
-
-
+For a comprehensive overview and abstract of the project, please refer to the `README.md` file in the root directory.

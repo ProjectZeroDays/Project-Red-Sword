@@ -55,3 +55,5 @@ sudo nginx -t  # check `/etc/nginx/nginx.conf`
 sudo systemctl reload nginx  # restart Nginx service to load the new config
 sudo systemctl status nginx  # check the status of the Nginx service. It should be active (running).
 ```
+
+For a comprehensive overview and abstract of the project, please refer to the `README.md` file in the root directory.

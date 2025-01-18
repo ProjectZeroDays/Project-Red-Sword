@@ -208,12 +208,5 @@ python3 AttackerClient.py --SERVER_EMAIL_HOST 111.88.88.33 --SERVER_EMAIL_PORT 1
 
 In our experiments, we developed a basic GenAI email application consisting of several components. You are welcome to modify any part of the system and tailor it to your own requirements and preferences.
 
-
-
-
-
-
-
-
-
+For a comprehensive overview and abstract of the project, please refer to the `README.md` file in the root directory.
 
