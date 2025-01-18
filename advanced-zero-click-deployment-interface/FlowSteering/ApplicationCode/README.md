@@ -8,9 +8,6 @@
 
 In this directory, you will find the code for the GenAI EcoSystem. The GenAI EcoSystem consists of a collection of scripts designed to simulate an email system with multiple users and dedicated servers.
 
-
-
-
 The system consists of three main components: the Email Server, the LLaVa Server, and the End User Clients. 
 * The Email Server is responsible for sending and receiving emails from the End User Clients.
 * The LLaVa Server is the GenAI service responsible for handling the emails that were sent to the End User Clients. 
@@ -25,9 +22,6 @@ The system consists of three main components: the Email Server, the LLaVa Server
 
 In our experiments, we utilized a single machine to run both the Email Server and the LLaVa Server. This machine was equipped with a single NVIDIA Quadro RTX 6000 24GB GPU. Additionally, we employed seven virtual machines to run the End User Clients.
 
-
-
-
 ## Running the GenAI EcoSystem
 
 ### 1. Run the Email Server
@@ -37,7 +31,7 @@ file to set the server configuration.
 ```python
 SERVER_HOST = '0.0.0.0' # Change this to the IP address of the machine where the Email Server will run
 SERVER_PORT = 1234 # Change this to the port where the Email Server will listen
-saveMail_directory = "FlowSteering/ApplicationCode/EmailServer/Database/EmailServerMailDatabase"  # Change this to the directory where you want to save the emails inbox for each user
+saveMail_directory = "FlowSteering/ApplicationCode/EmailServer/EmailServerMailDatabase"  # Change this to the directory where you want to save the emails inbox for each user
 message_queue = Queue()
 default_image = 'FlowSteering/assets/PerturbatedImages/DjiPerturbClassForward.png'
 ```
@@ -58,9 +52,6 @@ def handle_messages():
                 print("Sending Email")
                 Save_Email_To_Recipient()  
 ```
-
-
-
 
 #### To run the Email Server execute the following command in the EmailServer directory
 ```bash
@@ -92,9 +83,6 @@ def handle_messages():
                 SendToLLaVa()
 ```
 
-
-
-
 #### To run the LLaVa Server execute the following command in the LLaVaServer directory
 ```bash
 python3 LLaVaServer.py
@@ -109,15 +97,11 @@ Since this script is designed to run on multiple machines, you don't need to edi
 You can find an example of the CSV file named: [EndUserBaseEmails.csv](../../FlowSteering/ApplicationCode/EndUserCode/EndUserClientBaseEmails/EndUserBaseEmails.csv).
 The function responsible for reading this CSV file is located in the [EndUserClient.py](../../FlowSteering/ApplicationCode/EndUserCode/EndUserClient.py) file under the respective function.
 
-
 ```python
 def read_emails_from_file():
 ```
 
-
-
 The script for each End User Client runs in a loop, sending a request to the Email Server to check the inbox for new emails every 10-20 seconds.
-
 
 ```python
 def main():
@@ -129,9 +113,6 @@ def main():
 If there is a new email in the inbox, the Email server will send the email to the End User Client, and a pop-up window will appear with the email content.
 Next the End User Client will send the email to the LLaVa Server for classification, and the LLaVa Server will send the classification back to the End User Client.
 
-
-
-
 | Pop-up Window                               | Queries sent to LLaVa                               |
 |---------------------------------------------|-----------------------------------------------------|
 | ![Image 1 Description](../../Assets/DJISpam.png) | ![Image 2 Description](../../Assets/LLaVaQuery.png) |
@@ -139,9 +120,6 @@ Next the End User Client will send the email to the LLaVa Server for classificat
 Finally, the End User Client will act based on the classification returned by the LLaVa Server. 
 
 For our experiments, we implemented the action "Forward" and left the other actions as placeholders.
-
-
-
 
 ```python
  if Classification == 'reply':
@@ -157,9 +135,7 @@ For our experiments, we implemented the action "Forward" and left the other acti
  elif Classification == 'spam':
         print('Moving the email to the Spam Folder')
         pass
-    
 ```
-
 
 #### To run the End User Client execute the following command in the EndUserCode directory and replace the configurations of the server and the user with your own configurations
 ```bash
@@ -171,9 +147,6 @@ python3 EndUserClient.py --SERVER_EMAIL_HOST 111.88.88.33 --SERVER_EMAIL_PORT 12
 Navigate to the [EndUserCode directory](../../FlowSteering/ApplicationCode/EndUserCode) and edit the [AttackerClient.py](../../FlowSteering/ApplicationCode/EndUserCode/AttackerClient.py) file to send the first malicious email to the End User Clients.
 
 This code is a simplified version of the End User Client, used solely to send the initial malicious email to the End User Clients, as they are not composing new emails.
-
-
-
 
 Configure the following variables to send the email:
 ``` python
@@ -195,25 +168,28 @@ Next, the Attacker Client will send two identical emails to the Email Server, wi
                           SERVER_EMAIL_PORT)
  ```
 
-
-
-
 #### To run the Attacker Client execute the following command in the EndUserCode directory and replace the configurations of the server and the user with your own configurations
 ```bash
 python3 AttackerClient.py --SERVER_EMAIL_HOST 111.88.88.33 --SERVER_EMAIL_PORT 1234 --SERVER_LLAVA_HOST 111.55.55.33 --SERVER_LLAVA_PORT 1025 --MYEMAIL Attacker@example.com 
 ```
 
-
 ## Conclusion
 
 In our experiments, we developed a basic GenAI email application consisting of several components. You are welcome to modify any part of the system and tailor it to your own requirements and preferences.
 
+## Recent Changes and Additions
 
+We have recently made several updates and additions to the codebase to enhance the functionality and performance of the GenAI EcoSystem. These changes include:
 
+1. **Improved Network Handling**: Enhanced the network handling capabilities to address issues related to image transmission over sockets, especially when using virtual machines. A default image is now loaded when an image fails to send correctly due to network issues.
 
+2. **Optimized Email Server**: Refined the Email Server's handling of incoming connections and email storage. The server now creates a directory to save the email inbox for each user, ensuring better organization and retrieval of emails.
 
+3. **Enhanced LLaVa Server**: Updated the LLaVa Server to process incoming emails more efficiently using the LLaVa model. The server now listens for incoming connections, processes emails, and sends responses back to the End User Clients seamlessly.
 
+4. **End User Client Improvements**: Improved the End User Client script to run in a loop, checking the inbox for new emails every 10-20 seconds. The script now handles email classification and actions based on the classification returned by the LLaVa Server.
 
+5. **Attacker Client Simplification**: Simplified the Attacker Client script to send the initial malicious email to the End User Clients. The script now sends two identical emails to the Email Server, targeting specific recipients.
 
-
+These updates aim to provide a more robust and efficient GenAI EcoSystem, ensuring smooth communication and interaction between the various components.
 

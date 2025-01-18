@@ -9,7 +9,7 @@ import Run_LLaVa
 SERVER_HOST = '0.0.0.0'
 SERVER_PORT = 1025
 saveMail_directory = "FlowSteering/ApplicationCode/LLaVaServer/EmailLLaVaMailDatabase"
-MODEL_NAME = "FlowSteering/llava/llava_weights/"  # PATH to the LLaVA weights
+MODEL_NAME = "FlowSteering/llava/llava_weights/"  # PATH to the LLaVa weights
 message_queue = Queue()
 # Server configuration
 

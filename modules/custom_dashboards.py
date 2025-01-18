@@ -12,7 +12,10 @@ class CustomDashboards:
             "Wireless Exploitation": self.wireless_exploitation_dashboard,
             "Cloud Exploitation": self.cloud_exploitation_dashboard,
             "IoT Exploitation": self.iot_exploitation_dashboard,
-            "APTs": self.apts_dashboard
+            "APTs": self.apts_dashboard,
+            "Compliance Management": self.compliance_management_dashboard,
+            "Security Awareness Training": self.security_awareness_training_dashboard,
+            "Vulnerability Management": self.vulnerability_management_dashboard
         }
 
     def mitm_stingray_dashboard(self):
@@ -105,6 +108,33 @@ class CustomDashboards:
             pn.widgets.Button(name="Start Simulation", button_type="primary"),
             pn.widgets.Button(name="Stop Simulation", button_type="danger"),
             pn.widgets.DataFrame(name="Simulation Results")
+        )
+
+    def compliance_management_dashboard(self):
+        return pn.Column(
+            "### Compliance Management Dashboard",
+            pn.pane.Markdown("Ensure adherence to regulatory requirements and industry standards."),
+            pn.widgets.Button(name="Start Compliance Check", button_type="primary"),
+            pn.widgets.Button(name="Stop Compliance Check", button_type="danger"),
+            pn.widgets.DataFrame(name="Compliance Information")
+        )
+
+    def security_awareness_training_dashboard(self):
+        return pn.Column(
+            "### Security Awareness Training Dashboard",
+            pn.pane.Markdown("Educate users on security best practices and emerging threats."),
+            pn.widgets.Button(name="Start Training", button_type="primary"),
+            pn.widgets.Button(name="Stop Training", button_type="danger"),
+            pn.widgets.DataFrame(name="Training Information")
+        )
+
+    def vulnerability_management_dashboard(self):
+        return pn.Column(
+            "### Vulnerability Management Dashboard",
+            pn.pane.Markdown("Identify, prioritize, and remediate vulnerabilities."),
+            pn.widgets.Button(name="Start Vulnerability Scan", button_type="primary"),
+            pn.widgets.Button(name="Stop Vulnerability Scan", button_type="danger"),
+            pn.widgets.DataFrame(name="Vulnerability Information")
         )
 
     def render(self, dashboard_name):
