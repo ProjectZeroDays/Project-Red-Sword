@@ -315,6 +315,47 @@ monitoring.microservices_architecture = microservices_architecture
 # Integrate the CloudNativeApplications module with RealTimeMonitoring
 monitoring.cloud_native_applications = cloud_native_applications
 
+# Add tool tips and advanced help options for all functions
+def add_tool_tips():
+    tool_tips = {
+        "advanced_threat_intelligence": "Provides advanced threat intelligence capabilities.",
+        "predictive_analytics": "Utilizes predictive analytics for threat detection.",
+        "automated_incident_response": "Automates incident response processes.",
+        "ai_red_teaming": "AI-driven red teaming for security testing.",
+        "apt_simulation": "Simulates advanced persistent threats.",
+        "machine_learning_ai": "Machine learning-based AI for threat detection.",
+        "data_visualization": "Visualizes data for better insights.",
+        "blockchain_logger": "Logs data using blockchain technology.",
+        "cloud_exploitation": "Exploits vulnerabilities in cloud environments.",
+        "iot_exploitation": "Exploits vulnerabilities in IoT devices.",
+        "quantum_computing": "Utilizes quantum computing for security.",
+        "edge_computing": "Secures edge computing environments.",
+        "serverless_computing": "Secures serverless computing environments.",
+        "microservices_architecture": "Secures microservices architectures.",
+        "cloud_native_applications": "Secures cloud-native applications.",
+        "advanced_decryption": "Advanced decryption capabilities.",
+        "advanced_malware_analysis": "Analyzes and detects advanced malware.",
+        "advanced_social_engineering": "Detects and prevents social engineering attacks.",
+        "alerts_notifications": "Sends alerts and notifications.",
+        "device_fingerprinting": "Identifies devices using fingerprinting.",
+        "exploit_payloads": "Manages exploit payloads.",
+        "fuzzing_engine": "Fuzzing engine for vulnerability detection.",
+        "mitm_stingray": "Manages MITM Stingray attacks.",
+        "network_exploitation": "Exploits network vulnerabilities.",
+        "vulnerability_scanner": "Scans for vulnerabilities.",
+        "wireless_exploitation": "Exploits wireless vulnerabilities.",
+        "zero_day_exploits": "Manages zero-day exploits."
+    }
+    return tool_tips
+
+tool_tips = add_tool_tips()
+
+# Add a continue button for the AI chatbot to continue incomplete responses
+continue_button = pn.widgets.Button(name="Continue", button_type="primary")
+
+# Add a download icon button for downloading zip files of projects
+download_button = pn.widgets.Button(name="Download .zip", button_type="primary", icon="download")
+
 # Update the dashboard to display real-time insights and analytics
 dashboard = pn.Column(
     "### Advanced Capabilities Dashboard",
@@ -345,7 +386,9 @@ dashboard = pn.Column(
     network_exploitation.render(),
     vulnerability_scanner.render(),
     wireless_exploitation.render(),
-    zero_day_exploits.render()
+    zero_day_exploits.render(),
+    continue_button,
+    download_button
 )
 
 main.append(dashboard)

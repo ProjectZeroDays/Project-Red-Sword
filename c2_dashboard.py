@@ -91,7 +91,11 @@ class C2Dashboard:
             pn.pane.Markdown("#### Wireless Exploitation"),
             pn.widgets.DataFrame(name="Wireless Exploitation Data"),
             pn.pane.Markdown("#### Zero Day Exploits"),
-            pn.widgets.DataFrame(name="Zero Day Exploits Data")
+            pn.widgets.DataFrame(name="Zero Day Exploits Data"),
+            pn.pane.Markdown("#### Settings Dashboards"),
+            pn.widgets.DataFrame(name="Settings Dashboards Data"),
+            pn.pane.Markdown("#### Tool Tips and Advanced Help Options"),
+            pn.widgets.DataFrame(name="Tool Tips and Advanced Help Options Data")
         )
 
     def save_dashboard_to_db(self, source, title, links, error):

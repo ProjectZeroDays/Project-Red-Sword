@@ -15,7 +15,8 @@ class CustomDashboards:
             "APTs": self.apts_dashboard,
             "Compliance Management": self.compliance_management_dashboard,
             "Security Awareness Training": self.security_awareness_training_dashboard,
-            "Vulnerability Management": self.vulnerability_management_dashboard
+            "Vulnerability Management": self.vulnerability_management_dashboard,
+            "Settings Dashboards": self.settings_dashboards
         }
 
     def mitm_stingray_dashboard(self):
@@ -136,6 +137,75 @@ class CustomDashboards:
             pn.widgets.Button(name="Stop Vulnerability Scan", button_type="danger"),
             pn.widgets.DataFrame(name="Vulnerability Information")
         )
+
+    def settings_dashboards(self):
+        return pn.Column(
+            "### Settings Dashboards",
+            pn.pane.Markdown("Configure settings for each tool and function."),
+            pn.widgets.Button(name="Advanced Decryption Settings", button_type="primary"),
+            pn.widgets.Button(name="Advanced Malware Analysis Settings", button_type="primary"),
+            pn.widgets.Button(name="Advanced Social Engineering Settings", button_type="primary"),
+            pn.widgets.Button(name="Real-Time Threat Intelligence Settings", button_type="primary"),
+            pn.widgets.Button(name="Real-Time Monitoring Settings", button_type="primary"),
+            pn.widgets.Button(name="Threat Intelligence Settings", button_type="primary"),
+            pn.widgets.Button(name="Predictive Analytics Settings", button_type="primary"),
+            pn.widgets.Button(name="Automated Incident Response Settings", button_type="primary"),
+            pn.widgets.Button(name="AI Red Teaming Settings", button_type="primary"),
+            pn.widgets.Button(name="APT Simulation Settings", button_type="primary"),
+            pn.widgets.Button(name="Machine Learning AI Settings", button_type="primary"),
+            pn.widgets.Button(name="Data Visualization Settings", button_type="primary"),
+            pn.widgets.Button(name="Blockchain Logger Settings", button_type="primary"),
+            pn.widgets.Button(name="Cloud Exploitation Settings", button_type="primary"),
+            pn.widgets.Button(name="IoT Exploitation Settings", button_type="primary"),
+            pn.widgets.Button(name="Quantum Computing Settings", button_type="primary"),
+            pn.widgets.Button(name="Edge Computing Settings", button_type="primary"),
+            pn.widgets.Button(name="Serverless Computing Settings", button_type="primary"),
+            pn.widgets.Button(name="Microservices Architecture Settings", button_type="primary"),
+            pn.widgets.Button(name="Cloud Native Applications Settings", button_type="primary"),
+            pn.widgets.Button(name="Alerts and Notifications Settings", button_type="primary"),
+            pn.widgets.Button(name="Device Fingerprinting Settings", button_type="primary"),
+            pn.widgets.Button(name="Exploit Payloads Settings", button_type="primary"),
+            pn.widgets.Button(name="Fuzzing Engine Settings", button_type="primary"),
+            pn.widgets.Button(name="MITM Stingray Settings", button_type="primary"),
+            pn.widgets.Button(name="Network Exploitation Settings", button_type="primary"),
+            pn.widgets.Button(name="Vulnerability Scanner Settings", button_type="primary"),
+            pn.widgets.Button(name="Wireless Exploitation Settings", button_type="primary"),
+            pn.widgets.Button(name="Zero Day Exploits Settings", button_type="primary")
+        )
+
+    def add_tool_tips(self):
+        tool_tips = {
+            "Advanced Decryption": "Advanced decryption capabilities.",
+            "Advanced Malware Analysis": "Analyzes and detects advanced malware.",
+            "Advanced Social Engineering": "Detects and prevents social engineering attacks.",
+            "Real-Time Threat Intelligence": "Provides real-time threat intelligence.",
+            "Real-Time Monitoring": "Monitors threats in real-time.",
+            "Threat Intelligence": "Provides threat intelligence capabilities.",
+            "Predictive Analytics": "Utilizes predictive analytics for threat detection.",
+            "Automated Incident Response": "Automates incident response processes.",
+            "AI Red Teaming": "AI-driven red teaming for security testing.",
+            "APT Simulation": "Simulates advanced persistent threats.",
+            "Machine Learning AI": "Machine learning-based AI for threat detection.",
+            "Data Visualization": "Visualizes data for better insights.",
+            "Blockchain Logger": "Logs data using blockchain technology.",
+            "Cloud Exploitation": "Exploits vulnerabilities in cloud environments.",
+            "IoT Exploitation": "Exploits vulnerabilities in IoT devices.",
+            "Quantum Computing": "Utilizes quantum computing for security.",
+            "Edge Computing": "Secures edge computing environments.",
+            "Serverless Computing": "Secures serverless computing environments.",
+            "Microservices Architecture": "Secures microservices architectures.",
+            "Cloud Native Applications": "Secures cloud-native applications.",
+            "Alerts and Notifications": "Sends alerts and notifications.",
+            "Device Fingerprinting": "Identifies devices using fingerprinting.",
+            "Exploit Payloads": "Manages exploit payloads.",
+            "Fuzzing Engine": "Fuzzing engine for vulnerability detection.",
+            "MITM Stingray": "Manages MITM Stingray attacks.",
+            "Network Exploitation": "Exploits network vulnerabilities.",
+            "Vulnerability Scanner": "Scans for vulnerabilities.",
+            "Wireless Exploitation": "Exploits wireless vulnerabilities.",
+            "Zero Day Exploits": "Manages zero-day exploits."
+        }
+        return tool_tips
 
     def render(self, dashboard_name):
         if dashboard_name in self.dashboards:
