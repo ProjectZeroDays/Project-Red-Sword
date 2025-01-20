@@ -74,9 +74,14 @@ def Save_Email_To_Recipient(client_socket, data, msg, requests, subject, sender,
 
     try:
         if msg.is_multipart():
+            body = ""
             for part in msg.get_payload():
                 if part.get_content_type() == "text/plain":
-                    body = part.get_payload()
+                    body += part.get_payload()
+                elif part.get_content_maintype() == "multipart":
+                    for subpart in part.get_payload():
+                        if subpart.get_content_type() == "text/plain":
+                            body += subpart.get_payload()
         else:
             body = msg.get_payload()
     except Exception as e:

@@ -5,7 +5,9 @@ app = Flask(__name__)
 
 @app.route('/secure-endpoint', methods=['POST'])
 def secure_endpoint():
-    secret = os.getenv("API_SECRET", "default_secret")
+    secret = os.getenv("API_SECRET")
+    if not secret:
+        return jsonify({"status": "failure", "error": "API secret not set"}), 500
     data = request.json
     if "api_key" not in data or data["api_key"] != secret:
         return jsonify({"status": "failure", "error": "Unauthorized"}), 401
