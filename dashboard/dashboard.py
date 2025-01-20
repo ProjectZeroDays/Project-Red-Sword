@@ -19,6 +19,18 @@ from modules.edge_computing import EdgeComputing
 from modules.serverless_computing import ServerlessComputing
 from modules.microservices_architecture import MicroservicesArchitecture
 from modules.cloud_native_applications import CloudNativeApplications
+from modules.advanced_decryption import AdvancedDecryption
+from modules.advanced_malware_analysis import AdvancedMalwareAnalysis
+from modules.advanced_social_engineering import AdvancedSocialEngineering
+from modules.alerts_notifications import AlertsNotifications
+from modules.device_fingerprinting import DeviceFingerprinting
+from modules.exploit_payloads import ExploitPayloads
+from modules.fuzzing_engine import FuzzingEngine
+from modules.mitm_stingray import MITMStingray
+from modules.network_exploitation import NetworkExploitation
+from modules.vulnerability_scanner import VulnerabilityScanner
+from modules.wireless_exploitation import WirelessExploitation
+from modules.zero_day_exploits import ZeroDayExploits
 from database.models import DocumentAnalysis
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -85,6 +97,18 @@ def dashboard():
     serverless_computing = ServerlessComputing()
     microservices_architecture = MicroservicesArchitecture()
     cloud_native_applications = CloudNativeApplications()
+    advanced_decryption = AdvancedDecryption()
+    advanced_malware_analysis = AdvancedMalwareAnalysis()
+    advanced_social_engineering = AdvancedSocialEngineering()
+    alerts_notifications = AlertsNotifications(smtp_server="smtp.example.com", smtp_port=587, smtp_user="user@example.com", smtp_password="password")
+    device_fingerprinting = DeviceFingerprinting()
+    exploit_payloads = ExploitPayloads()
+    fuzzing_engine = FuzzingEngine()
+    mitm_stingray = MITMStingray(interface="wlan0")
+    network_exploitation = NetworkExploitation()
+    vulnerability_scanner = VulnerabilityScanner()
+    wireless_exploitation = WirelessExploitation()
+    zero_day_exploits = ZeroDayExploits()
 
     monitoring.threat_intelligence_module = advanced_threat_intelligence
     monitoring.automated_incident_response = automated_incident_response
@@ -128,7 +152,19 @@ def dashboard():
                 "edge_computing": edge_computing.render(),
                 "serverless_computing": serverless_computing.render(),
                 "microservices_architecture": microservices_architecture.render(),
-                "cloud_native_applications": cloud_native_applications.render()
+                "cloud_native_applications": cloud_native_applications.render(),
+                "advanced_decryption": advanced_decryption.render(),
+                "advanced_malware_analysis": advanced_malware_analysis.render(),
+                "advanced_social_engineering": advanced_social_engineering.render(),
+                "alerts_notifications": alerts_notifications.render(),
+                "device_fingerprinting": device_fingerprinting.render(),
+                "exploit_payloads": exploit_payloads.render(),
+                "fuzzing_engine": fuzzing_engine.render(),
+                "mitm_stingray": mitm_stingray.render(),
+                "network_exploitation": network_exploitation.render(),
+                "vulnerability_scanner": vulnerability_scanner.render(),
+                "wireless_exploitation": wireless_exploitation.render(),
+                "zero_day_exploits": zero_day_exploits.render()
             }),
             error=None
         )
@@ -160,7 +196,19 @@ def dashboard():
         "edge_computing": edge_computing.render(),
         "serverless_computing": serverless_computing.render(),
         "microservices_architecture": microservices_architecture.render(),
-        "cloud_native_applications": cloud_native_applications.render()
+        "cloud_native_applications": cloud_native_applications.render(),
+        "advanced_decryption": advanced_decryption.render(),
+        "advanced_malware_analysis": advanced_malware_analysis.render(),
+        "advanced_social_engineering": advanced_social_engineering.render(),
+        "alerts_notifications": alerts_notifications.render(),
+        "device_fingerprinting": device_fingerprinting.render(),
+        "exploit_payloads": exploit_payloads.render(),
+        "fuzzing_engine": fuzzing_engine.render(),
+        "mitm_stingray": mitm_stingray.render(),
+        "network_exploitation": network_exploitation.render(),
+        "vulnerability_scanner": vulnerability_scanner.render(),
+        "wireless_exploitation": wireless_exploitation.render(),
+        "zero_day_exploits": zero_day_exploits.render()
     })
 
 @app.route("/admin")
