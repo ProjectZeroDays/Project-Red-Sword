@@ -14,6 +14,8 @@ class OffensiveSimulation:
         try:
             scenario = random.choice(self.scenarios)
             print(f"[SIMULATION] Executing simulated attack: {scenario}")
+        except IndexError as e:
+            print(f"Error during simulation: No scenarios available. {e}")
         except Exception as e:
             print(f"Error during simulation: {e}")
 

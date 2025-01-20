@@ -6,12 +6,15 @@ from backend.pipeline_manager import PipelineManager
 class MultiAIChat:
     def __init__(self, openai_key, huggingface_key, anthropic_key):
         self.openai_key = openai_key
-        self.huggingface_key = self.huggingface_key
-        self.anthropic_key = self.anthropic_key
+        self.huggingface_key = huggingface_key
+        self.anthropic_key = anthropic_key
         self.code_parser = CodeParser("")
         self.pipeline_manager = PipelineManager()
 
     def openai_chat(self, prompt):
+        if not self.openai_key:
+            print("Error: Missing OpenAI API key")
+            return ""
         try:
             openai.api_key = self.openai_key
             response = openai.Completion.create(engine="text-davinci-003", prompt=prompt, max_tokens=100)
@@ -21,6 +24,9 @@ class MultiAIChat:
             return ""
 
     def huggingface_chat(self, prompt):
+        if not self.huggingface_key:
+            print("Error: Missing HuggingFace API key")
+            return ""
         try:
             url = "https://api-inference.huggingface.co/models/facebook/blenderbot-400M-distill"
             headers = {"Authorization": f"Bearer {self.huggingface_key}"}
@@ -31,6 +37,9 @@ class MultiAIChat:
             return ""
 
     def anthropic_chat(self, prompt):
+        if not self.anthropic_key:
+            print("Error: Missing Anthropic API key")
+            return ""
         try:
             url = "https://api.anthropic.com/v1/completion"
             headers = {"Authorization": f"Bearer {self.anthropic_key}"}

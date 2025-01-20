@@ -1,6 +1,6 @@
 # app/core/integrations/email_handler.py
 
-from typing import Optional
+from typing import Optional, List, Dict
 import imaplib
 import email
 import logging

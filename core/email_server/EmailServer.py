@@ -36,8 +36,8 @@ def receive_complete_data(
     except socket.timeout as e:
         print('timeout')
         print(e)
-
-        pass
+    except Exception as e:
+        print(f"Error receiving data: {e}")
 
     return received_data
 
