@@ -491,3 +491,21 @@ from exploits.dia_framework_extracted.DIA_Framework.src.exploits import exploits
 result = exploits.deploy_exploit(ip='192.168.1.1', port=22, phone='1234567890', email='user@example.com', user='admin')
 print(result)
 ```
+
+### Updated Connections
+
+The following connections have been made to ensure all apps, dashboards, modules, tools, payloads, and exploits are connected to the appropriate models:
+
+1. **app_security/app_vulnerability_scanner.py**: Now connects to the appropriate models for vulnerability scanning and includes comprehensive error handling.
+2. **app.py**: Integrates all modules with appropriate error handling and connects them to the respective models.
+3. **backend/code_parser.py**: Connects to the appropriate models for code parsing.
+4. **backend/pipeline_manager.py**: Connects to the appropriate models for pipeline management.
+5. **c2_dashboard.py**: Renders the dashboard and connects to the appropriate models.
+6. **chatbot/app.py**: Connects to the appropriate models for network scanning and exploit deployment.
+7. **chatbot/chatbot.py**: Connects to the appropriate models for network scanning and exploit deployment.
+8. **dashboard/dashboard.py**: Integrates all modules with error handling and connects them to the respective models.
+9. **database/models.py**: Connected to the apps, dashboards, modules, tools, payloads, and exploits.
+10. **exploits/exploits2.py**: Connects to the appropriate models for exploit deployment.
+11. **exploits/ios_framework_extracted/iOS Zero-Click Framework (Updated)/exploits.py**: Connects to the appropriate models for exploit deployment.
+12. **modules/alerts_notifications.py**: Connects to the appropriate models for alerts and notifications.
+13. **modules/apt_simulation.py**: Connects to the appropriate models for APT simulation.

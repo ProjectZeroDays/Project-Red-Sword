@@ -1,6 +1,13 @@
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from database.models import DocumentAnalysis
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+
+DATABASE_URL = "sqlite:///document_analysis.db"
+engine = create_engine(DATABASE_URL)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 class AlertsNotifications:
     def __init__(self, smtp_server, smtp_port, smtp_user, smtp_password):
@@ -25,6 +32,7 @@ class AlertsNotifications:
                 print(f"Email sent to {recipient}")
         except Exception as e:
             print(f"Failed to send email: {e}")
+            self.save_alert_to_db("email", recipient, subject, body, str(e))
 
     def send_alert(self, alert_type, alert_details):
         subject = f"Alert: {alert_type}"
@@ -40,3 +48,19 @@ class AlertsNotifications:
         subject = "Device Disconnected"
         body = f"Device {device_id} has been disconnected."
         self.send_email("admin@example.com", subject, body)
+
+    def save_alert_to_db(self, alert_type, recipient, subject, body, error):
+        session = SessionLocal()
+        try:
+            alert_result = DocumentAnalysis(
+                source="alerts_notifications",
+                title=f"Alert: {alert_type}",
+                links=f"Recipient: {recipient}, Subject: {subject}, Body: {body}",
+                error=error
+            )
+            session.add(alert_result)
+            session.commit()
+        except Exception as e:
+            print(f"Error saving alert to database: {e}")
+        finally:
+            session.close()
