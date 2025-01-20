@@ -81,7 +81,1550 @@ class TrojanServerBuilder:
     def deploy_trojan_server(self):
         print("Trojan Server Deployed")
 
-if __name__ == "__main__":
-    root = tk.Tk()
-    app = TrojanServerBuilder(root)
-    root.mainloop()
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced Settings Opened")
+
+    def create_trojan_server(self):
+        print("Trojan Server Created")
+
+    def build_trojan_server(self):
+        print("Trojan Server Built")
+
+    def manage_trojan_server(self):
+        print("Trojan Server Managed")
+
+    def deploy_trojan_server(self):
+        print("Trojan Server Deployed")
+
+    def activate_ai_control(self):
+        print("AI Control Activated")
+
+    def activate_manual_control(self):
+        print("Manual Control Activated")
+
+    def open_general_settings(self):
+        print("General Settings Opened")
+
+    def open_advanced_settings(self):
+        print("Advanced

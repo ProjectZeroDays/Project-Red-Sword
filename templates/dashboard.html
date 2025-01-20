@@ -158,6 +158,9 @@
     <div class="dashboard-section">
         <h2>Data Visualization</h2>
         <p>Data Visualization Data: {{ data["data_visualization"] }}</p>
+        <div class="chart-container">
+            <canvas id="dataVisualizationChart"></canvas>
+        </div>
     </div>
     <div class="dashboard-section">
         <h2>Device Fingerprinting</h2>
@@ -246,6 +249,31 @@
             <canvas id="interceptedDataChart"></canvas>
         </div>
     </div>
+    <div class="dashboard-section">
+        <h2>Trojan Server Builder</h2>
+        <div class="control-mechanisms">
+            <h3>AI-driven Control Mechanism</h3>
+            <button onclick="activateAIControl()">Activate AI Control</button>
+            <h3>Manual Control Mechanism</h3>
+            <button onclick="activateManualControl()">Activate Manual Control</button>
+        </div>
+        <div class="settings-panels">
+            <h3>General Settings</h3>
+            <button onclick="openGeneralSettings()">Open General Settings</button>
+            <h3>Advanced Settings</h3>
+            <button onclick="openAdvancedSettings()">Open Advanced Settings</button>
+        </div>
+        <div class="sections">
+            <h3>Creation</h3>
+            <button onclick="createTrojanServer()">Create Trojan Server</button>
+            <h3>Building</h3>
+            <button onclick="buildTrojanServer()">Build Trojan Server</button>
+            <h3>Management</h3>
+            <button onclick="manageTrojanServer()">Manage Trojan Server</button>
+            <h3>Deployment</h3>
+            <button onclick="deployTrojanServer()">Deploy Trojan Server</button>
+        </div>
+    </div>
     <script>
         var ctx = document.getElementById('threatsChart').getContext('2d');
         var threatsChart = new Chart(ctx, {
@@ -306,6 +334,28 @@
             }
         });
 
+        var ctx3 = document.getElementById('dataVisualizationChart').getContext('2d');
+        var dataVisualizationChart = new Chart(ctx3, {
+            type: 'line',
+            data: {
+                labels: ['Time 1', 'Time 2', 'Time 3'],
+                datasets: [{
+                    label: 'Data Visualization',
+                    data: [{{ data["data_visualization_time_1"] }}, {{ data["data_visualization_time_2"] }}, {{ data["data_visualization_time_3"] }}],
+                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
         function executeCommand(deviceType, command) {
             // Implement the logic to send the command to the server
             console.log(`Executing ${command} on ${deviceType}`);
@@ -321,8 +371,48 @@
             console.log("Interception stopped");
         }
 
-        var ctx3 = document.getElementById('interceptedDataChart').getContext('2d');
-        var interceptedDataChart = new Chart(ctx3, {
+        function activateAIControl() {
+            // Implement the logic to activate AI control
+            console.log("AI Control Activated");
+        }
+
+        function activateManualControl() {
+            // Implement the logic to activate manual control
+            console.log("Manual Control Activated");
+        }
+
+        function openGeneralSettings() {
+            // Implement the logic to open general settings
+            console.log("General Settings Opened");
+        }
+
+        function openAdvancedSettings() {
+            // Implement the logic to open advanced settings
+            console.log("Advanced Settings Opened");
+        }
+
+        function createTrojanServer() {
+            // Implement the logic to create a trojan server
+            console.log("Trojan Server Created");
+        }
+
+        function buildTrojanServer() {
+            // Implement the logic to build a trojan server
+            console.log("Trojan Server Built");
+        }
+
+        function manageTrojanServer() {
+            // Implement the logic to manage a trojan server
+            console.log("Trojan Server Managed");
+        }
+
+        function deployTrojanServer() {
+            // Implement the logic to deploy a trojan server
+            console.log("Trojan Server Deployed");
+        }
+
+        var ctx4 = document.getElementById('interceptedDataChart').getContext('2d');
+        var interceptedDataChart = new Chart(ctx4, {
             type: 'line',
             data: {
                 labels: ['Time 1', 'Time 2', 'Time 3'],
