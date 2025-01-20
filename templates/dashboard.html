@@ -199,6 +199,45 @@
         <h2>Zero Day Exploits</h2>
         <p>Zero Day Exploits Data: {{ data["zero_day_exploits"] }}</p>
     </div>
+    <div class="dashboard-section">
+        <h2>Device Control Mechanisms</h2>
+        <div class="device-control-section">
+            <h3>Windows Control</h3>
+            <button onclick="executeCommand('windows', 'shutdown')">Shutdown</button>
+            <button onclick="executeCommand('windows', 'restart')">Restart</button>
+            <button onclick="executeCommand('windows', 'lock')">Lock</button>
+        </div>
+        <div class="device-control-section">
+            <h3>macOS Control</h3>
+            <button onclick="executeCommand('macos', 'shutdown')">Shutdown</button>
+            <button onclick="executeCommand('macos', 'restart')">Restart</button>
+            <button onclick="executeCommand('macos', 'lock')">Lock</button>
+        </div>
+        <div class="device-control-section">
+            <h3>Linux Control</h3>
+            <button onclick="executeCommand('linux', 'shutdown')">Shutdown</button>
+            <button onclick="executeCommand('linux', 'restart')">Restart</button>
+            <button onclick="executeCommand('linux', 'lock')">Lock</button>
+        </div>
+        <div class="device-control-section">
+            <h3>Android Control</h3>
+            <button onclick="executeCommand('android', 'shutdown')">Shutdown</button>
+            <button onclick="executeCommand('android', 'restart')">Restart</button>
+            <button onclick="executeCommand('android', 'lock')">Lock</button>
+        </div>
+        <div class="device-control-section">
+            <h3>iOS Control</h3>
+            <button onclick="executeCommand('ios', 'shutdown')">Shutdown</button>
+            <button onclick="executeCommand('ios', 'restart')">Restart</button>
+            <button onclick="executeCommand('ios', 'lock')">Lock</button>
+        </div>
+        <div class="device-control-section">
+            <h3>Advanced Device Control</h3>
+            <button onclick="executeCommand('advanced', 'remote_desktop')">Remote Desktop</button>
+            <button onclick="executeCommand('advanced', 'file_transfer')">File Transfer</button>
+            <button onclick="executeCommand('advanced', 'system_diagnostics')">System Diagnostics</button>
+        </div>
+    </div>
     <script>
         var ctx = document.getElementById('threatsChart').getContext('2d');
         var threatsChart = new Chart(ctx, {
@@ -258,6 +297,11 @@
                 }
             }
         });
+
+        function executeCommand(deviceType, command) {
+            // Implement the logic to send the command to the server
+            console.log(`Executing ${command} on ${deviceType}`);
+        }
     </script>
 </body>
 </html>
