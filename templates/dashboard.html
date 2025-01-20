@@ -12,7 +12,12 @@
         .dashboard-section p {
             margin: 5px 0;
         }
+        .chart-container {
+            width: 100%;
+            height: 400px;
+        }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <h1>Framework Dashboard</h1>
@@ -20,11 +25,17 @@
         <h2>Threats and Exploits</h2>
         <p>Threats Detected: {{ data["threats_detected"] }}</p>
         <p>Exploits Deployed: {{ data["exploits_deployed"] }}</p>
+        <div class="chart-container">
+            <canvas id="threatsChart"></canvas>
+        </div>
     </div>
     <div class="dashboard-section">
         <h2>Assets</h2>
         <p>Asset 1: {{ data["asset_1"] }}</p>
         <p>Asset 2: {{ data["asset_2"] }}</p>
+        <div class="chart-container">
+            <canvas id="assetsChart"></canvas>
+        </div>
     </div>
     <div class="dashboard-section">
         <h2>Message Boards</h2>
@@ -88,5 +99,165 @@
         <p>Connection Method 1: {{ data["connection_method_1"] }}</p>
         <p>Connection Method 2: {{ data["connection_method_2"] }}</p>
     </div>
+    <div class="dashboard-section">
+        <h2>Real-Time Threat Intelligence</h2>
+        <p>Threat Intelligence Data: {{ data["real_time_threat_intelligence"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Predictive Analytics</h2>
+        <p>Predictive Analytics Data: {{ data["predictive_analytics"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Automated Incident Response</h2>
+        <p>Incident Response Data: {{ data["automated_incident_response"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>AI Red Teaming</h2>
+        <p>AI Red Teaming Data: {{ data["ai_red_teaming"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Blockchain Logger</h2>
+        <p>Blockchain Logger Data: {{ data["blockchain_logger"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Advanced Decryption</h2>
+        <p>Decryption Data: {{ data["advanced_decryption"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Advanced Malware Analysis</h2>
+        <p>Malware Analysis Data: {{ data["advanced_malware_analysis"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Advanced Social Engineering</h2>
+        <p>Social Engineering Data: {{ data["advanced_social_engineering"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Alerts and Notifications</h2>
+        <p>Alerts Data: {{ data["alerts_notifications"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>APT Simulation</h2>
+        <p>APT Simulation Data: {{ data["apt_simulation"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Cloud Exploitation</h2>
+        <p>Cloud Exploitation Data: {{ data["cloud_exploitation"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Custom Dashboards</h2>
+        <p>Custom Dashboards Data: {{ data["custom_dashboards"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Dark Web Scraper</h2>
+        <p>Dark Web Scraper Data: {{ data["dark_web_scraper"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Data Exfiltration</h2>
+        <p>Data Exfiltration Data: {{ data["data_exfiltration"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Data Visualization</h2>
+        <p>Data Visualization Data: {{ data["data_visualization"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Device Fingerprinting</h2>
+        <p>Device Fingerprinting Data: {{ data["device_fingerprinting"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Exploit Payloads</h2>
+        <p>Exploit Payloads Data: {{ data["exploit_payloads"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Fuzzing Engine</h2>
+        <p>Fuzzing Engine Data: {{ data["fuzzing_engine"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>IoT Exploitation</h2>
+        <p>IoT Exploitation Data: {{ data["iot_exploitation"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Machine Learning AI</h2>
+        <p>Machine Learning AI Data: {{ data["machine_learning_ai"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>MITM Stingray</h2>
+        <p>MITM Stingray Data: {{ data["mitm_stingray"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Network Exploitation</h2>
+        <p>Network Exploitation Data: {{ data["network_exploitation"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Vulnerability Scanner</h2>
+        <p>Vulnerability Scanner Data: {{ data["vulnerability_scanner"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Wireless Exploitation</h2>
+        <p>Wireless Exploitation Data: {{ data["wireless_exploitation"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Zero Day Exploits</h2>
+        <p>Zero Day Exploits Data: {{ data["zero_day_exploits"] }}</p>
+    </div>
+    <script>
+        var ctx = document.getElementById('threatsChart').getContext('2d');
+        var threatsChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Threats Detected', 'Exploits Deployed'],
+                datasets: [{
+                    label: 'Threats and Exploits',
+                    data: [{{ data["threats_detected"] }}, {{ data["exploits_deployed"] }}],
+                    backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
+                    borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        var ctx2 = document.getElementById('assetsChart').getContext('2d');
+        var assetsChart = new Chart(ctx2, {
+            type: 'pie',
+            data: {
+                labels: ['Asset 1', 'Asset 2'],
+                datasets: [{
+                    label: 'Assets',
+                    data: [{{ data["asset_1"] }}, {{ data["asset_2"] }}],
+                    backgroundColor: ['rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)'],
+                    borderColor: ['rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                var label = context.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed !== null) {
+                                    label += context.parsed;
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>

@@ -31,35 +31,18 @@ from modules.edge_computing import EdgeComputing
 from modules.serverless_computing import ServerlessComputing
 from modules.microservices_architecture import MicroservicesArchitecture
 from modules.cloud_native_applications import CloudNativeApplications
-from modules.secure_coding_frameworks import (
-    ruby_secure_coding_framework,
-    php_secure_coding_framework,
-    go_secure_coding_framework,
-    rust_secure_coding_framework,
-)
-from modules.secure_coding_tools import (
-    java_secure_coding_tools,
-    python_secure_coding_tools,
-    cpp_secure_coding_tools,
-    javascript_secure_coding_tools,
-    ruby_secure_coding_tools,
-    php_secure_coding_tools,
-    go_secure_coding_tools,
-    rust_secure_coding_tools,
-)
-from modules.secure_coding_cloud import (
-    use_secure_cloud_storage,
-    implement_secure_cloud_authentication,
-    use_secure_cloud_communication_protocols,
-    implement_secure_cloud_data_storage,
-    use_secure_cloud_key_management,
-)
-from modules.secure_coding_cloud_tools import (
-    aws_secure_coding_guidelines,
-    azure_secure_coding_guidelines,
-    google_cloud_secure_coding_guidelines,
-    cloud_security_frameworks,
-)
+from modules.advanced_decryption import AdvancedDecryption
+from modules.advanced_malware_analysis import AdvancedMalwareAnalysis
+from modules.advanced_social_engineering import AdvancedSocialEngineering
+from modules.alerts_notifications import AlertsNotifications
+from modules.device_fingerprinting import DeviceFingerprinting
+from modules.exploit_payloads import ExploitPayloads
+from modules.fuzzing_engine import FuzzingEngine
+from modules.mitm_stingray import MITMStingray
+from modules.network_exploitation import NetworkExploitation
+from modules.vulnerability_scanner import VulnerabilityScanner
+from modules.wireless_exploitation import WirelessExploitation
+from modules.zero_day_exploits import ZeroDayExploits
 
 pn.extension(design="bootstrap", sizing_mode="stretch_width")
 
@@ -254,6 +237,18 @@ edge_computing = EdgeComputing()
 serverless_computing = ServerlessComputing()
 microservices_architecture = MicroservicesArchitecture()
 cloud_native_applications = CloudNativeApplications()
+advanced_decryption = AdvancedDecryption()
+advanced_malware_analysis = AdvancedMalwareAnalysis()
+advanced_social_engineering = AdvancedSocialEngineering()
+alerts_notifications = AlertsNotifications(smtp_server="smtp.example.com", smtp_port=587, smtp_user="user@example.com", smtp_password="password")
+device_fingerprinting = DeviceFingerprinting()
+exploit_payloads = ExploitPayloads()
+fuzzing_engine = FuzzingEngine()
+mitm_stingray = MITMStingray(interface="wlan0")
+network_exploitation = NetworkExploitation()
+vulnerability_scanner = VulnerabilityScanner()
+wireless_exploitation = WirelessExploitation()
+zero_day_exploits = ZeroDayExploits()
 
 # Integrate the ThreatIntelligence module with RealTimeMonitoring
 monitoring.threat_intelligence_module = advanced_threat_intelligence
@@ -333,28 +328,18 @@ dashboard = pn.Column(
     serverless_computing.render(),
     microservices_architecture.render(),
     cloud_native_applications.render(),
-    pn.pane.Markdown("### Secure Coding Insights"),
-    pn.pane.Markdown(f"**Ruby Secure Coding Framework:** {ruby_secure_coding_framework()}"),
-    pn.pane.Markdown(f"**PHP Secure Coding Framework:** {php_secure_coding_framework()}"),
-    pn.pane.Markdown(f"**Go Secure Coding Framework:** {go_secure_coding_framework()}"),
-    pn.pane.Markdown(f"**Rust Secure Coding Framework:** {rust_secure_coding_framework()}"),
-    pn.pane.Markdown(f"**Java Secure Coding Tools:** {java_secure_coding_tools()}"),
-    pn.pane.Markdown(f"**Python Secure Coding Tools:** {python_secure_coding_tools()}"),
-    pn.pane.Markdown(f"**C++ Secure Coding Tools:** {cpp_secure_coding_tools()}"),
-    pn.pane.Markdown(f"**JavaScript Secure Coding Tools:** {javascript_secure_coding_tools()}"),
-    pn.pane.Markdown(f"**Ruby Secure Coding Tools:** {ruby_secure_coding_tools()}"),
-    pn.pane.Markdown(f"**PHP Secure Coding Tools:** {php_secure_coding_tools()}"),
-    pn.pane.Markdown(f"**Go Secure Coding Tools:** {go_secure_coding_tools()}"),
-    pn.pane.Markdown(f"**Rust Secure Coding Tools:** {rust_secure_coding_tools()}"),
-    pn.pane.Markdown(f"**Secure Cloud Storage:** {use_secure_cloud_storage()}"),
-    pn.pane.Markdown(f"**Secure Cloud Authentication:** {implement_secure_cloud_authentication()}"),
-    pn.pane.Markdown(f"**Secure Cloud Communication Protocols:** {use_secure_cloud_communication_protocols()}"),
-    pn.pane.Markdown(f"**Secure Cloud Data Storage:** {implement_secure_cloud_data_storage()}"),
-    pn.pane.Markdown(f"**Secure Cloud Key Management:** {use_secure_cloud_key_management()}"),
-    pn.pane.Markdown(f"**AWS Secure Coding Guidelines:** {aws_secure_coding_guidelines()}"),
-    pn.pane.Markdown(f"**Azure Secure Coding Guidelines:** {azure_secure_coding_guidelines()}"),
-    pn.pane.Markdown(f"**Google Cloud Secure Coding Guidelines:** {google_cloud_secure_coding_guidelines()}"),
-    pn.pane.Markdown(f"**Cloud Security Frameworks:** {cloud_security_frameworks()}")
+    advanced_decryption.render(),
+    advanced_malware_analysis.render(),
+    advanced_social_engineering.render(),
+    alerts_notifications.render(),
+    device_fingerprinting.render(),
+    exploit_payloads.render(),
+    fuzzing_engine.render(),
+    mitm_stingray.render(),
+    network_exploitation.render(),
+    vulnerability_scanner.render(),
+    wireless_exploitation.render(),
+    zero_day_exploits.render()
 )
 
 main.append(dashboard)
