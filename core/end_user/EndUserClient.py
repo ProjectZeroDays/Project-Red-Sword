@@ -45,6 +45,8 @@ def receive_complete_data(client_socket): # this function is used to receive the
         print('timeout')
         print(e)
         pass
+    except Exception as e:
+        print(f"Error receiving data: {e}")
 
     return received_data
 

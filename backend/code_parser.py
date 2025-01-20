@@ -20,6 +20,9 @@ class CodeParser:
         except ValueError as e:
             logging.error(f"ValueError: {e}")
             raise
+        except SyntaxError as e:
+            logging.error(f"SyntaxError: {e}")
+            raise
 
     def find_functions(self):
         return [node.name for node in ast.walk(self.tree) if isinstance(node, ast.FunctionDef)]
