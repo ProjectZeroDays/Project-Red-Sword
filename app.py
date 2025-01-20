@@ -1,3 +1,4 @@
+# Importing io module for handling byte streams
 import io
 import random
 import logging
