@@ -2,12 +2,13 @@ import openai
 import requests
 from backend.code_parser import CodeParser
 from backend.pipeline_manager import PipelineManager
+import os
 
 class MultiAIChat:
-    def __init__(self, openai_key, huggingface_key, anthropic_key):
-        self.openai_key = openai_key
-        self.huggingface_key = huggingface_key
-        self.anthropic_key = anthropic_key
+    def __init__(self):
+        self.openai_key = os.getenv("OPENAI_API_KEY")
+        self.huggingface_key = os.getenv("HUGGINGFACE_API_KEY")
+        self.anthropic_key = os.getenv("ANTHROPIC_API_KEY")
         self.code_parser = CodeParser("")
         self.pipeline_manager = PipelineManager()
 
@@ -65,7 +66,7 @@ class MultiAIChat:
             return ""
 
 if __name__ == "__main__":
-    chat = MultiAIChat("openai_key", "huggingface_key", "anthropic_key")
+    chat = MultiAIChat()
     print(chat.openai_chat("Hello, how can I assist you today?"))
     print(chat.parse_code("def example():\n    return True"))
     print(chat.manage_pipeline("Generate a weekly report."))

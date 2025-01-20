@@ -52,6 +52,7 @@ from backend.pipeline_manager import PipelineManager
 import pika
 from kafka import KafkaProducer, KafkaConsumer
 import logging
+import os
 
 DATABASE_URL = "sqlite:///document_analysis.db"
 engine = create_engine(DATABASE_URL)
@@ -188,7 +189,7 @@ if __name__ == "__main__":
 
 # Initialize real-time threat intelligence and monitoring modules
 try:
-    threat_intelligence = RealTimeThreatIntelligence(api_key="YOUR_API_KEY")
+    threat_intelligence = RealTimeThreatIntelligence(api_key=os.getenv("REAL_TIME_THREAT_INTELLIGENCE_API_KEY"))
     monitoring = RealTimeMonitoring(threat_intelligence_module=threat_intelligence)
 except Exception as e:
     print(f"Error initializing real-time threat intelligence and monitoring modules: {e}")
@@ -213,7 +214,7 @@ try:
     advanced_decryption = AdvancedDecryption()
     advanced_malware_analysis = AdvancedMalwareAnalysis()
     advanced_social_engineering = AdvancedSocialEngineering()
-    alerts_notifications = AlertsNotifications(smtp_server="smtp.example.com", smtp_port=587, smtp_user="user@example.com", smtp_password="password")
+    alerts_notifications = AlertsNotifications(smtp_server=os.getenv("SMTP_SERVER"), smtp_port=int(os.getenv("SMTP_PORT")), smtp_user=os.getenv("SMTP_USER"), smtp_password=os.getenv("SMTP_PASSWORD"))
     device_fingerprinting = DeviceFingerprinting()
     exploit_payloads = ExploitPayloads()
     fuzzing_engine = FuzzingEngine()
@@ -251,7 +252,7 @@ async def analyze_threat_data():
 
 # Update the RealTimeThreatIntelligence initialization to include the ThreatIntelligence module
 try:
-    threat_intelligence_module = RealTimeThreatIntelligence(api_key="YOUR_API_KEY")
+    threat_intelligence_module = RealTimeThreatIntelligence(api_key=os.getenv("REAL_TIME_THREAT_INTELLIGENCE_API_KEY"))
     threat_intelligence_module.threat_intelligence = advanced_threat_intelligence
 except Exception as e:
     print(f"Error updating RealTimeThreatIntelligence initialization: {e}")

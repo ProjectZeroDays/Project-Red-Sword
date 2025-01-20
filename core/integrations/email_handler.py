@@ -44,6 +44,9 @@ class EmailHandler:
 
     async def fetch_recent_emails(self, folder="INBOX", limit=10) -> List[Dict]:
         """Fetch recent emails from specified folder"""
+        if not isinstance(limit, int) or limit <= 0:
+            self.logger.error(f"Invalid limit parameter: {limit}")
+            return []
         try:
             self.imap.select(folder)
             _, messages = self.imap.search(None, "ALL")
