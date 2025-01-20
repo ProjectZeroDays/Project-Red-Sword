@@ -16,6 +16,10 @@ class PluginManager:
 
     def load_plugins(self):
         """Loads all available plugins from the plugin directory."""
+        if not os.path.exists(PLUGIN_DIR):
+            logging.error(f"Plugin directory '{PLUGIN_DIR}' does not exist.")
+            return
+
         for filename in os.listdir(PLUGIN_DIR):
             if filename.endswith("_module.py"):
                 module_name = filename[:-3]

@@ -44,6 +44,7 @@ from sqlalchemy.orm import sessionmaker
 import logging
 import pika
 from kafka import KafkaProducer, KafkaConsumer
+import os
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
@@ -91,7 +92,7 @@ def dashboard():
     try:
         malware_analysis = AdvancedMalwareAnalysis()
         social_engineering = AdvancedSocialEngineering()
-        threat_intelligence = RealTimeThreatIntelligence(api_key="YOUR_API_KEY")
+        threat_intelligence = RealTimeThreatIntelligence(api_key=os.getenv("REAL_TIME_THREAT_INTELLIGENCE_API_KEY"))
         monitoring = RealTimeMonitoring(threat_intelligence_module=threat_intelligence)
         advanced_threat_intelligence = ThreatIntelligence()
         predictive_analytics = PredictiveAnalytics()
@@ -111,7 +112,7 @@ def dashboard():
         advanced_decryption = AdvancedDecryption()
         advanced_malware_analysis = AdvancedMalwareAnalysis()
         advanced_social_engineering = AdvancedSocialEngineering()
-        alerts_notifications = AlertsNotifications(smtp_server="smtp.example.com", smtp_port=587, smtp_user="user@example.com", smtp_password="password")
+        alerts_notifications = AlertsNotifications(smtp_server=os.getenv("SMTP_SERVER"), smtp_port=int(os.getenv("SMTP_PORT")), smtp_user=os.getenv("SMTP_USER"), smtp_password=os.getenv("SMTP_PASSWORD"))
         device_fingerprinting = DeviceFingerprinting()
         exploit_payloads = ExploitPayloads()
         fuzzing_engine = FuzzingEngine()
@@ -125,7 +126,7 @@ def dashboard():
         macos_control = MacOSControl()
         linux_control = LinuxControl()
         android_control = AndroidControl()
-        ios_control = iOSControl()
+        ios_control = IOSControl()
         advanced_device_control = AdvancedDeviceControl()
 
         # Integration checks

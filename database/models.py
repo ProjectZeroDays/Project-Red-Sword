@@ -76,6 +76,9 @@ def verify_component_connections():
         
     except Exception as e:
         logging.error(f"Component connection verification failed: {e}")
+        return False
+
+    return True
 
 # Run verification
 verify_component_connections()
