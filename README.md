@@ -9,6 +9,15 @@ thumbnail: >-
   https://cdn-uploads.huggingface.co/production/uploads/670eca1fff5c46c7f23c32cd/LYKAb16YcsterJNlegp7j.png
 short_description: Advanced Automated Cybersecurity Framewor
 ---
+
+# Classified Materials Warning
+
+**WARNING: This repository contains classified materials. Unauthorized access, use, disclosure, or dissemination of the information contained herein is strictly prohibited and may result in severe legal consequences.**
+
+**DISCLAIMER: All users must adhere to the handling and usage guidelines for classified materials as outlined by the relevant authorities. Failure to comply with these guidelines may result in disciplinary action, including termination of access and legal prosecution.**
+
+**NOTICE: Unauthorized access or misuse of classified information is a violation of federal law and may result in criminal prosecution. All activities within this repository are monitored and logged.**
+
 # Project Red Sword: Cybersecurity Framework
 
 Project Red Sword is an advanced cybersecurity framework designed to address and mitigate modern cyber threats. It integrates a wide variety of security tools, including advanced attack strategies, threat intelligence sources, and AI-driven techniques for proactive defense and post-exploitation. This repository aims to provide cutting-edge techniques, automation, and integrations for both offensive and defensive cybersecurity tasks.
