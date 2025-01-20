@@ -74,6 +74,53 @@ ICON_URLS = {
 # Configure logging
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
+# create widgets
+randomize_url = pn.widgets.Button(name="Randomize URL", align="end")
+
+image_url = pn.widgets.TextInput(
+    name="Image URL to classify",
+    value=pn.bind(random_url, randomize_url),
+)
+class_names = pn.widgets.TextInput(
+    name="Comma separated class names",
+    placeholder="Enter possible class names, e.g. cat, dog",
+    value="cat, dog, parrot",
+)
+
+input_widgets = pn.Column(
+    "##### 😊 Click randomize or paste a URL to start classifying!",
+    pn.Row(image_url, randomize_url),
+    class_names,
+)
+
+# add interactivity
+interactive_result = pn.panel(
+    pn.bind(process_inputs, image_url=image_url, class_names=class_names),
+    height=600,
+)
+
+# add footer
+footer_row = pn.Row(pn.Spacer(), align="center")
+for icon, url in ICON_URLS.items():
+    href_button = pn.widgets.Button(icon=icon, width=35, height=35)
+    href_button.js_on_click(code=f"window.open('{url}')")
+    footer_row.append(href_button)
+footer_row.append(pn.Spacer())
+
+# create dashboard
+main = pn.WidgetBox(
+    input_widgets,
+    interactive_result,
+    footer_row,
+)
+
+title = "Panel Demo - Image Classification"
+pn.template.BootstrapTemplate(
+    title=title,
+    main=main,
+    main_max_width="min(50%, 698px)",
+    header_background="#F08080",
+).servable(title=title)
 
 async def random_url(_):
     retries = 3
@@ -185,54 +232,6 @@ async def process_inputs(class_names: List[str], image_url: str):
     finally:
         main.disabled = False
 
-
-# create widgets
-randomize_url = pn.widgets.Button(name="Randomize URL", align="end")
-
-image_url = pn.widgets.TextInput(
-    name="Image URL to classify",
-    value=pn.bind(random_url, randomize_url),
-)
-class_names = pn.widgets.TextInput(
-    name="Comma separated class names",
-    placeholder="Enter possible class names, e.g. cat, dog",
-    value="cat, dog, parrot",
-)
-
-input_widgets = pn.Column(
-    "##### 😊 Click randomize or paste a URL to start classifying!",
-    pn.Row(image_url, randomize_url),
-    class_names,
-)
-
-# add interactivity
-interactive_result = pn.panel(
-    pn.bind(process_inputs, image_url=image_url, class_names=class_names),
-    height=600,
-)
-
-# add footer
-footer_row = pn.Row(pn.Spacer(), align="center")
-for icon, url in ICON_URLS.items():
-    href_button = pn.widgets.Button(icon=icon, width=35, height=35)
-    href_button.js_on_click(code=f"window.open('{url}')")
-    footer_row.append(href_button)
-footer_row.append(pn.Spacer())
-
-# create dashboard
-main = pn.WidgetBox(
-    input_widgets,
-    interactive_result,
-    footer_row,
-)
-
-title = "Panel Demo - Image Classification"
-pn.template.BootstrapTemplate(
-    title=title,
-    main=main,
-    main_max_width="min(50%, 698px)",
-    header_background="#F08080",
-).servable(title=title)
 
 # Initialize real-time threat intelligence and monitoring modules
 threat_intelligence = RealTimeThreatIntelligence(api_key="YOUR_API_KEY")

@@ -10,9 +10,22 @@ class CodeParser:
     def analyze_code(self):
         if not self.tree.body:
             return {"error": "Empty code input"}
+        
+        num_functions = 0
+        num_classes = 0
+        lines_of_code = 0
+
+        for node in self.tree.body:
+            if isinstance(node, ast.FunctionDef):
+                num_functions += 1
+            elif isinstance(node, ast.ClassDef):
+                num_classes += 1
+            lines_of_code += len(node.body)
+
         analysis = {
-            "num_functions": len(self.find_functions()),
-            "lines_of_code": len(self.tree.body),
+            "num_functions": num_functions,
+            "num_classes": num_classes,
+            "lines_of_code": lines_of_code,
         }
         return analysis
 

@@ -54,7 +54,7 @@ def parse_email_data(data):  # this function gets the data from the inbox and pa
     msg = email.message_from_bytes(data)
 
     Command, subject, sender, recipient = msg['Command'], msg["Subject"], msg["From"], msg["To"]
-    recipient_directory = f"{saveMail_directory}/{recipient}"
+    recipient_directory = os.path.join(saveMail_directory, recipient)
     os.makedirs(recipient_directory, exist_ok=True)
 
     if msg.is_multipart():
@@ -70,8 +70,7 @@ def parse_email_data(data):  # this function gets the data from the inbox and pa
             continue
 
         filename = part.get_filename()
-        #filename = filename.split("\\")[-1]
-        filename = filename.split("/")[-1]
+        filename = os.path.basename(filename)
 
         # Save the image file
         with open(os.path.join(recipient_directory, filename), "wb") as f:
@@ -80,7 +79,7 @@ def parse_email_data(data):  # this function gets the data from the inbox and pa
     print(f'Email body: {body}')
     print(f'Email attachment: {filename}')
 
-    filepath = str(f"{recipient_directory}/{filename}")
+    filepath = os.path.join(recipient_directory, filename)
     try: #We faced some network errors resulting in images being sent partially black. To address this issue, we implemented a try-except block to handle such occurrences. Now, if an image fails to send correctly, a default image is sent for that experiment.
         with open(filepath) as f: # TEST IF THE FILE IS A VALID IMAGE
             img = MIMEImage(f.read())

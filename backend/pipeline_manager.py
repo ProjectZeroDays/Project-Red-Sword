@@ -1,12 +1,13 @@
 import openai
 import requests
+import os
 
 class PipelineManager:
     def __init__(self):
         pass
 
     def autogpt_task(self, task):
-        openai.api_key = "YOUR_API_KEY"
+        openai.api_key = os.getenv("OPENAI_API_KEY")
         response = openai.Completion.create(
             engine="text-davinci-003",
             prompt=task,
@@ -18,7 +19,7 @@ class PipelineManager:
         url = "https://factchecktools.googleapis.com/v1alpha1/claims:search"
         params = {
             "query": text,
-            "key": "YOUR_API_KEY"
+            "key": os.getenv("GOOGLE_FACT_CHECK_API_KEY")
         }
         response = requests.get(url, params=params)
         if response.status_code == 200:
