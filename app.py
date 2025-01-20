@@ -255,9 +255,12 @@ monitoring.threat_intelligence_module = advanced_threat_intelligence
 
 # Add real-time threat data analysis using the ThreatIntelligence module
 async def analyze_threat_data():
-    threat_data = await advanced_threat_intelligence.get_threat_intelligence()
-    analyzed_data = advanced_threat_intelligence.process_data(threat_data)
-    return analyzed_data
+    try:
+        threat_data = await advanced_threat_intelligence.get_threat_intelligence()
+        analyzed_data = advanced_threat_intelligence.process_data(threat_data)
+        return analyzed_data
+    except Exception as e:
+        logging.error(f"Error analyzing threat data: {e}")
 
 # Update the RealTimeThreatIntelligence initialization to include the ThreatIntelligence module
 threat_intelligence_module = RealTimeThreatIntelligence(api_key="YOUR_API_KEY")
@@ -265,10 +268,13 @@ threat_intelligence_module.threat_intelligence = advanced_threat_intelligence
 
 # Add real-time threat data monitoring using the ThreatIntelligence module
 async def monitor_threat_data():
-    threat_data = await advanced_threat_intelligence.get_threat_intelligence()
-    for threat in threat_data:
-        if threat["severity"] > 0.8:
-            monitoring.trigger_alert(threat)
+    try:
+        threat_data = await advanced_threat_intelligence.get_threat_intelligence()
+        for threat in threat_data:
+            if threat["severity"] > 0.8:
+                monitoring.trigger_alert(threat)
+    except Exception as e:
+        logging.error(f"Error monitoring threat data: {e}")
 
 # Integrate the AutomatedIncidentResponse module with RealTimeMonitoring
 monitoring.automated_incident_response = automated_incident_response

@@ -161,3 +161,28 @@ Object.defineProperty(module, 'exports', {
 	enumerable: true,
 	get: assembleStyles
 });
+
+// Unit tests for ANSI escape code functions
+const assert = require('assert');
+
+const styles = assembleStyles();
+
+// Test color functions
+assert.strictEqual(styles.color.red.open, '\u001B[31m');
+assert.strictEqual(styles.color.red.close, '\u001B[39m');
+assert.strictEqual(styles.color.green.open, '\u001B[32m');
+assert.strictEqual(styles.color.green.close, '\u001B[39m');
+
+// Test background color functions
+assert.strictEqual(styles.bgColor.bgRed.open, '\u001B[41m');
+assert.strictEqual(styles.bgColor.bgRed.close, '\u001B[49m');
+assert.strictEqual(styles.bgColor.bgGreen.open, '\u001B[42m');
+assert.strictEqual(styles.bgColor.bgGreen.close, '\u001B[49m');
+
+// Test modifier functions
+assert.strictEqual(styles.modifier.bold.open, '\u001B[1m');
+assert.strictEqual(styles.modifier.bold.close, '\u001B[22m');
+assert.strictEqual(styles.modifier.italic.open, '\u001B[3m');
+assert.strictEqual(styles.modifier.italic.close, '\u001B[23m');
+
+console.log('All tests passed!');
