@@ -1,4 +1,3 @@
-
 import hashlib
 
 users = {
@@ -12,6 +11,16 @@ def authenticate(username, password):
     if user and user["password"] == hashed_password:
         return {"username": username, "role": user["role"]}
     return None
+
+def rbac_required(role):
+    def decorator(f):
+        @wraps(f)
+        def decorated_function(*args, **kwargs):
+            if 'username' not in session or users[session['username']]['role'] != role:
+                return redirect(url_for('login'))
+            return f(*args, **kwargs)
+        return decorated_function
+    return decorator
 
 # Example Usage
 auth_result = authenticate("admin", "admin123")

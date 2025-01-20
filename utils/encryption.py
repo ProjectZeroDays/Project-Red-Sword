@@ -1,4 +1,3 @@
-
 from cryptography.fernet import Fernet
 
 def encrypt_data(data):
@@ -10,3 +9,9 @@ def encrypt_data(data):
 def decrypt_data(encrypted_data, key):
     cipher_suite = Fernet(key)
     return cipher_suite.decrypt(encrypted_data).decode()
+
+def encrypt_intercepted_data(data):
+    return encrypt_data(data)
+
+def decrypt_intercepted_data(encrypted_data, key):
+    return decrypt_data(encrypted_data, key)
