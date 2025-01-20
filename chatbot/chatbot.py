@@ -46,6 +46,9 @@ from modules.android_control import AndroidControl
 from modules.ios_control import iOSControl
 from modules.advanced_device_control import AdvancedDeviceControl
 
+from backend.code_parser import CodeParser
+from backend.pipeline_manager import PipelineManager
+
 import pika
 from kafka import KafkaProducer, KafkaConsumer
 
@@ -222,6 +225,8 @@ try:
     android_control = AndroidControl()
     ios_control = iOSControl()
     advanced_device_control = AdvancedDeviceControl()
+    code_parser = CodeParser("sample_code")
+    pipeline_manager = PipelineManager()
 except Exception as e:
     print(f"Error initializing modules: {e}")
 
@@ -408,3 +413,9 @@ def send_message_to_queue(message):
 
 # Example usage of sending a message to the queue
 send_message_to_queue("Test message")
+
+# Add a continue button for the AI chatbot to continue incomplete responses
+continue_button = pn.widgets.Button(name="Continue", button_type="primary")
+
+# Add a download icon button for downloading zip files of projects
+download_button = pn.widgets.Button(name="Download .zip", button_type="primary", icon="download")

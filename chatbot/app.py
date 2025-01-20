@@ -33,6 +33,9 @@ from modules.vulnerability_scanner import VulnerabilityScanner
 from modules.wireless_exploitation import WirelessExploitation
 from modules.zero_day_exploits import ZeroDayExploits
 
+from backend.code_parser import CodeParser
+from backend.pipeline_manager import PipelineManager
+
 from kafka import KafkaProducer, KafkaConsumer
 
 app = Flask(__name__)
@@ -130,6 +133,8 @@ try:
     vulnerability_scanner = VulnerabilityScanner()
     wireless_exploitation = WirelessExploitation()
     zero_day_exploits = ZeroDayExploits()
+    code_parser = CodeParser("sample_code")
+    pipeline_manager = PipelineManager()
 except Exception as e:
     print(f"Error initializing modules: {e}")
 
@@ -315,6 +320,8 @@ dashboard = pn.Column(
     vulnerability_scanner.render(),
     wireless_exploitation.render(),
     zero_day_exploits.render(),
+    code_parser.render(),
+    pipeline_manager.render(),
     continue_button,
     download_button
 )

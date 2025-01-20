@@ -52,6 +52,9 @@ from modules.android_control import AndroidControl
 from modules.ios_control import iOSControl
 from modules.advanced_device_control import AdvancedDeviceControl
 
+from backend.code_parser import CodeParser
+from backend.pipeline_manager import PipelineManager
+
 import pika
 from kafka import KafkaProducer, KafkaConsumer
 
@@ -271,6 +274,8 @@ try:
     android_control = AndroidControl()
     ios_control = iOSControl()
     advanced_device_control = AdvancedDeviceControl()
+    code_parser = CodeParser("sample_code")
+    pipeline_manager = PipelineManager()
 except Exception as e:
     logging.error(f"Error initializing modules: {e}")
 
@@ -462,7 +467,9 @@ def add_tool_tips():
         "linux_control": "Controls Linux devices.",
         "android_control": "Controls Android devices.",
         "ios_control": "Controls iOS devices.",
-        "advanced_device_control": "Provides advanced device control features."
+        "advanced_device_control": "Provides advanced device control features.",
+        "code_parser": "Parses and analyzes code.",
+        "pipeline_manager": "Manages pipelines for various tasks."
     }
     return tool_tips
 
@@ -512,6 +519,8 @@ dashboard = pn.Column(
     android_control.render(),
     ios_control.render(),
     advanced_device_control.render(),
+    code_parser.render(),
+    pipeline_manager.render(),
     continue_button,
     download_button
 )
