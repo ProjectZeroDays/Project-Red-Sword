@@ -61,6 +61,13 @@ from modules.secure_coding_cloud_tools import (
     cloud_security_frameworks,
 )
 
+from exploits.exploits2 import deploy_exploit_route, deploy_sms_message_route, deploy_email_message_route
+from modules.exploits2 import control_device_remote_route, privilege_escalation_route, advanced_commands_route
+from modules.zero_day_exploits import identify_vulnerability_route, develop_exploit_route, deploy_exploit_route as zero_day_deploy_exploit_route
+from c2_dashboard import render_c2_dashboard
+from dashboard.dashboard import dashboard, admin_dashboard, compliance_dashboard, training_dashboard
+from gui.dashboard import Dashboard
+
 pn.extension(design="bootstrap", sizing_mode="stretch_width")
 
 ICON_URLS = {

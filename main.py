@@ -1,5 +1,14 @@
 import os
 import subprocess
+from flask import Flask
+from exploits.exploits2 import deploy_exploit_route, deploy_sms_message_route, deploy_email_message_route
+from modules.exploits2 import control_device_remote_route, privilege_escalation_route, advanced_commands_route
+from modules.zero_day_exploits import identify_vulnerability_route, develop_exploit_route, deploy_exploit_route as zero_day_deploy_exploit_route
+from c2_dashboard import render_c2_dashboard
+from dashboard.dashboard import dashboard, admin_dashboard, compliance_dashboard, training_dashboard
+from gui.dashboard import Dashboard
+
+app = Flask(__name__)
 
 def start_all_services():
     services = [
@@ -31,4 +40,5 @@ def start_all_services():
     print("All services started!")
 
 if __name__ == "__main__":
+    app.run(debug=True)
     start_all_services()

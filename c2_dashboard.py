@@ -1,4 +1,7 @@
 import panel as pn
+from flask import Flask, jsonify
+
+app = Flask(__name__)
 
 class C2Dashboard:
     def render(self):
@@ -36,3 +39,8 @@ class C2Dashboard:
             pn.pane.Markdown("#### Advanced Connection Methods"),
             pn.widgets.DataFrame(name="Advanced Connection Methods Data")
         )
+
+@app.route('/c2_dashboard', methods=['GET'])
+def render_c2_dashboard():
+    c2_dashboard = C2Dashboard()
+    return jsonify({"dashboard": c2_dashboard.render()})

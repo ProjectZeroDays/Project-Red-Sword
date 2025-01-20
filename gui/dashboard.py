@@ -2,6 +2,9 @@ import tkinter as tk
 from tkinter import ttk
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from flask import Flask, jsonify
+
+app = Flask(__name__)
 
 class Dashboard:
     def __init__(self, root):
@@ -39,6 +42,12 @@ class Dashboard:
         self.metrics["Resolved Alerts"] += 2
         self.update_chart()
 
+@app.route('/gui_dashboard', methods=['GET'])
+def render_gui_dashboard():
+    root = tk.Tk()
+    app = Dashboard(root)
+    root.mainloop()
+    return jsonify({"status": "GUI dashboard rendered"})
 
 if __name__ == "__main__":
     root = tk.Tk()

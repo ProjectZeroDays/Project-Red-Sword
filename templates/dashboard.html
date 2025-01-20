@@ -88,5 +88,21 @@
         <p>Connection Method 1: {{ data["connection_method_1"] }}</p>
         <p>Connection Method 2: {{ data["connection_method_2"] }}</p>
     </div>
+    <div class="dashboard-section">
+        <h2>Main Dashboard</h2>
+        <a href="{{ url_for('dashboard') }}">Go to Main Dashboard</a>
+    </div>
+    <div class="dashboard-section">
+        <h2>Admin Dashboard</h2>
+        <a href="{{ url_for('admin_dashboard') }}">Go to Admin Dashboard</a>
+    </div>
+    <div class="dashboard-section">
+        <h2>Compliance Dashboard</h2>
+        <a href="{{ url_for('compliance_dashboard') }}">Go to Compliance Dashboard</a>
+    </div>
+    <div class="dashboard-section">
+        <h2>Training Dashboard</h2>
+        <a href="{{ url_for('training_dashboard') }}">Go to Training Dashboard</a>
+    </div>
 </body>
 </html>
