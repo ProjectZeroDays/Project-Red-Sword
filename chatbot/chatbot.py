@@ -56,48 +56,56 @@ def get_response(user_input):
 
 def handle_vulnerability_scanning():
     """Handle network scanning and vulnerability assessment."""
-    devices = scan_network()
-    vulnerabilities = assess_vulnerabilities(devices)
-    
-    # Save scan results to the database
-    session = SessionLocal()
     try:
-        scan_result = DocumentAnalysis(
-            source="network_scan",
-            title="Network Scan Results",
-            links=str(vulnerabilities),
-            error=None
-        )
-        session.add(scan_result)
-        session.commit()
+        devices = scan_network()
+        vulnerabilities = assess_vulnerabilities(devices)
+        
+        # Save scan results to the database
+        session = SessionLocal()
+        try:
+            scan_result = DocumentAnalysis(
+                source="network_scan",
+                title="Network Scan Results",
+                links=str(vulnerabilities),
+                error=None
+            )
+            session.add(scan_result)
+            session.commit()
+        except Exception as e:
+            print(f"Error saving scan results to database: {e}")
+        finally:
+            session.close()
+        
+        return vulnerabilities
     except Exception as e:
-        print(f"Error saving scan results to database: {e}")
-    finally:
-        session.close()
-    
-    return vulnerabilities
+        print(f"Error during vulnerability scanning: {e}")
+        return []
 
 def handle_exploit_deployment(target):
     """Handle the deployment of exploits."""
-    result = deploy_exploit(target)
-    
-    # Save exploit deployment results to the database
-    session = SessionLocal()
     try:
-        exploit_result = DocumentAnalysis(
-            source="exploit_deployment",
-            title="Exploit Deployment Results",
-            links=target,
-            error=None if result else "Exploit deployment failed"
-        )
-        session.add(exploit_result)
-        session.commit()
+        result = deploy_exploit(target)
+        
+        # Save exploit deployment results to the database
+        session = SessionLocal()
+        try:
+            exploit_result = DocumentAnalysis(
+                source="exploit_deployment",
+                title="Exploit Deployment Results",
+                links=target,
+                error=None if result else "Exploit deployment failed"
+            )
+            session.add(exploit_result)
+            session.commit()
+        except Exception as e:
+            print(f"Error saving exploit deployment results to database: {e}")
+        finally:
+            session.close()
+        
+        return "Exploit deployed successfully!" if result else "Exploit deployment failed."
     except Exception as e:
-        print(f"Error saving exploit deployment results to database: {e}")
-    finally:
-        session.close()
-    
-    return "Exploit deployed successfully!" if result else "Exploit deployment failed."
+        print(f"Error during exploit deployment: {e}")
+        return "Exploit deployment failed."
 
 def chat():
     """Main chat function to interact with users."""

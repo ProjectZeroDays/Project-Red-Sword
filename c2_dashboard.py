@@ -112,5 +112,8 @@ class C2Dashboard:
 
 if __name__ == "__main__":
     dashboard = C2Dashboard()
-    dashboard.save_dashboard_to_db("c2_dashboard.py", "C2 Dashboard", "[]", None)
-    print("Dashboard saved to database.")
+    try:
+        dashboard.save_dashboard_to_db("c2_dashboard.py", "C2 Dashboard", "[]", None)
+        print("Dashboard saved to database.")
+    except Exception as e:
+        print(f"Error during dashboard operation: {e}")

@@ -40,15 +40,23 @@ engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 def scan_network():
-    # Placeholder function for scanning network
-    devices = ["Device1", "Device2", "Device3"]
-    return devices
+    try:
+        # Placeholder function for scanning network
+        devices = ["Device1", "Device2", "Device3"]
+        return devices
+    except Exception as e:
+        print(f"Error during network scanning: {e}")
+        return []
 
 def deploy_exploit(target):
-    # Placeholder function for deploying exploit
-    if target in ["Device1", "Device2", "Device3"]:
-        return "Exploit deployed successfully!"
-    return "Exploit deployment failed."
+    try:
+        # Placeholder function for deploying exploit
+        if target in ["Device1", "Device2", "Device3"]:
+            return "Exploit deployed successfully!"
+        return "Exploit deployment failed."
+    except Exception as e:
+        print(f"Error during exploit deployment: {e}")
+        return "Exploit deployment failed."
 
 def save_scan_results_to_db(source, title, links, error):
     session = SessionLocal()

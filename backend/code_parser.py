@@ -9,6 +9,8 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 class CodeParser:
     def __init__(self, code):
+        if not code.strip():
+            raise ValueError("Input code cannot be empty")
         self.tree = ast.parse(code)
 
     def find_functions(self):

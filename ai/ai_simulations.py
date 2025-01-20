@@ -1,4 +1,3 @@
-
 import random
 
 class OffensiveSimulation:
@@ -12,8 +11,11 @@ class OffensiveSimulation:
         ]
 
     def simulate_attack(self):
-        scenario = random.choice(self.scenarios)
-        print(f"[SIMULATION] Executing simulated attack: {scenario}")
+        try:
+            scenario = random.choice(self.scenarios)
+            print(f"[SIMULATION] Executing simulated attack: {scenario}")
+        except Exception as e:
+            print(f"Error during simulation: {e}")
 
 if __name__ == "__main__":
     simulation = OffensiveSimulation()
