@@ -9,11 +9,6 @@ import panel as pn
 from PIL import Image
 from transformers import CLIPModel, CLIPProcessor
 
-from core.integrations.email_handler import EmailHandler
-from core.email_server.EmailServer import EmailServer
-from core.end_user.AttackerClient import AttackerClient
-from core.end_user.EndUserClient import EndUserClient
-
 from modules.real_time_threat_intelligence import RealTimeThreatIntelligence
 from modules.real_time_monitoring import RealTimeMonitoring
 from modules.threat_intelligence import ThreatIntelligence
@@ -233,7 +228,7 @@ pn.template.BootstrapTemplate(
 
 # Initialize real-time threat intelligence and monitoring modules
 try:
-    threat_intelligence = RealTimeThreatIntelligence(api_key="YOUR_API_KEY")
+    threat_intelligence = RealTimeThreatIntelligence(api_key=os.getenv("REAL_TIME_THREAT_INTELLIGENCE_API_KEY"))
     monitoring = RealTimeMonitoring(threat_intelligence_module=threat_intelligence)
 except Exception as e:
     logging.error(f"Error initializing real-time threat intelligence and monitoring modules: {e}")

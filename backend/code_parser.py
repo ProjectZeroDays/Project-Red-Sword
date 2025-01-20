@@ -1,4 +1,5 @@
 import ast
+import logging
 from database.models import DocumentAnalysis
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -7,11 +8,18 @@ DATABASE_URL = "sqlite:///document_analysis.db"
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
+# Configure logging
+logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
+
 class CodeParser:
     def __init__(self, code):
-        if not code.strip():
-            raise ValueError("Input code cannot be empty")
-        self.tree = ast.parse(code)
+        try:
+            if not code.strip():
+                raise ValueError("Input code cannot be empty")
+            self.tree = ast.parse(code)
+        except ValueError as e:
+            logging.error(f"ValueError: {e}")
+            raise
 
     def find_functions(self):
         return [node.name for node in ast.walk(self.tree) if isinstance(node, ast.FunctionDef)]

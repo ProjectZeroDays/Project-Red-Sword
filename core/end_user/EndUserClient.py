@@ -15,18 +15,17 @@ import pandas as pd
 from PIL import Image, ImageTk
 
 # Define global variables
-SERVER_EMAIL_HOST = None
-SERVER_EMAIL_PORT = None
-SERVER_LLAVA_HOST = None
-SERVER_LLAVA_PORT = None
-MYEMAIL = None
-MAILSERVER = None
-saveMail_directory = None
+SERVER_EMAIL_HOST = os.getenv("SERVER_EMAIL_HOST")
+SERVER_EMAIL_PORT = int(os.getenv("SERVER_EMAIL_PORT"))
+SERVER_LLAVA_HOST = os.getenv("SERVER_LLAVA_HOST")
+SERVER_LLAVA_PORT = int(os.getenv("SERVER_LLAVA_PORT"))
+MYEMAIL = os.getenv("MYEMAIL")
+MAILSERVER = os.getenv("MAILSERVER")
+saveMail_directory = os.getenv("SAVE_MAIL_DIRECTORY")
 MyEmails = None
-CycleNewEmails = None
-BaseEmails_directory = None
-# Define the default image to be sent in case of network errors
-default_image=''
+CycleNewEmails = os.getenv("CYCLE_NEW_EMAILS", "False").lower() in ("true", "1", "t")
+BaseEmails_directory = os.getenv("BASE_EMAILS_DIRECTORY")
+default_image = os.getenv("DEFAULT_IMAGE", '')
 
 
 def receive_complete_data(client_socket): # this function is used to receive the complete data from the client, adjust the parameters as needed based on your network conditions
