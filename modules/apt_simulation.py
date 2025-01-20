@@ -1,5 +1,12 @@
 import logging
 import random
+from database.models import DocumentAnalysis
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+
+DATABASE_URL = "sqlite:///document_analysis.db"
+engine = create_engine(DATABASE_URL)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 class APTSimulation:
     def __init__(self):
@@ -39,6 +46,22 @@ class APTSimulation:
         logging.info("Executing watering hole attack...")
         # Placeholder for watering hole attack logic
         return "Watering hole attack executed."
+
+    def save_simulation_to_db(self, source, title, links, error):
+        session = SessionLocal()
+        try:
+            simulation_result = DocumentAnalysis(
+                source=source,
+                title=title,
+                links=links,
+                error=error
+            )
+            session.add(simulation_result)
+            session.commit()
+        except Exception as e:
+            print(f"Error saving simulation to database: {e}")
+        finally:
+            session.close()
 
     def render(self):
         return "APT Simulation Module: Ready to simulate advanced persistent threats."

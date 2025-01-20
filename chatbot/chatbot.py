@@ -4,6 +4,13 @@ import json
 from network_scanner import scan_network
 from vulnerability_assessor import assess_vulnerabilities
 from exploit_deployer import deploy_exploit
+from database.models import DocumentAnalysis
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+
+DATABASE_URL = "sqlite:///document_analysis.db"
+engine = create_engine(DATABASE_URL)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 def get_response(user_input):
     """Handle user input and provide responses."""
@@ -21,11 +28,45 @@ def handle_vulnerability_scanning():
     """Handle network scanning and vulnerability assessment."""
     devices = scan_network()
     vulnerabilities = assess_vulnerabilities(devices)
+    
+    # Save scan results to the database
+    session = SessionLocal()
+    try:
+        scan_result = DocumentAnalysis(
+            source="network_scan",
+            title="Network Scan Results",
+            links=str(vulnerabilities),
+            error=None
+        )
+        session.add(scan_result)
+        session.commit()
+    except Exception as e:
+        print(f"Error saving scan results to database: {e}")
+    finally:
+        session.close()
+    
     return vulnerabilities
 
 def handle_exploit_deployment(target):
     """Handle the deployment of exploits."""
     result = deploy_exploit(target)
+    
+    # Save exploit deployment results to the database
+    session = SessionLocal()
+    try:
+        exploit_result = DocumentAnalysis(
+            source="exploit_deployment",
+            title="Exploit Deployment Results",
+            links=target,
+            error=None if result else "Exploit deployment failed"
+        )
+        session.add(exploit_result)
+        session.commit()
+    except Exception as e:
+        print(f"Error saving exploit deployment results to database: {e}")
+    finally:
+        session.close()
+    
     return "Exploit deployed successfully!" if result else "Exploit deployment failed."
 
 def chat():

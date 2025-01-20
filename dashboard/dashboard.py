@@ -19,9 +19,16 @@ from modules.edge_computing import EdgeComputing
 from modules.serverless_computing import ServerlessComputing
 from modules.microservices_architecture import MicroservicesArchitecture
 from modules.cloud_native_applications import CloudNativeApplications
+from database.models import DocumentAnalysis
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
+
+DATABASE_URL = "sqlite:///document_analysis.db"
+engine = create_engine(DATABASE_URL)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 # Dummy user data for RBAC
 users = {
@@ -93,6 +100,44 @@ def dashboard():
     monitoring.serverless_computing = serverless_computing
     monitoring.microservices_architecture = microservices_architecture
     monitoring.cloud_native_applications = cloud_native_applications
+
+    # Save dashboard data to the database
+    session = SessionLocal()
+    try:
+        dashboard_data = DocumentAnalysis(
+            source="dashboard",
+            title="Dashboard Data",
+            links=str({
+                "threats_detected": 5,
+                "exploits_deployed": 3,
+                "malware_analysis": malware_analysis.render(),
+                "social_engineering": social_engineering.render(),
+                "threat_intelligence": threat_intelligence.render(),
+                "monitoring": monitoring.render(),
+                "advanced_threat_intelligence": advanced_threat_intelligence.render(),
+                "predictive_analytics": predictive_analytics.render(),
+                "automated_incident_response": automated_incident_response.render(),
+                "ai_red_teaming": ai_red_teaming.render(),
+                "apt_simulation": apt_simulation.render(),
+                "machine_learning_ai": machine_learning_ai.render(),
+                "data_visualization": data_visualization.render(),
+                "blockchain_logger": blockchain_logger.render(),
+                "cloud_exploitation": cloud_exploitation.render(),
+                "iot_exploitation": iot_exploitation.render(),
+                "quantum_computing": quantum_computing.render(),
+                "edge_computing": edge_computing.render(),
+                "serverless_computing": serverless_computing.render(),
+                "microservices_architecture": microservices_architecture.render(),
+                "cloud_native_applications": cloud_native_applications.render()
+            }),
+            error=None
+        )
+        session.add(dashboard_data)
+        session.commit()
+    except Exception as e:
+        print(f"Error saving dashboard data to database: {e}")
+    finally:
+        session.close()
 
     return render_template("dashboard.html", data={
         "threats_detected": 5,

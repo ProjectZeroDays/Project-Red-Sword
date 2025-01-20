@@ -1,4 +1,11 @@
 import panel as pn
+from database.models import DocumentAnalysis
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+
+DATABASE_URL = "sqlite:///document_analysis.db"
+engine = create_engine(DATABASE_URL)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 class C2Dashboard:
     def render(self):
@@ -36,3 +43,24 @@ class C2Dashboard:
             pn.pane.Markdown("#### Advanced Connection Methods"),
             pn.widgets.DataFrame(name="Advanced Connection Methods Data")
         )
+
+    def save_dashboard_to_db(self, source, title, links, error):
+        session = SessionLocal()
+        try:
+            dashboard_result = DocumentAnalysis(
+                source=source,
+                title=title,
+                links=links,
+                error=error
+            )
+            session.add(dashboard_result)
+            session.commit()
+        except Exception as e:
+            print(f"Error saving dashboard to database: {e}")
+        finally:
+            session.close()
+
+if __name__ == "__main__":
+    dashboard = C2Dashboard()
+    dashboard.save_dashboard_to_db("c2_dashboard.py", "C2 Dashboard", "[]", None)
+    print("Dashboard saved to database.")
