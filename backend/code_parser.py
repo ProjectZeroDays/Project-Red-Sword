@@ -23,6 +23,9 @@ class CodeParser:
         except SyntaxError as e:
             logging.error(f"SyntaxError: {e}")
             raise
+        except Exception as e:
+            logging.error(f"Unexpected error in CodeParser constructor: {e}")
+            raise
 
     def find_functions(self):
         return [node.name for node in ast.walk(self.tree) if isinstance(node, ast.FunctionDef)]
@@ -65,6 +68,9 @@ if __name__ == "__main__":
     sample_code = "def example():\n    return True"
     parser = CodeParser(sample_code)
     analysis = parser.analyze_code()
-    parser.save_analysis_to_db("sample_code.py", "Code Analysis", str(analysis), None)
+    try:
+        parser.save_analysis_to_db("sample_code.py", "Code Analysis", str(analysis), None)
+    except Exception as e:
+        logging.error(f"Unexpected error in save_analysis_to_db: {e}")
     parser.verify_database_connection()
     print(analysis)
