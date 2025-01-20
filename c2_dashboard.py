@@ -2,6 +2,9 @@ import panel as pn
 from database.models import DocumentAnalysis
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from modules.data_visualization import DataVisualization
+from modules.advanced_device_control import AdvancedDeviceControl
+from modules.real_time_monitoring import RealTimeMonitoring
 
 DATABASE_URL = "sqlite:///document_analysis.db"
 engine = create_engine(DATABASE_URL)
