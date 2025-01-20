@@ -518,3 +518,36 @@ The following connections have been made to ensure all apps, dashboards, modules
 11. **exploits/ios_framework_extracted/iOS Zero-Click Framework (Updated)/exploits.py**: Connects to the appropriate models for exploit deployment.
 12. **modules/alerts_notifications.py**: Connects to the appropriate models for alerts and notifications.
 13. **modules/apt_simulation.py**: Connects to the appropriate models for APT simulation.
+14. **modules/advanced_decryption.py**: Connects to the appropriate models for advanced decryption.
+15. **modules/advanced_malware_analysis.py**: Connects to the appropriate models for advanced malware analysis.
+16. **modules/advanced_social_engineering.py**: Connects to the appropriate models for advanced social engineering.
+17. **modules/ai_red_teaming.py**: Connects to the appropriate models for AI red teaming.
+18. **modules/automated_incident_response.py**: Connects to the appropriate models for automated incident response.
+19. **modules/blockchain_logger.py**: Connects to the appropriate models for blockchain logging.
+20. **modules/cloud_exploitation.py**: Connects to the appropriate models for cloud exploitation.
+21. **modules/cloud_native_applications.py**: Connects to the appropriate models for cloud native applications.
+22. **modules/data_exfiltration.py**: Connects to the appropriate models for data exfiltration.
+23. **modules/data_visualization.py**: Connects to the appropriate models for data visualization.
+24. **modules/device_control.py**: Connects to the appropriate models for device control.
+25. **modules/device_fingerprinting.py**: Connects to the appropriate models for device fingerprinting.
+26. **modules/edge_computing.py**: Connects to the appropriate models for edge computing.
+27. **modules/exploit_payloads.py**: Connects to the appropriate models for exploit payloads.
+28. **modules/fuzzing_engine.py**: Connects to the appropriate models for fuzzing engine.
+29. **modules/ios_control.py**: Connects to the appropriate models for iOS control.
+30. **modules/iot_exploitation.py**: Connects to the appropriate models for IoT exploitation.
+31. **modules/linux_control.py**: Connects to the appropriate models for Linux control.
+32. **modules/machine_learning_ai.py**: Connects to the appropriate models for machine learning AI.
+33. **modules/macos_control.py**: Connects to the appropriate models for macOS control.
+34. **modules/microservices_architecture.py**: Connects to the appropriate models for microservices architecture.
+35. **modules/mitm_stingray.py**: Connects to the appropriate models for MITM Stingray.
+36. **modules/network_exploitation.py**: Connects to the appropriate models for network exploitation.
+37. **modules/predictive_analytics.py**: Connects to the appropriate models for predictive analytics.
+38. **modules/quantum_computing.py**: Connects to the appropriate models for quantum computing.
+39. **modules/real_time_monitoring.py**: Connects to the appropriate models for real-time monitoring.
+40. **modules/real_time_threat_intelligence.py**: Connects to the appropriate models for real-time threat intelligence.
+41. **modules/serverless_computing.py**: Connects to the appropriate models for serverless computing.
+42. **modules/threat_intelligence.py**: Connects to the appropriate models for threat intelligence.
+43. **modules/vulnerability_scanner.py**: Connects to the appropriate models for vulnerability scanner.
+44. **modules/windows_control.py**: Connects to the appropriate models for Windows control.
+45. **modules/wireless_exploitation.py**: Connects to the appropriate models for wireless exploitation.
+46. **modules/zero_day_exploits.py**: Connects to the appropriate models for zero-day exploits.
