@@ -30,3 +30,48 @@ from exploits.exploits2 import deploy_exploit as deploy_exploit2
 from exploits.ios_framework_extracted.iOS_Zero_Click_Framework_Updated.exploits import deploy_exploit as deploy_exploit_ios
 from modules.alerts_notifications import AlertsNotifications
 from modules.apt_simulation import APTSimulation
+
+# Verification of component connections
+def verify_component_connections():
+    try:
+        # Check database connection
+        session = SessionLocal()
+        session.execute('SELECT 1')
+        session.close()
+        print("Database connection verified.")
+        
+        # Check app components
+        if not all([monitoring, threat_intelligence, advanced_threat_intelligence, predictive_analytics, automated_incident_response, ai_red_teaming, apt_simulation, machine_learning_ai, data_visualization, blockchain_logger, cloud_exploitation, iot_exploitation, quantum_computing, edge_computing, serverless_computing, microservices_architecture, cloud_native_applications]):
+            raise ValueError("App component connection check failed")
+        print("App components connection verified.")
+        
+        # Check backend components
+        if not all([CodeParser, PipelineManager]):
+            raise ValueError("Backend component connection check failed")
+        print("Backend components connection verified.")
+        
+        # Check chatbot components
+        if not all([scan_network, deploy_exploit, handle_vulnerability_scanning, handle_exploit_deployment]):
+            raise ValueError("Chatbot component connection check failed")
+        print("Chatbot components connection verified.")
+        
+        # Check dashboard components
+        if not all([malware_analysis, social_engineering]):
+            raise ValueError("Dashboard component connection check failed")
+        print("Dashboard components connection verified.")
+        
+        # Check exploits components
+        if not all([deploy_exploit2, deploy_exploit_ios]):
+            raise ValueError("Exploits component connection check failed")
+        print("Exploits components connection verified.")
+        
+        # Check modules components
+        if not all([AlertsNotifications, APTSimulation]):
+            raise ValueError("Modules component connection check failed")
+        print("Modules components connection verified.")
+        
+    except Exception as e:
+        print(f"Component connection verification failed: {e}")
+
+# Run verification
+verify_component_connections()

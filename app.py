@@ -44,6 +44,16 @@ from modules.vulnerability_scanner import VulnerabilityScanner
 from modules.wireless_exploitation import WirelessExploitation
 from modules.zero_day_exploits import ZeroDayExploits
 
+from modules.device_control import DeviceControl
+from modules.windows_control import WindowsControl
+from modules.macos_control import MacOSControl
+from modules.linux_control import LinuxControl
+from modules.android_control import AndroidControl
+from modules.ios_control import iOSControl
+from modules.advanced_device_control import AdvancedDeviceControl
+
+import pika
+
 pn.extension(design="bootstrap", sizing_mode="stretch_width")
 
 ICON_URLS = {
@@ -218,40 +228,56 @@ pn.template.BootstrapTemplate(
 ).servable(title=title)
 
 # Initialize real-time threat intelligence and monitoring modules
-threat_intelligence = RealTimeThreatIntelligence(api_key="YOUR_API_KEY")
-monitoring = RealTimeMonitoring(threat_intelligence_module=threat_intelligence)
+try:
+    threat_intelligence = RealTimeThreatIntelligence(api_key="YOUR_API_KEY")
+    monitoring = RealTimeMonitoring(threat_intelligence_module=threat_intelligence)
+except Exception as e:
+    logging.error(f"Error initializing real-time threat intelligence and monitoring modules: {e}")
 
 # Initialize and integrate new modules in the main function
-advanced_threat_intelligence = ThreatIntelligence()
-predictive_analytics = PredictiveAnalytics()
-automated_incident_response = AutomatedIncidentResponse()
-ai_red_teaming = AIRedTeaming()
-apt_simulation = APTSimulation()
-machine_learning_ai = MachineLearningAI()
-data_visualization = DataVisualization()
-blockchain_logger = BlockchainLogger()
-cloud_exploitation = CloudExploitation()
-iot_exploitation = IoTExploitation()
-quantum_computing = QuantumComputing()
-edge_computing = EdgeComputing()
-serverless_computing = ServerlessComputing()
-microservices_architecture = MicroservicesArchitecture()
-cloud_native_applications = CloudNativeApplications()
-advanced_decryption = AdvancedDecryption()
-advanced_malware_analysis = AdvancedMalwareAnalysis()
-advanced_social_engineering = AdvancedSocialEngineering()
-alerts_notifications = AlertsNotifications(smtp_server="smtp.example.com", smtp_port=587, smtp_user="user@example.com", smtp_password="password")
-device_fingerprinting = DeviceFingerprinting()
-exploit_payloads = ExploitPayloads()
-fuzzing_engine = FuzzingEngine()
-mitm_stingray = MITMStingray(interface="wlan0")
-network_exploitation = NetworkExploitation()
-vulnerability_scanner = VulnerabilityScanner()
-wireless_exploitation = WirelessExploitation()
-zero_day_exploits = ZeroDayExploits()
+try:
+    advanced_threat_intelligence = ThreatIntelligence()
+    predictive_analytics = PredictiveAnalytics()
+    automated_incident_response = AutomatedIncidentResponse()
+    ai_red_teaming = AIRedTeaming()
+    apt_simulation = APTSimulation()
+    machine_learning_ai = MachineLearningAI()
+    data_visualization = DataVisualization()
+    blockchain_logger = BlockchainLogger()
+    cloud_exploitation = CloudExploitation()
+    iot_exploitation = IoTExploitation()
+    quantum_computing = QuantumComputing()
+    edge_computing = EdgeComputing()
+    serverless_computing = ServerlessComputing()
+    microservices_architecture = MicroservicesArchitecture()
+    cloud_native_applications = CloudNativeApplications()
+    advanced_decryption = AdvancedDecryption()
+    advanced_malware_analysis = AdvancedMalwareAnalysis()
+    advanced_social_engineering = AdvancedSocialEngineering()
+    alerts_notifications = AlertsNotifications(smtp_server="smtp.example.com", smtp_port=587, smtp_user="user@example.com", smtp_password="password")
+    device_fingerprinting = DeviceFingerprinting()
+    exploit_payloads = ExploitPayloads()
+    fuzzing_engine = FuzzingEngine()
+    mitm_stingray = MITMStingray(interface="wlan0")
+    network_exploitation = NetworkExploitation()
+    vulnerability_scanner = VulnerabilityScanner()
+    wireless_exploitation = WirelessExploitation()
+    zero_day_exploits = ZeroDayExploits()
+    device_control = DeviceControl()
+    windows_control = WindowsControl()
+    macos_control = MacOSControl()
+    linux_control = LinuxControl()
+    android_control = AndroidControl()
+    ios_control = iOSControl()
+    advanced_device_control = AdvancedDeviceControl()
+except Exception as e:
+    logging.error(f"Error initializing modules: {e}")
 
 # Integrate the ThreatIntelligence module with RealTimeMonitoring
-monitoring.threat_intelligence_module = advanced_threat_intelligence
+try:
+    monitoring.threat_intelligence_module = advanced_threat_intelligence
+except Exception as e:
+    logging.error(f"Error integrating ThreatIntelligence module with RealTimeMonitoring: {e}")
 
 # Add real-time threat data analysis using the ThreatIntelligence module
 async def analyze_threat_data():
@@ -263,8 +289,11 @@ async def analyze_threat_data():
         logging.error(f"Error analyzing threat data: {e}")
 
 # Update the RealTimeThreatIntelligence initialization to include the ThreatIntelligence module
-threat_intelligence_module = RealTimeThreatIntelligence(api_key="YOUR_API_KEY")
-threat_intelligence_module.threat_intelligence = advanced_threat_intelligence
+try:
+    threat_intelligence_module = RealTimeThreatIntelligence(api_key="YOUR_API_KEY")
+    threat_intelligence_module.threat_intelligence = advanced_threat_intelligence
+except Exception as e:
+    logging.error(f"Error updating RealTimeThreatIntelligence initialization: {e}")
 
 # Add real-time threat data monitoring using the ThreatIntelligence module
 async def monitor_threat_data():
@@ -277,43 +306,124 @@ async def monitor_threat_data():
         logging.error(f"Error monitoring threat data: {e}")
 
 # Integrate the AutomatedIncidentResponse module with RealTimeMonitoring
-monitoring.automated_incident_response = automated_incident_response
+try:
+    monitoring.automated_incident_response = automated_incident_response
+except Exception as e:
+    logging.error(f"Error integrating AutomatedIncidentResponse module with RealTimeMonitoring: {e}")
 
 # Integrate the AIRedTeaming module with RealTimeMonitoring
-monitoring.ai_red_teaming = ai_red_teaming
+try:
+    monitoring.ai_red_teaming = ai_red_teaming
+except Exception as e:
+    logging.error(f"Error integrating AIRedTeaming module with RealTimeMonitoring: {e}")
 
 # Integrate the APTSimulation module with RealTimeMonitoring
-monitoring.apt_simulation = apt_simulation()
+try:
+    monitoring.apt_simulation = apt_simulation()
+except Exception as e:
+    logging.error(f"Error integrating APTSimulation module with RealTimeMonitoring: {e}")
 
 # Integrate the PredictiveAnalytics module with RealTimeMonitoring
-monitoring.predictive_analytics = predictive_analytics
+try:
+    monitoring.predictive_analytics = predictive_analytics
+except Exception as e:
+    logging.error(f"Error integrating PredictiveAnalytics module with RealTimeMonitoring: {e}")
 
 # Integrate the MachineLearningAI module with RealTimeMonitoring
-monitoring.machine_learning_ai = machine_learning_ai
+try:
+    monitoring.machine_learning_ai = machine_learning_ai
+except Exception as e:
+    logging.error(f"Error integrating MachineLearningAI module with RealTimeMonitoring: {e}")
 
 # Integrate the DataVisualization module with RealTimeMonitoring
-monitoring.data_visualization = data_visualization
+try:
+    monitoring.data_visualization = data_visualization
+except Exception as e:
+    logging.error(f"Error integrating DataVisualization module with RealTimeMonitoring: {e}")
 
 # Integrate the CloudExploitation module with RealTimeMonitoring
-monitoring.cloud_exploitation = cloud_exploitation
+try:
+    monitoring.cloud_exploitation = cloud_exploitation
+except Exception as e:
+    logging.error(f"Error integrating CloudExploitation module with RealTimeMonitoring: {e}")
 
 # Integrate the IoTExploitation module with RealTimeMonitoring
-monitoring.iot_exploitation = iot_exploitation
+try:
+    monitoring.iot_exploitation = iot_exploitation
+except Exception as e:
+    logging.error(f"Error integrating IoTExploitation module with RealTimeMonitoring: {e}")
 
 # Integrate the QuantumComputing module with RealTimeMonitoring
-monitoring.quantum_computing = quantum_computing
+try:
+    monitoring.quantum_computing = quantum_computing
+except Exception as e:
+    logging.error(f"Error integrating QuantumComputing module with RealTimeMonitoring: {e}")
 
 # Integrate the EdgeComputing module with RealTimeMonitoring
-monitoring.edge_computing = edge_computing
+try:
+    monitoring.edge_computing = edge_computing
+except Exception as e:
+    logging.error(f"Error integrating EdgeComputing module with RealTimeMonitoring: {e}")
 
 # Integrate the ServerlessComputing module with RealTimeMonitoring
-monitoring.serverless_computing = serverless_computing
+try:
+    monitoring.serverless_computing = serverless_computing
+except Exception as e:
+    logging.error(f"Error integrating ServerlessComputing module with RealTimeMonitoring: {e}")
 
 # Integrate the MicroservicesArchitecture module with RealTimeMonitoring
-monitoring.microservices_architecture = microservices_architecture
+try:
+    monitoring.microservices_architecture = microservices_architecture
+except Exception as e:
+    logging.error(f"Error integrating MicroservicesArchitecture module with RealTimeMonitoring: {e}")
 
 # Integrate the CloudNativeApplications module with RealTimeMonitoring
-monitoring.cloud_native_applications = cloud_native_applications
+try:
+    monitoring.cloud_native_applications = cloud_native_applications
+except Exception as e:
+    logging.error(f"Error integrating CloudNativeApplications module with RealTimeMonitoring: {e}")
+
+# Integrate the DeviceControl module with RealTimeMonitoring
+try:
+    monitoring.device_control = device_control
+except Exception as e:
+    logging.error(f"Error integrating DeviceControl module with RealTimeMonitoring: {e}")
+
+# Integrate the WindowsControl module with RealTimeMonitoring
+try:
+    monitoring.windows_control = windows_control
+except Exception as e:
+    logging.error(f"Error integrating WindowsControl module with RealTimeMonitoring: {e}")
+
+# Integrate the MacOSControl module with RealTimeMonitoring
+try:
+    monitoring.macos_control = macos_control
+except Exception as e:
+    logging.error(f"Error integrating MacOSControl module with RealTimeMonitoring: {e}")
+
+# Integrate the LinuxControl module with RealTimeMonitoring
+try:
+    monitoring.linux_control = linux_control
+except Exception as e:
+    logging.error(f"Error integrating LinuxControl module with RealTimeMonitoring: {e}")
+
+# Integrate the AndroidControl module with RealTimeMonitoring
+try:
+    monitoring.android_control = android_control
+except Exception as e:
+    logging.error(f"Error integrating AndroidControl module with RealTimeMonitoring: {e}")
+
+# Integrate the iOSControl module with RealTimeMonitoring
+try:
+    monitoring.ios_control = ios_control
+except Exception as e:
+    logging.error(f"Error integrating iOSControl module with RealTimeMonitoring: {e}")
+
+# Integrate the AdvancedDeviceControl module with RealTimeMonitoring
+try:
+    monitoring.advanced_device_control = advanced_device_control
+except Exception as e:
+    logging.error(f"Error integrating AdvancedDeviceControl module with RealTimeMonitoring: {e}")
 
 # Add tool tips and advanced help options for all functions
 def add_tool_tips():
@@ -344,7 +454,14 @@ def add_tool_tips():
         "network_exploitation": "Exploits network vulnerabilities.",
         "vulnerability_scanner": "Scans for vulnerabilities.",
         "wireless_exploitation": "Exploits wireless vulnerabilities.",
-        "zero_day_exploits": "Manages zero-day exploits."
+        "zero_day_exploits": "Manages zero-day exploits.",
+        "device_control": "Controls various device functions.",
+        "windows_control": "Controls Windows devices.",
+        "macos_control": "Controls macOS devices.",
+        "linux_control": "Controls Linux devices.",
+        "android_control": "Controls Android devices.",
+        "ios_control": "Controls iOS devices.",
+        "advanced_device_control": "Provides advanced device control features."
     }
     return tool_tips
 
@@ -387,8 +504,47 @@ dashboard = pn.Column(
     vulnerability_scanner.render(),
     wireless_exploitation.render(),
     zero_day_exploits.render(),
+    device_control.render(),
+    windows_control.render(),
+    macos_control.render(),
+    linux_control.render(),
+    android_control.render(),
+    ios_control.render(),
+    advanced_device_control.render(),
     continue_button,
     download_button
 )
 
 main.append(dashboard)
+
+# Implement best practices for integrating message queues
+def setup_message_queue():
+    try:
+        connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
+        channel = connection.channel()
+        channel.queue_declare(queue='task_queue', durable=True)
+        return channel
+    except Exception as e:
+        logging.error(f"Error setting up message queue: {e}")
+        return None
+
+message_queue_channel = setup_message_queue()
+
+def send_message_to_queue(message):
+    try:
+        if message_queue_channel:
+            message_queue_channel.basic_publish(
+                exchange='',
+                routing_key='task_queue',
+                body=message,
+                properties=pika.BasicProperties(
+                    delivery_mode=2,  # make message persistent
+                ))
+            logging.info(f"Sent message to queue: {message}")
+        else:
+            logging.error("Message queue channel is not available.")
+    except Exception as e:
+        logging.error(f"Error sending message to queue: {e}")
+
+# Example usage of sending a message to the queue
+send_message_to_queue("Test message")

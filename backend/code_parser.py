@@ -41,9 +41,19 @@ class CodeParser:
         finally:
             session.close()
 
+    def verify_database_connection(self):
+        try:
+            session = SessionLocal()
+            session.execute('SELECT 1')
+            session.close()
+            print("Database connection verified.")
+        except Exception as e:
+            print(f"Database connection verification failed: {e}")
+
 if __name__ == "__main__":
     sample_code = "def example():\n    return True"
     parser = CodeParser(sample_code)
     analysis = parser.analyze_code()
     parser.save_analysis_to_db("sample_code.py", "Code Analysis", str(analysis), None)
+    parser.verify_database_connection()
     print(analysis)
