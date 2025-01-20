@@ -4,16 +4,16 @@ from modules.advanced_device_control import AdvancedDeviceControl
 from modules.real_time_monitoring import RealTimeMonitoring
 from modules.data_visualization import DataVisualization
 
-class TrojanServerBuilder:
+class RATServerBuilder:
     def __init__(self, root):
         self.root = root
-        self.root.title("Trojan Server Builder Dashboard")
+        self.root.title("RAT Server Builder Dashboard")
         self.root.geometry("1200x800")
 
         self.create_widgets()
 
     def create_widgets(self):
-        ttk.Label(self.root, text="Trojan Server Builder Dashboard", font=("Arial", 18)).pack(pady=10)
+        ttk.Label(self.root, text="RAT Server Builder Dashboard", font=("Arial", 18)).pack(pady=10)
 
         self.control_frame = ttk.LabelFrame(self.root, text="Control Mechanisms")
         self.control_frame.pack(fill="both", expand=True, padx=10, pady=10)
@@ -46,16 +46,16 @@ class TrojanServerBuilder:
 
     def add_sections(self):
         ttk.Label(self.sections_frame, text="Creation").pack(pady=5)
-        ttk.Button(self.sections_frame, text="Create Trojan Server", command=self.create_trojan_server).pack(pady=5)
+        ttk.Button(self.sections_frame, text="Create RAT Server", command=self.create_rat_server).pack(pady=5)
 
         ttk.Label(self.sections_frame, text="Building").pack(pady=5)
-        ttk.Button(self.sections_frame, text="Build Trojan Server", command=self.build_trojan_server).pack(pady=5)
+        ttk.Button(self.sections_frame, text="Build RAT Server", command=self.build_rat_server).pack(pady=5)
 
         ttk.Label(self.sections_frame, text="Management").pack(pady=5)
-        ttk.Button(self.sections_frame, text="Manage Trojan Server", command=self.manage_trojan_server).pack(pady=5)
+        ttk.Button(self.sections_frame, text="Manage RAT Server", command=self.manage_rat_server).pack(pady=5)
 
         ttk.Label(self.sections_frame, text="Deployment").pack(pady=5)
-        ttk.Button(self.sections_frame, text="Deploy Trojan Server", command=self.deploy_trojan_server).pack(pady=5)
+        ttk.Button(self.sections_frame, text="Deploy RAT Server", command=self.deploy_rat_server).pack(pady=5)
 
     def activate_ai_control(self):
         print("AI Control Activated")
@@ -69,19 +69,19 @@ class TrojanServerBuilder:
     def open_advanced_settings(self):
         print("Advanced Settings Opened")
 
-    def create_trojan_server(self):
-        print("Trojan Server Created")
+    def create_rat_server(self):
+        print("RAT Server Created")
 
-    def build_trojan_server(self):
-        print("Trojan Server Built")
+    def build_rat_server(self):
+        print("RAT Server Built")
 
-    def manage_trojan_server(self):
-        print("Trojan Server Managed")
+    def manage_rat_server(self):
+        print("RAT Server Managed")
 
-    def deploy_trojan_server(self):
-        print("Trojan Server Deployed")
+    def deploy_rat_server(self):
+        print("RAT Server Deployed")
 
 if __name__ == "__main__":
     root = tk.Tk()
-    app = TrojanServerBuilder(root)
+    app = RATServerBuilder(root)
     root.mainloop()
