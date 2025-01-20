@@ -71,7 +71,7 @@ def verify_component_connections():
         
         # Check modules components
         if not all([AlertsNotifications, APTSimulation]):
-            raise ValueError("Modules component connection check failed")
+            raise ValueError("Modules components connection check failed")
         logging.info("Modules components connection verified.")
         
     except Exception as e:

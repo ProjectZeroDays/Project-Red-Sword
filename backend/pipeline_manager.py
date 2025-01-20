@@ -25,6 +25,9 @@ class PipelineManager:
                 max_tokens=150
             )
             return response.choices[0].text.strip()
+        except openai.error.AuthenticationError as e:
+            logging.error(f"API key error during autogpt_task: {e}")
+            return "API key error"
         except Exception as e:
             logging.error(f"Error during autogpt_task: {e}")
             return ""
