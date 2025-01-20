@@ -57,6 +57,11 @@ class Dashboard:
 
         self.add_modules()
 
+        self.settings_frame = ttk.LabelFrame(self.root, text="Settings Dashboards")
+        self.settings_frame.pack(fill="both", expand=True, padx=10, pady=10)
+
+        self.add_settings_dashboards()
+
     def update_chart(self):
         fig = Figure(figsize=(8, 6), dpi=100)
         ax = fig.add_subplot(111)
@@ -108,6 +113,89 @@ class Dashboard:
 
         for module in modules:
             ttk.Label(self.module_frame, text=module.render()).pack(pady=5)
+
+    def add_settings_dashboards(self):
+        settings_dashboards = [
+            {"name": "Advanced Decryption", "description": "Configure advanced decryption settings."},
+            {"name": "Advanced Malware Analysis", "description": "Configure advanced malware analysis settings."},
+            {"name": "Advanced Social Engineering", "description": "Configure advanced social engineering settings."},
+            {"name": "Real-Time Threat Intelligence", "description": "Configure real-time threat intelligence settings."},
+            {"name": "Real-Time Monitoring", "description": "Configure real-time monitoring settings."},
+            {"name": "Threat Intelligence", "description": "Configure threat intelligence settings."},
+            {"name": "Predictive Analytics", "description": "Configure predictive analytics settings."},
+            {"name": "Automated Incident Response", "description": "Configure automated incident response settings."},
+            {"name": "AI Red Teaming", "description": "Configure AI red teaming settings."},
+            {"name": "APT Simulation", "description": "Configure APT simulation settings."},
+            {"name": "Machine Learning AI", "description": "Configure machine learning AI settings."},
+            {"name": "Data Visualization", "description": "Configure data visualization settings."},
+            {"name": "Blockchain Logger", "description": "Configure blockchain logger settings."},
+            {"name": "Cloud Exploitation", "description": "Configure cloud exploitation settings."},
+            {"name": "IoT Exploitation", "description": "Configure IoT exploitation settings."},
+            {"name": "Quantum Computing", "description": "Configure quantum computing settings."},
+            {"name": "Edge Computing", "description": "Configure edge computing settings."},
+            {"name": "Serverless Computing", "description": "Configure serverless computing settings."},
+            {"name": "Microservices Architecture", "description": "Configure microservices architecture settings."},
+            {"name": "Cloud Native Applications", "description": "Configure cloud native applications settings."},
+            {"name": "Alerts and Notifications", "description": "Configure alerts and notifications settings."},
+            {"name": "Device Fingerprinting", "description": "Configure device fingerprinting settings."},
+            {"name": "Exploit Payloads", "description": "Configure exploit payloads settings."},
+            {"name": "Fuzzing Engine", "description": "Configure fuzzing engine settings."},
+            {"name": "MITM Stingray", "description": "Configure MITM Stingray settings."},
+            {"name": "Network Exploitation", "description": "Configure network exploitation settings."},
+            {"name": "Vulnerability Scanner", "description": "Configure vulnerability scanner settings."},
+            {"name": "Wireless Exploitation", "description": "Configure wireless exploitation settings."},
+            {"name": "Zero Day Exploits", "description": "Configure zero day exploits settings."}
+        ]
+
+        for dashboard in settings_dashboards:
+            ttk.Label(self.settings_frame, text=f"{dashboard['name']}: {dashboard['description']}").pack(pady=5)
+
+        tool_tips = {
+            "Advanced Decryption": "Advanced decryption capabilities.",
+            "Advanced Malware Analysis": "Analyzes and detects advanced malware.",
+            "Advanced Social Engineering": "Detects and prevents social engineering attacks.",
+            "Real-Time Threat Intelligence": "Provides real-time threat intelligence.",
+            "Real-Time Monitoring": "Monitors threats in real-time.",
+            "Threat Intelligence": "Provides threat intelligence capabilities.",
+            "Predictive Analytics": "Utilizes predictive analytics for threat detection.",
+            "Automated Incident Response": "Automates incident response processes.",
+            "AI Red Teaming": "AI-driven red teaming for security testing.",
+            "APT Simulation": "Simulates advanced persistent threats.",
+            "Machine Learning AI": "Machine learning-based AI for threat detection.",
+            "Data Visualization": "Visualizes data for better insights.",
+            "Blockchain Logger": "Logs data using blockchain technology.",
+            "Cloud Exploitation": "Exploits vulnerabilities in cloud environments.",
+            "IoT Exploitation": "Exploits vulnerabilities in IoT devices.",
+            "Quantum Computing": "Utilizes quantum computing for security.",
+            "Edge Computing": "Secures edge computing environments.",
+            "Serverless Computing": "Secures serverless computing environments.",
+            "Microservices Architecture": "Secures microservices architectures.",
+            "Cloud Native Applications": "Secures cloud-native applications.",
+            "Alerts and Notifications": "Sends alerts and notifications.",
+            "Device Fingerprinting": "Identifies devices using fingerprinting.",
+            "Exploit Payloads": "Manages exploit payloads.",
+            "Fuzzing Engine": "Fuzzing engine for vulnerability detection.",
+            "MITM Stingray": "Manages MITM Stingray attacks.",
+            "Network Exploitation": "Exploits network vulnerabilities.",
+            "Vulnerability Scanner": "Scans for vulnerabilities.",
+            "Wireless Exploitation": "Exploits wireless vulnerabilities.",
+            "Zero Day Exploits": "Manages zero-day exploits."
+        }
+
+        for name, description in tool_tips.items():
+            ttk.Label(self.settings_frame, text=f"{name}: {description}").pack(pady=5)
+
+        continue_button = ttk.Button(self.settings_frame, text="Continue", command=self.continue_response)
+        continue_button.pack(pady=5)
+
+        download_button = ttk.Button(self.settings_frame, text="Download .zip", command=self.download_zip)
+        download_button.pack(pady=5)
+
+    def continue_response(self):
+        print("Continue button clicked")
+
+    def download_zip(self):
+        print("Download button clicked")
 
 
 if __name__ == "__main__":
