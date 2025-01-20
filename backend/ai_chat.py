@@ -1,11 +1,15 @@
 import openai
 import requests
+from backend.code_parser import CodeParser
+from backend.pipeline_manager import PipelineManager
 
 class MultiAIChat:
     def __init__(self, openai_key, huggingface_key, anthropic_key):
         self.openai_key = openai_key
-        self.huggingface_key = huggingface_key
-        self.anthropic_key = anthropic_key
+        self.huggingface_key = self.huggingface_key
+        self.anthropic_key = self.anthropic_key
+        self.code_parser = CodeParser("")
+        self.pipeline_manager = PipelineManager()
 
     def openai_chat(self, prompt):
         try:
@@ -36,6 +40,23 @@ class MultiAIChat:
             print(f"Error during Anthropic chat: {e}")
             return ""
 
+    def parse_code(self, code):
+        try:
+            self.code_parser = CodeParser(code)
+            return self.code_parser.analyze_code()
+        except Exception as e:
+            print(f"Error during code parsing: {e}")
+            return {}
+
+    def manage_pipeline(self, task):
+        try:
+            return self.pipeline_manager.autogpt_task(task)
+        except Exception as e:
+            print(f"Error during pipeline management: {e}")
+            return ""
+
 if __name__ == "__main__":
     chat = MultiAIChat("openai_key", "huggingface_key", "anthropic_key")
     print(chat.openai_chat("Hello, how can I assist you today?"))
+    print(chat.parse_code("def example():\n    return True"))
+    print(chat.manage_pipeline("Generate a weekly report."))

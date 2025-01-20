@@ -31,6 +31,8 @@ from modules.network_exploitation import NetworkExploitation
 from modules.vulnerability_scanner import VulnerabilityScanner
 from modules.wireless_exploitation import WirelessExploitation
 from modules.zero_day_exploits import ZeroDayExploits
+from backend.code_parser import CodeParser
+from backend.pipeline_manager import PipelineManager
 
 class Dashboard:
     def __init__(self, root):
@@ -108,7 +110,9 @@ class Dashboard:
             NetworkExploitation(),
             VulnerabilityScanner(),
             WirelessExploitation(),
-            ZeroDayExploits()
+            ZeroDayExploits(),
+            CodeParser("sample_code"),
+            PipelineManager()
         ]
 
         for module in modules:
@@ -144,7 +148,9 @@ class Dashboard:
             {"name": "Network Exploitation", "description": "Configure network exploitation settings."},
             {"name": "Vulnerability Scanner", "description": "Configure vulnerability scanner settings."},
             {"name": "Wireless Exploitation", "description": "Configure wireless exploitation settings."},
-            {"name": "Zero Day Exploits", "description": "Configure zero day exploits settings."}
+            {"name": "Zero Day Exploits", "description": "Configure zero day exploits settings."},
+            {"name": "Code Parser", "description": "Configure code parser settings."},
+            {"name": "Pipeline Manager", "description": "Configure pipeline manager settings."}
         ]
 
         for dashboard in settings_dashboards:
@@ -179,7 +185,9 @@ class Dashboard:
             "Network Exploitation": "Exploits network vulnerabilities.",
             "Vulnerability Scanner": "Scans for vulnerabilities.",
             "Wireless Exploitation": "Exploits wireless vulnerabilities.",
-            "Zero Day Exploits": "Manages zero-day exploits."
+            "Zero Day Exploits": "Manages zero-day exploits.",
+            "Code Parser": "Parses and analyzes code.",
+            "Pipeline Manager": "Manages pipelines for various tasks."
         }
 
         for name, description in tool_tips.items():
