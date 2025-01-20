@@ -12,7 +12,7 @@ import pandas as pd
 # Server configuration
 SERVER_HOST = '0.0.0.0'
 SERVER_PORT = 1234
-saveMail_directory = "FlowSteering/ApplicationCode/EmailServer/EmailServerMailDatabase"  # Change this to the directory where you want to save the emails inbox for each user
+saveMail_directory = os.getenv("SAVE_MAIL_DIRECTORY", "FlowSteering/ApplicationCode/EmailServer/EmailServerMailDatabase")  # Change this to the directory where you want to save the emails inbox for each user
 message_queue = Queue()
 default_image = 'FlowSteering/assets/PerturbatedImages/DjiPerturbClassForward.png'
 # Server configuration
