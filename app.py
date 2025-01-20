@@ -243,7 +243,7 @@ advanced_threat_intelligence = ThreatIntelligence()
 predictive_analytics = PredictiveAnalytics()
 automated_incident_response = AutomatedIncidentResponse()
 ai_red_teaming = AIRedTeaming()
-apt_simulation = APTSimulation
+apt_simulation = APTSimulation()
 machine_learning_ai = MachineLearningAI()
 data_visualization = DataVisualization()
 blockchain_logger = BlockchainLogger()
@@ -282,7 +282,7 @@ monitoring.automated_incident_response = automated_incident_response
 monitoring.ai_red_teaming = ai_red_teaming
 
 # Integrate the APTSimulation module with RealTimeMonitoring
-monitoring.apt_simulation = apt_simulation
+monitoring.apt_simulation = apt_simulation()
 
 # Integrate the PredictiveAnalytics module with RealTimeMonitoring
 monitoring.predictive_analytics = predictive_analytics

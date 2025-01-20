@@ -1,4 +1,3 @@
-
 import ast
 
 class CodeParser:
@@ -9,6 +8,8 @@ class CodeParser:
         return [node.name for node in ast.walk(self.tree) if isinstance(node, ast.FunctionDef)]
 
     def analyze_code(self):
+        if not self.tree.body:
+            return {"error": "Empty code input"}
         analysis = {
             "num_functions": len(self.find_functions()),
             "lines_of_code": len(self.tree.body),
