@@ -39,6 +39,7 @@ from backend.pipeline_manager import PipelineManager
 from kafka import KafkaProducer, KafkaConsumer
 
 import os
+import logging
 
 app = Flask(__name__)
 
@@ -46,13 +47,16 @@ DATABASE_URL = "sqlite:///document_analysis.db"
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
+# Configure logging
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+
 def scan_network():
     try:
         # Placeholder function for scanning network
         devices = ["Device1", "Device2", "Device3"]
         return devices
     except Exception as e:
-        print(f"Error during network scanning: {e}")
+        logging.error(f"Error during network scanning: {e}")
         return []
 
 def deploy_exploit(target):
@@ -62,7 +66,7 @@ def deploy_exploit(target):
             return "Exploit deployed successfully!"
         return "Exploit deployment failed."
     except Exception as e:
-        print(f"Error during exploit deployment: {e}")
+        logging.error(f"Error during exploit deployment: {e}")
         return "Exploit deployment failed."
 
 def save_scan_results_to_db(source, title, links, error):
@@ -77,7 +81,7 @@ def save_scan_results_to_db(source, title, links, error):
         session.add(scan_result)
         session.commit()
     except Exception as e:
-        print(f"Error saving scan results to database: {e}")
+        logging.error(f"Error saving scan results to database: {e}")
     finally:
         session.close()
 
@@ -104,7 +108,7 @@ try:
     threat_intelligence = RealTimeThreatIntelligence(api_key=os.getenv("REAL_TIME_THREAT_INTELLIGENCE_API_KEY"))
     monitoring = RealTimeMonitoring(threat_intelligence_module=threat_intelligence)
 except Exception as e:
-    print(f"Error initializing real-time threat intelligence and monitoring modules: {e}")
+    logging.error(f"Error initializing real-time threat intelligence and monitoring modules: {e}")
 
 # Initialize and integrate new modules in the main function
 try:
@@ -138,13 +142,13 @@ try:
     code_parser = CodeParser("sample_code")
     pipeline_manager = PipelineManager()
 except Exception as e:
-    print(f"Error initializing modules: {e}")
+    logging.error(f"Error initializing modules: {e}")
 
 # Integrate the ThreatIntelligence module with RealTimeMonitoring
 try:
     monitoring.threat_intelligence_module = advanced_threat_intelligence
 except Exception as e:
-    print(f"Error integrating ThreatIntelligence module with RealTimeMonitoring: {e}")
+    logging.error(f"Error integrating ThreatIntelligence module with RealTimeMonitoring: {e}")
 
 # Add real-time threat data analysis using the ThreatIntelligence module
 async def analyze_threat_data():
@@ -153,14 +157,14 @@ async def analyze_threat_data():
         analyzed_data = advanced_threat_intelligence.process_data(threat_data)
         return analyzed_data
     except Exception as e:
-        print(f"Error analyzing threat data: {e}")
+        logging.error(f"Error analyzing threat data: {e}")
 
 # Update the RealTimeThreatIntelligence initialization to include the ThreatIntelligence module
 try:
     threat_intelligence_module = RealTimeThreatIntelligence(api_key="YOUR_API_KEY")
     threat_intelligence_module.threat_intelligence = advanced_threat_intelligence
 except Exception as e:
-    print(f"Error updating RealTimeThreatIntelligence initialization: {e}")
+    logging.error(f"Error updating RealTimeThreatIntelligence initialization: {e}")
 
 # Add real-time threat data monitoring using the ThreatIntelligence module
 async def monitor_threat_data():
@@ -170,85 +174,85 @@ async def monitor_threat_data():
             if threat["severity"] > 0.8:
                 monitoring.trigger_alert(threat)
     except Exception as e:
-        print(f"Error monitoring threat data: {e}")
+        logging.error(f"Error monitoring threat data: {e}")
 
 # Integrate the AutomatedIncidentResponse module with RealTimeMonitoring
 try:
     monitoring.automated_incident_response = automated_incident_response
 except Exception as e:
-    print(f"Error integrating AutomatedIncidentResponse module with RealTimeMonitoring: {e}")
+    logging.error(f"Error integrating AutomatedIncidentResponse module with RealTimeMonitoring: {e}")
 
 # Integrate the AIRedTeaming module with RealTimeMonitoring
 try:
     monitoring.ai_red_teaming = ai_red_teaming
 except Exception as e:
-    print(f"Error integrating AIRedTeaming module with RealTimeMonitoring: {e}")
+    logging.error(f"Error integrating AIRedTeaming module with RealTimeMonitoring: {e}")
 
 # Integrate the APTSimulation module with RealTimeMonitoring
 try:
     monitoring.apt_simulation = apt_simulation()
 except Exception as e:
-    print(f"Error integrating APTSimulation module with RealTimeMonitoring: {e}")
+    logging.error(f"Error integrating APTSimulation module with RealTimeMonitoring: {e}")
 
 # Integrate the PredictiveAnalytics module with RealTimeMonitoring
 try:
     monitoring.predictive_analytics = predictive_analytics
 except Exception as e:
-    print(f"Error integrating PredictiveAnalytics module with RealTimeMonitoring: {e}")
+    logging.error(f"Error integrating PredictiveAnalytics module with RealTimeMonitoring: {e}")
 
 # Integrate the MachineLearningAI module with RealTimeMonitoring
 try:
     monitoring.machine_learning_ai = machine_learning_ai
 except Exception as e:
-    print(f"Error integrating MachineLearningAI module with RealTimeMonitoring: {e}")
+    logging.error(f"Error integrating MachineLearningAI module with RealTimeMonitoring: {e}")
 
 # Integrate the DataVisualization module with RealTimeMonitoring
 try:
     monitoring.data_visualization = data_visualization
 except Exception as e:
-    print(f"Error integrating DataVisualization module with RealTimeMonitoring: {e}")
+    logging.error(f"Error integrating DataVisualization module with RealTimeMonitoring: {e}")
 
 # Integrate the CloudExploitation module with RealTimeMonitoring
 try:
     monitoring.cloud_exploitation = cloud_exploitation
 except Exception as e:
-    print(f"Error integrating CloudExploitation module with RealTimeMonitoring: {e}")
+    logging.error(f"Error integrating CloudExploitation module with RealTimeMonitoring: {e}")
 
 # Integrate the IoTExploitation module with RealTimeMonitoring
 try:
     monitoring.iot_exploitation = iot_exploitation
 except Exception as e:
-    print(f"Error integrating IoTExploitation module with RealTimeMonitoring: {e}")
+    logging.error(f"Error integrating IoTExploitation module with RealTimeMonitoring: {e}")
 
 # Integrate the QuantumComputing module with RealTimeMonitoring
 try:
     monitoring.quantum_computing = quantum_computing
 except Exception as e:
-    print(f"Error integrating QuantumComputing module with RealTimeMonitoring: {e}")
+    logging.error(f"Error integrating QuantumComputing module with RealTimeMonitoring: {e}")
 
 # Integrate the EdgeComputing module with RealTimeMonitoring
 try:
     monitoring.edge_computing = edge_computing
 except Exception as e:
-    print(f"Error integrating EdgeComputing module with RealTimeMonitoring: {e}")
+    logging.error(f"Error integrating EdgeComputing module with RealTimeMonitoring: {e}")
 
 # Integrate the ServerlessComputing module with RealTimeMonitoring
 try:
     monitoring.serverless_computing = serverless_computing
 except Exception as e:
-    print(f"Error integrating ServerlessComputing module with RealTimeMonitoring: {e}")
+    logging.error(f"Error integrating ServerlessComputing module with RealTimeMonitoring: {e}")
 
 # Integrate the MicroservicesArchitecture module with RealTimeMonitoring
 try:
     monitoring.microservices_architecture = microservices_architecture
 except Exception as e:
-    print(f"Error integrating MicroservicesArchitecture module with RealTimeMonitoring: {e}")
+    logging.error(f"Error integrating MicroservicesArchitecture module with RealTimeMonitoring: {e}")
 
 # Integrate the CloudNativeApplications module with RealTimeMonitoring
 try:
     monitoring.cloud_native_applications = cloud_native_applications
 except Exception as e:
-    print(f"Error integrating CloudNativeApplications module with RealTimeMonitoring: {e}")
+    logging.error(f"Error integrating CloudNativeApplications module with RealTimeMonitoring: {e}")
 
 # Add tool tips and advanced help options for all functions
 def add_tool_tips():
@@ -340,7 +344,7 @@ def setup_message_queue():
         channel.queue_declare(queue='task_queue', durable=True)
         return channel
     except Exception as e:
-        print(f"Error setting up message queue: {e}")
+        logging.error(f"Error setting up message queue: {e}")
         return None
 
 def send_message(channel, message):
@@ -352,21 +356,21 @@ def send_message(channel, message):
             properties=pika.BasicProperties(
                 delivery_mode=2,  # make message persistent
             ))
-        print(f"Sent message: {message}")
+        logging.info(f"Sent message: {message}")
     except Exception as e:
-        print(f"Error sending message: {e}")
+        logging.error(f"Error sending message: {e}")
 
 def receive_message(channel):
     def callback(ch, method, properties, body):
-        print(f"Received message: {body}")
+        logging.info(f"Received message: {body}")
         ch.basic_ack(delivery_tag=method.delivery_tag)
 
     try:
         channel.basic_consume(queue='task_queue', on_message_callback=callback)
-        print('Waiting for messages. To exit press CTRL+C')
+        logging.info('Waiting for messages. To exit press CTRL+C')
         channel.start_consuming()
     except Exception as e:
-        print(f"Error receiving message: {e}")
+        logging.error(f"Error receiving message: {e}")
 
 def setup_kafka():
     try:
@@ -374,23 +378,23 @@ def setup_kafka():
         consumer = KafkaConsumer('my_topic', bootstrap_servers='localhost:9092', auto_offset_reset='earliest', enable_auto_commit=True, group_id='my-group')
         return producer, consumer
     except Exception as e:
-        print(f"Error setting up Kafka: {e}")
+        logging.error(f"Error setting up Kafka: {e}")
         return None, None
 
 def send_message_to_kafka(producer, topic, message):
     try:
         producer.send(topic, message.encode('utf-8'))
         producer.flush()
-        print(f"Sent message to Kafka topic {topic}: {message}")
+        logging.info(f"Sent message to Kafka topic {topic}: {message}")
     except Exception as e:
-        print(f"Error sending message to Kafka: {e}")
+        logging.error(f"Error sending message to Kafka: {e}")
 
 def receive_message_from_kafka(consumer):
     try:
         for message in consumer:
-            print(f"Received message from Kafka: {message.value.decode('utf-8')}")
+            logging.info(f"Received message from Kafka: {message.value.decode('utf-8')}")
     except Exception as e:
-        print(f"Error receiving message from Kafka: {e}")
+        logging.error(f"Error receiving message from Kafka: {e}")
 
 if __name__ == "__main__":
     channel = setup_message_queue()

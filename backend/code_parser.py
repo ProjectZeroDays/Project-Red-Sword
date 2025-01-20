@@ -48,7 +48,7 @@ class CodeParser:
             session.add(analysis_result)
             session.commit()
         except Exception as e:
-            print(f"Error saving analysis to database: {e}")
+            logging.error(f"Error saving analysis to database: {e}")
         finally:
             session.close()
 

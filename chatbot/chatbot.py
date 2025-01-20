@@ -51,10 +51,14 @@ from backend.pipeline_manager import PipelineManager
 
 import pika
 from kafka import KafkaProducer, KafkaConsumer
+import logging
 
 DATABASE_URL = "sqlite:///document_analysis.db"
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+# Configure logging
+logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def get_response(user_input):
     """Handle user input and provide responses."""
@@ -86,13 +90,13 @@ def handle_vulnerability_scanning():
             session.add(scan_result)
             session.commit()
         except Exception as e:
-            print(f"Error saving scan results to database: {e}")
+            logging.error(f"Error saving scan results to database: {e}")
         finally:
             session.close()
         
         return vulnerabilities
     except Exception as e:
-        print(f"Error during vulnerability scanning: {e}")
+        logging.error(f"Error during vulnerability scanning: {e}")
         return []
 
 def handle_exploit_deployment(target):
@@ -112,13 +116,13 @@ def handle_exploit_deployment(target):
             session.add(exploit_result)
             session.commit()
         except Exception as e:
-            print(f"Error saving exploit deployment results to database: {e}")
+            logging.error(f"Error saving exploit deployment results to database: {e}")
         finally:
             session.close()
         
         return "Exploit deployed successfully!" if result else "Exploit deployment failed."
     except Exception as e:
-        print(f"Error during exploit deployment: {e}")
+        logging.error(f"Error during exploit deployment: {e}")
         return "Exploit deployment failed."
 
 def setup_kafka():
