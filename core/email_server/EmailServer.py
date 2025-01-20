@@ -2,6 +2,7 @@ import email
 import os
 import socket
 import threading
+import logging
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -16,6 +17,9 @@ saveMail_directory = os.getenv("SAVE_MAIL_DIRECTORY", "FlowSteering/ApplicationC
 message_queue = Queue()
 default_image = 'FlowSteering/assets/PerturbatedImages/DjiPerturbClassForward.png'
 # Server configuration
+
+# Configure logging
+logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def receive_complete_data(
         client_socket):  # This function is used to receive the complete data from the client, adjust the parameters as needed based on your network conditions
@@ -80,7 +84,7 @@ def Save_Email_To_Recipient(client_socket, data, msg, requests, subject, sender,
         else:
             body = msg.get_payload()
     except Exception as e:
-        print(f"Error processing email message: {e}")
+        logging.error(f"Error processing email message: {e}")
         client_socket.sendall("Error processing email message".encode('utf-8'))
         return
 
@@ -166,7 +170,8 @@ def Check_Inbox(client_socket, sender): # This function is used to check the inb
                 img = MIMEImage(f.read())
                 img.add_header("Content-Disposition", "attachment", filename=filename)
                 msg.attach(img)
-            except:
+            except Exception as e:
+                logging.error(f"Error sending image: {e}")
                 print('network error, sending default image instead of the original image')
                 with open(default_image,"rb") as f:
                     img = MIMEImage(f.read())

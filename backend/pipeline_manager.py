@@ -1,5 +1,6 @@
 import openai
 import requests
+import logging
 from database.models import DocumentAnalysis
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -7,6 +8,9 @@ from sqlalchemy.orm import sessionmaker
 DATABASE_URL = "sqlite:///document_analysis.db"
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+# Configure logging
+logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
 
 class PipelineManager:
     def __init__(self):
@@ -22,7 +26,7 @@ class PipelineManager:
             )
             return response.choices[0].text.strip()
         except Exception as e:
-            print(f"Error during autogpt_task: {e}")
+            logging.error(f"Error during autogpt_task: {e}")
             return ""
 
     def pinocchio_fact_check(self, text):
@@ -33,16 +37,17 @@ class PipelineManager:
                 "key": "YOUR_API_KEY"
             }
             response = requests.get(url, params=params)
-            if response.status_code == 200:
-                result = response.json()
-                if "claims" in result:
-                    return result["claims"]
-                else:
-                    return "No claims found."
+            response.raise_for_status()
+            result = response.json()
+            if "claims" in result:
+                return result["claims"]
             else:
-                return f"Error: {response.status_code}"
+                return "No claims found."
+        except requests.exceptions.HTTPError as e:
+            logging.error(f"HTTP error during pinocchio_fact_check: {e}")
+            return f"Error: {e}"
         except Exception as e:
-            print(f"Error during pinocchio_fact_check: {e}")
+            logging.error(f"Error during pinocchio_fact_check: {e}")
             return ""
 
     def save_analysis_to_db(self, source, title, links, error):
@@ -57,7 +62,7 @@ class PipelineManager:
             session.add(analysis_result)
             session.commit()
         except Exception as e:
-            print(f"Error saving analysis to database: {e}")
+            logging.error(f"Error saving analysis to database: {e}")
         finally:
             session.close()
 
