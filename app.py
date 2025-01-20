@@ -53,6 +53,7 @@ from modules.ios_control import iOSControl
 from modules.advanced_device_control import AdvancedDeviceControl
 
 import pika
+from kafka import KafkaProducer, KafkaConsumer
 
 pn.extension(design="bootstrap", sizing_mode="stretch_width")
 
@@ -548,3 +549,33 @@ def send_message_to_queue(message):
 
 # Example usage of sending a message to the queue
 send_message_to_queue("Test message")
+
+def setup_kafka():
+    try:
+        producer = KafkaProducer(bootstrap_servers='localhost:9092')
+        consumer = KafkaConsumer('my_topic', bootstrap_servers='localhost:9092', auto_offset_reset='earliest', enable_auto_commit=True, group_id='my-group')
+        return producer, consumer
+    except Exception as e:
+        logging.error(f"Error setting up Kafka: {e}")
+        return None, None
+
+def send_message_to_kafka(producer, topic, message):
+    try:
+        producer.send(topic, message.encode('utf-8'))
+        producer.flush()
+        logging.info(f"Sent message to Kafka topic {topic}: {message}")
+    except Exception as e:
+        logging.error(f"Error sending message to Kafka: {e}")
+
+def receive_message_from_kafka(consumer):
+    try:
+        for message in consumer:
+            logging.info(f"Received message from Kafka: {message.value.decode('utf-8')}")
+    except Exception as e:
+        logging.error(f"Error receiving message from Kafka: {e}")
+
+if __name__ == "__main__":
+    producer, consumer = setup_kafka()
+    if producer and consumer:
+        send_message_to_kafka(producer, 'my_topic', 'Test Kafka message')
+        receive_message_from_kafka(consumer)
