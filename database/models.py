@@ -2,6 +2,7 @@ from sqlalchemy import create_engine, Column, String, Integer, Text
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import logging
+import os
 
 Base = declarative_base()
 
@@ -13,7 +14,9 @@ class DocumentAnalysis(Base):
     links = Column(Text, nullable=True)
     error = Column(Text, nullable=True)
 
-DATABASE_URL = "sqlite:///document_analysis.db"
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///document_analysis.db")
+if not DATABASE_URL:
+    raise ValueError("DATABASE_URL environment variable is not set.")
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base.metadata.create_all(bind=engine)
