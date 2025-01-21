@@ -1,4 +1,3 @@
-
 <h1 align='center' style="text-align:center; font-weight:bold; font-size:2.5em"> ComPromptMized: Unleashing Zero-click Worms that Target GenAI-Powered Applications
  </h1>
 
@@ -225,3 +224,51 @@ https://arxiv.org/abs/2403.02817
 }
 ```
 
+# Prerequisites
+
+- A C compiler (e.g., gcc)
+- libpcap library
+
+# Running the GenAI EcoSystem
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/yourusername/ComPromptMized.git
+   cd ComPromptMized
+   ```
+
+2. Install the required dependencies:
+   ```
+   sudo apt-get update
+   sudo apt-get install -y gcc libpcap-dev
+   ```
+
+# Running the Email Server
+
+1. Compile the script using a C compiler, for example:
+   ```
+   gcc -o ComPromptMized-poc ComPromptMized-poc.c -lpcap
+   ```
+
+2. Run the compiled script:
+   ```
+   ./ComPromptMized-poc
+   ```
+
+3. Check if the script connects back to `zeroclickexploits.ddns.net` and auto executes as expected.
+
+# Running the LLaVa Server
+
+Please refer to the [CONTRIBUTING.md](CONTRIBUTING.md) file for guidelines on how to contribute to this project.
+
+# Running the End User Clients
+
+This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md) file for details.
+
+# Running the Attacker Client
+
+See the [CHANGELOG.md](CHANGELOG.md) file for a history of changes made to the project.
+
+# Recent Changes and Additions
+
+For information on how to report security vulnerabilities, please refer to the [SECURITY.md](SECURITY.md) file.
