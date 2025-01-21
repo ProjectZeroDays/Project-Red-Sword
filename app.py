@@ -54,6 +54,8 @@ from backend.pipeline_manager import PipelineManager
 import pika
 from kafka import KafkaProducer, KafkaConsumer
 
+from modules.otp_interceptor import OTPInterceptor
+
 pn.extension(design="bootstrap", sizing_mode="stretch_width")
 
 ICON_URLS = {
@@ -272,6 +274,17 @@ try:
     advanced_device_control = AdvancedDeviceControl()
     code_parser = CodeParser("sample_code")
     pipeline_manager = PipelineManager()
+    otp_interceptor = OTPInterceptor(
+        email_config={
+            'host': 'your_email_host',
+            'username': 'your_email_username',
+            'password': 'your_email_password'
+        },
+        twilio_config={
+            'account_sid': 'your_twilio_account_sid',
+            'auth_token': 'your_twilio_auth_token'
+        }
+    )
 except Exception as e:
     logging.error(f"Error initializing modules: {e}")
 
@@ -517,6 +530,8 @@ dashboard = pn.Column(
     advanced_device_control.render(),
     code_parser.render(),
     pipeline_manager.render(),
+    otp_interceptor.intercept_email_otp(),
+    otp_interceptor.intercept_sms_otp(),
     continue_button,
     download_button
 )
