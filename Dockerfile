@@ -22,4 +22,4 @@ ENV OPENAI_API_KEY=${OPENAI_API_KEY}
 ENV HUGGINGFACE_API_KEY=${HUGGINGFACE_API_KEY}
 
 # Command to start the Gradio app
-CMD ["python", "src/frontend/archive_gui.py"]
+CMD ["python", "frontend/archive_gui.py"]
