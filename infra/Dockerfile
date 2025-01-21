@@ -1,4 +1,3 @@
-
 # Base image
 FROM python:3.9-slim
 
@@ -9,10 +8,10 @@ WORKDIR /app
 COPY . .
 
 # Install dependencies
-RUN pip install -r requirements.txt
+RUN pip install -r requirements.txt PyQt5
 
 # Expose application port
 EXPOSE 5000
 
 # Run the application
-CMD ["python", "src/frontend/gui_chat_interface.py"]
+CMD ["python", "src/frontend/archive_gui.py"]

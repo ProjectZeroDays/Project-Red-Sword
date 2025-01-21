@@ -12,7 +12,7 @@ USER appuser
 COPY . /app
 
 # Install dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt PyQt5
 
 # Expose the Gradio default port
 EXPOSE 7860
