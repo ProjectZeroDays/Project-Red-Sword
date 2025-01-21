@@ -1,4 +1,5 @@
 import random
+import logging
 
 class OffensiveSimulation:
     def __init__(self):
@@ -12,7 +13,7 @@ class OffensiveSimulation:
 
     def simulate_attack(self):
         if not self.scenarios:
-            print("Error: No scenarios available for simulation.")
+            logging.error("Error: No scenarios available for simulation.")
             return
 
         try:
@@ -22,11 +23,12 @@ class OffensiveSimulation:
             print(f"[SIMULATION] Executing simulated attack: {scenario}")
 
         except IndexError as e:
-            print(f"Error during simulation: {e}")
+            logging.error(f"Error during simulation: {e}")
 
         except Exception as e:
-            print(f"Error during simulation: {e}")
+            logging.error(f"Error during simulation: {e}")
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
     simulation = OffensiveSimulation()
     simulation.simulate_attack()

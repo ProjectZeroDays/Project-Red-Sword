@@ -28,16 +28,24 @@ class CodeParser:
             raise
 
     def find_functions(self):
-        return [node.name for node in ast.walk(self.tree) if isinstance(node, ast.FunctionDef)]
+        try:
+            return [node.name for node in ast.walk(self.tree) if isinstance(node, ast.FunctionDef)]
+        except Exception as e:
+            logging.error(f"Unexpected error in find_functions: {e}")
+            return []
 
     def analyze_code(self):
-        if not self.tree.body:
-            return {"error": "Empty code input"}
-        analysis = {
-            "num_functions": len(self.find_functions()),
-            "lines_of_code": len(self.tree.body),
-        }
-        return analysis
+        try:
+            if not self.tree.body:
+                return {"error": "Empty code input"}
+            analysis = {
+                "num_functions": len(self.find_functions()),
+                "lines_of_code": len(self.tree.body),
+            }
+            return analysis
+        except Exception as e:
+            logging.error(f"Unexpected error in analyze_code: {e}")
+            return {"error": "Analysis failed"}
 
     def save_analysis_to_db(self, source, title, links, error):
         session = SessionLocal()
