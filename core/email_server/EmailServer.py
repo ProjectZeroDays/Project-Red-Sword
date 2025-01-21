@@ -2,6 +2,7 @@ import email
 import os
 import socket
 import threading
+import logging
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -12,10 +13,15 @@ import pandas as pd
 # Server configuration
 SERVER_HOST = '0.0.0.0'
 SERVER_PORT = 1234
-saveMail_directory = "FlowSteering/ApplicationCode/EmailServer/EmailServerMailDatabase"  # Change this to the directory where you want to save the emails inbox for each user
+saveMail_directory = os.getenv("SAVE_MAIL_DIRECTORY", "FlowSteering/ApplicationCode/EmailServer/EmailServerMailDatabase")  # Change this to the directory where you want to save the emails inbox for each user
+if not saveMail_directory:
+    raise ValueError("SAVE_MAIL_DIRECTORY environment variable is not set.")
 message_queue = Queue()
 default_image = 'FlowSteering/assets/PerturbatedImages/DjiPerturbClassForward.png'
 # Server configuration
+
+# Configure logging
+logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def receive_complete_data(
         client_socket):  # This function is used to receive the complete data from the client, adjust the parameters as needed based on your network conditions
@@ -36,8 +42,8 @@ def receive_complete_data(
     except socket.timeout as e:
         print('timeout')
         print(e)
-
-        pass
+    except Exception as e:
+        print(f"Error receiving data: {e}")
 
     return received_data
 
@@ -80,7 +86,7 @@ def Save_Email_To_Recipient(client_socket, data, msg, requests, subject, sender,
         else:
             body = msg.get_payload()
     except Exception as e:
-        print(f"Error processing email message: {e}")
+        logging.error(f"Error processing email message: {e}")
         client_socket.sendall("Error processing email message".encode('utf-8'))
         return
 
@@ -97,8 +103,13 @@ def Save_Email_To_Recipient(client_socket, data, msg, requests, subject, sender,
         filename = filename.split("/")[-1]
 
         # Save the image file
-        with open(os.path.join(recipient_directory, filename), "wb") as f:
-            f.write(part.get_payload(decode=True))
+        try:
+            with open(os.path.join(recipient_directory, filename), "wb") as f:
+                f.write(part.get_payload(decode=True))
+        except Exception as e:
+            logging.error(f"Error saving email attachment: {e}")
+            client_socket.sendall("Error saving email attachment".encode('utf-8'))
+            return
 
     print(f"From: {sender}")
     print(f"To: {recipient}")
@@ -115,18 +126,28 @@ def Save_Email_To_Recipient(client_socket, data, msg, requests, subject, sender,
     if not os.path.isfile(f"{recipient_directory}/{recipient}_received_emails.csv") or (
             os.stat(f"{recipient_directory}/{recipient}_received_emails.csv").st_size == 0): # If the file doesn't exist, then create the file and save the email to the file
         df = pd.DataFrame(email_data, columns=MyColumns)
-        df.to_csv(f"{recipient_directory}/{recipient}_received_emails.csv", mode='w', header=True, index=False) # Save the email to the recipient's inbox
-        df.to_csv(f"{recipient_directory}/{recipient}_received_emailsHistory.csv", mode='w', header=True, index=False) # Save the email to the recipient's inbox history
+        try:
+            df.to_csv(f"{recipient_directory}/{recipient}_received_emails.csv", mode='w', header=True, index=False) # Save the email to the recipient's inbox
+            df.to_csv(f"{recipient_directory}/{recipient}_received_emailsHistory.csv", mode='w', header=True, index=False) # Save the email to the recipient's inbox history
+        except Exception as e:
+            logging.error(f"Error saving email to CSV: {e}")
+            client_socket.sendall("Error saving email to CSV".encode('utf-8'))
+            return
 
     else: # If the file already exists, then append the email to the file
 
-        df = pd.read_csv(f"{recipient_directory}/{recipient}_received_emails.csv") # Read the csv file of the recipient
-        new_row_df = pd.DataFrame(email_data, columns=df.columns)
-        df = pd.concat([df, new_row_df], ignore_index=True)
-        df.to_csv(f"{recipient_directory}/{recipient}_received_emails.csv", mode='w', header=True, index=False)
-        df = pd.read_csv(f"{recipient_directory}/{recipient}_received_emailsHistory.csv")
-        df = pd.concat([df, new_row_df], ignore_index=True)
-        df.to_csv(f"{recipient_directory}/{recipient}_received_emailsHistory.csv", mode='w', header=True, index=False)
+        try:
+            df = pd.read_csv(f"{recipient_directory}/{recipient}_received_emails.csv") # Read the csv file of the recipient
+            new_row_df = pd.DataFrame(email_data, columns=df.columns)
+            df = pd.concat([df, new_row_df], ignore_index=True)
+            df.to_csv(f"{recipient_directory}/{recipient}_received_emails.csv", mode='w', header=True, index=False)
+            df = pd.read_csv(f"{recipient_directory}/{recipient}_received_emailsHistory.csv")
+            df = pd.concat([df, new_row_df], ignore_index=True)
+            df.to_csv(f"{recipient_directory}/{recipient}_received_emailsHistory.csv", mode='w', header=True, index=False)
+        except Exception as e:
+            logging.error(f"Error appending email to CSV: {e}")
+            client_socket.sendall("Error appending email to CSV".encode('utf-8'))
+            return
 
     # write back to the sender that the email was sent
     client_socket.sendall("Email Sent".encode('utf-8'))
@@ -166,7 +187,8 @@ def Check_Inbox(client_socket, sender): # This function is used to check the inb
                 img = MIMEImage(f.read())
                 img.add_header("Content-Disposition", "attachment", filename=filename)
                 msg.attach(img)
-            except:
+            except Exception as e:
+                logging.error(f"Error sending image: {e}")
                 print('network error, sending default image instead of the original image')
                 with open(default_image,"rb") as f:
                     img = MIMEImage(f.read())

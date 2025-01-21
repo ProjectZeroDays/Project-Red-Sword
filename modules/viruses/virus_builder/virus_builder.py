@@ -4,16 +4,16 @@ from modules.advanced_device_control import AdvancedDeviceControl
 from modules.real_time_monitoring import RealTimeMonitoring
 from modules.data_visualization import DataVisualization
 
-class TrojanServerBuilder:
+class VirusBuilder:
     def __init__(self, root):
         self.root = root
-        self.root.title("Trojan Server Builder Dashboard")
+        self.root.title("Virus Builder Dashboard")
         self.root.geometry("1200x800")
 
         self.create_widgets()
 
     def create_widgets(self):
-        ttk.Label(self.root, text="Trojan Server Builder Dashboard", font=("Arial", 18)).pack(pady=10)
+        ttk.Label(self.root, text="Virus Builder Dashboard", font=("Arial", 18)).pack(pady=10)
 
         self.control_frame = ttk.LabelFrame(self.root, text="Control Mechanisms")
         self.control_frame.pack(fill="both", expand=True, padx=10, pady=10)
@@ -46,16 +46,16 @@ class TrojanServerBuilder:
 
     def add_sections(self):
         ttk.Label(self.sections_frame, text="Creation").pack(pady=5)
-        ttk.Button(self.sections_frame, text="Create Trojan Server", command=self.create_trojan_server).pack(pady=5)
+        ttk.Button(self.sections_frame, text="Create Virus", command=self.create_virus).pack(pady=5)
 
         ttk.Label(self.sections_frame, text="Building").pack(pady=5)
-        ttk.Button(self.sections_frame, text="Build Trojan Server", command=self.build_trojan_server).pack(pady=5)
+        ttk.Button(self.sections_frame, text="Build Virus", command=self.build_virus).pack(pady=5)
 
         ttk.Label(self.sections_frame, text="Management").pack(pady=5)
-        ttk.Button(self.sections_frame, text="Manage Trojan Server", command=self.manage_trojan_server).pack(pady=5)
+        ttk.Button(self.sections_frame, text="Manage Virus", command=self.manage_virus).pack(pady=5)
 
         ttk.Label(self.sections_frame, text="Deployment").pack(pady=5)
-        ttk.Button(self.sections_frame, text="Deploy Trojan Server", command=self.deploy_trojan_server).pack(pady=5)
+        ttk.Button(self.sections_frame, text="Deploy Virus", command=self.deploy_virus).pack(pady=5)
 
     def activate_ai_control(self):
         print("AI Control Activated")
@@ -69,19 +69,19 @@ class TrojanServerBuilder:
     def open_advanced_settings(self):
         print("Advanced Settings Opened")
 
-    def create_trojan_server(self):
-        print("Trojan Server Created")
+    def create_virus(self):
+        print("Virus Created")
 
-    def build_trojan_server(self):
-        print("Trojan Server Built")
+    def build_virus(self):
+        print("Virus Built")
 
-    def manage_trojan_server(self):
-        print("Trojan Server Managed")
+    def manage_virus(self):
+        print("Virus Managed")
 
-    def deploy_trojan_server(self):
-        print("Trojan Server Deployed")
+    def deploy_virus(self):
+        print("Virus Deployed")
 
 if __name__ == "__main__":
     root = tk.Tk()
-    app = TrojanServerBuilder(root)
+    app = VirusBuilder(root)
     root.mainloop()

@@ -1,6 +1,8 @@
 from sqlalchemy import create_engine, Column, String, Integer, Text
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+import logging
+import os
 
 Base = declarative_base()
 
@@ -12,7 +14,9 @@ class DocumentAnalysis(Base):
     links = Column(Text, nullable=True)
     error = Column(Text, nullable=True)
 
-DATABASE_URL = "sqlite:///document_analysis.db"
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///document_analysis.db")
+if not DATABASE_URL:
+    raise ValueError("DATABASE_URL environment variable is not set.")
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base.metadata.create_all(bind=engine)
@@ -31,6 +35,9 @@ from exploits.ios_framework_extracted.iOS_Zero_Click_Framework_Updated.exploits 
 from modules.alerts_notifications import AlertsNotifications
 from modules.apt_simulation import APTSimulation
 
+# Configure logging
+logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
+
 # Verification of component connections
 def verify_component_connections():
     try:
@@ -38,40 +45,40 @@ def verify_component_connections():
         session = SessionLocal()
         session.execute('SELECT 1')
         session.close()
-        print("Database connection verified.")
+        logging.info("Database connection verified.")
         
         # Check app components
         if not all([monitoring, threat_intelligence, advanced_threat_intelligence, predictive_analytics, automated_incident_response, ai_red_teaming, apt_simulation, machine_learning_ai, data_visualization, blockchain_logger, cloud_exploitation, iot_exploitation, quantum_computing, edge_computing, serverless_computing, microservices_architecture, cloud_native_applications]):
             raise ValueError("App component connection check failed")
-        print("App components connection verified.")
+        logging.info("App components connection verified.")
         
         # Check backend components
         if not all([CodeParser, PipelineManager]):
             raise ValueError("Backend component connection check failed")
-        print("Backend components connection verified.")
+        logging.info("Backend components connection verified.")
         
         # Check chatbot components
         if not all([scan_network, deploy_exploit, handle_vulnerability_scanning, handle_exploit_deployment]):
             raise ValueError("Chatbot component connection check failed")
-        print("Chatbot components connection verified.")
+        logging.info("Chatbot components connection verified.")
         
         # Check dashboard components
         if not all([malware_analysis, social_engineering]):
             raise ValueError("Dashboard component connection check failed")
-        print("Dashboard components connection verified.")
+        logging.info("Dashboard components connection verified.")
         
         # Check exploits components
         if not all([deploy_exploit2, deploy_exploit_ios]):
             raise ValueError("Exploits component connection check failed")
-        print("Exploits components connection verified.")
+        logging.info("Exploits components connection verified.")
         
         # Check modules components
         if not all([AlertsNotifications, APTSimulation]):
-            raise ValueError("Modules component connection check failed")
-        print("Modules components connection verified.")
+            raise ValueError("Modules components connection check failed")
+        logging.info("Modules components connection verified.")
         
     except Exception as e:
-        print(f"Component connection verification failed: {e}")
+        logging.error(f"Component connection verification failed: {e}")
 
 # Run verification
 verify_component_connections()

@@ -3,16 +3,12 @@ import random
 import logging
 from typing import List, Tuple
 import re
+import os
 
 import aiohttp
 import panel as pn
 from PIL import Image
 from transformers import CLIPModel, CLIPProcessor
-
-from core.integrations.email_handler import EmailHandler
-from core.email_server.EmailServer import EmailServer
-from core.end_user.AttackerClient import AttackerClient
-from core.end_user.EndUserClient import EndUserClient
 
 from modules.real_time_threat_intelligence import RealTimeThreatIntelligence
 from modules.real_time_monitoring import RealTimeMonitoring
@@ -57,6 +53,8 @@ from backend.pipeline_manager import PipelineManager
 
 import pika
 from kafka import KafkaProducer, KafkaConsumer
+
+from modules.otp_interceptor import OTPInterceptor
 
 pn.extension(design="bootstrap", sizing_mode="stretch_width")
 
@@ -233,7 +231,7 @@ pn.template.BootstrapTemplate(
 
 # Initialize real-time threat intelligence and monitoring modules
 try:
-    threat_intelligence = RealTimeThreatIntelligence(api_key="YOUR_API_KEY")
+    threat_intelligence = RealTimeThreatIntelligence(api_key=os.getenv("REAL_TIME_THREAT_INTELLIGENCE_API_KEY"))
     monitoring = RealTimeMonitoring(threat_intelligence_module=threat_intelligence)
 except Exception as e:
     logging.error(f"Error initializing real-time threat intelligence and monitoring modules: {e}")
@@ -276,6 +274,17 @@ try:
     advanced_device_control = AdvancedDeviceControl()
     code_parser = CodeParser("sample_code")
     pipeline_manager = PipelineManager()
+    otp_interceptor = OTPInterceptor(
+        email_config={
+            'host': 'your_email_host',
+            'username': 'your_email_username',
+            'password': 'your_email_password'
+        },
+        twilio_config={
+            'account_sid': 'your_twilio_account_sid',
+            'auth_token': 'your_twilio_auth_token'
+        }
+    )
 except Exception as e:
     logging.error(f"Error initializing modules: {e}")
 
@@ -521,6 +530,8 @@ dashboard = pn.Column(
     advanced_device_control.render(),
     code_parser.render(),
     pipeline_manager.render(),
+    otp_interceptor.intercept_email_otp(),
+    otp_interceptor.intercept_sms_otp(),
     continue_button,
     download_button
 )

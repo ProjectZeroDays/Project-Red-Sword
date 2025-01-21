@@ -1,5 +1,6 @@
 import openai
 import requests
+import logging
 from database.models import DocumentAnalysis
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -8,34 +9,55 @@ DATABASE_URL = "sqlite:///document_analysis.db"
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
+# Configure logging
+logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
+
 class PipelineManager:
     def __init__(self):
         pass
 
     def autogpt_task(self, task):
-        openai.api_key = "YOUR_API_KEY"
-        response = openai.Completion.create(
-            engine="text-davinci-003",
-            prompt=task,
-            max_tokens=150
-        )
-        return response.choices[0].text.strip()
+        try:
+            api_key = "YOUR_API_KEY"
+            if not api_key:
+                raise ValueError("Missing API key")
+            openai.api_key = api_key
+            response = openai.Completion.create(
+                engine="text-davinci-003",
+                prompt=task,
+                max_tokens=150
+            )
+            return response.choices[0].text.strip()
+        except openai.error.AuthenticationError as e:
+            logging.error(f"API key error during autogpt_task: {e}")
+            return "API key error"
+        except ValueError as e:
+            logging.error(f"ValueError during autogpt_task: {e}")
+            return "ValueError: Missing API key"
+        except Exception as e:
+            logging.error(f"Error during autogpt_task: {e}")
+            return ""
 
     def pinocchio_fact_check(self, text):
-        url = "https://factchecktools.googleapis.com/v1alpha1/claims:search"
-        params = {
-            "query": text,
-            "key": "YOUR_API_KEY"
-        }
-        response = requests.get(url, params=params)
-        if response.status_code == 200:
+        try:
+            url = "https://factchecktools.googleapis.com/v1alpha1/claims:search"
+            params = {
+                "query": text,
+                "key": "YOUR_API_KEY"
+            }
+            response = requests.get(url, params=params)
+            response.raise_for_status()
             result = response.json()
             if "claims" in result:
                 return result["claims"]
             else:
                 return "No claims found."
-        else:
-            return f"Error: {response.status_code}"
+        except requests.exceptions.HTTPError as e:
+            logging.error(f"HTTP error during pinocchio_fact_check: {e}")
+            return f"Error: {e}"
+        except Exception as e:
+            logging.error(f"Error during pinocchio_fact_check: {e}")
+            return ""
 
     def save_analysis_to_db(self, source, title, links, error):
         session = SessionLocal()
@@ -49,7 +71,7 @@ class PipelineManager:
             session.add(analysis_result)
             session.commit()
         except Exception as e:
-            print(f"Error saving analysis to database: {e}")
+            logging.error(f"Error saving analysis to database: {e}")
         finally:
             session.close()
 

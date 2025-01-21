@@ -15,18 +15,20 @@ import pandas as pd
 from PIL import Image, ImageTk
 
 # Define global variables
-SERVER_EMAIL_HOST = None
-SERVER_EMAIL_PORT = None
-SERVER_LLAVA_HOST = None
-SERVER_LLAVA_PORT = None
-MYEMAIL = None
-MAILSERVER = None
-saveMail_directory = None
+SERVER_EMAIL_HOST = os.getenv("SERVER_EMAIL_HOST")
+SERVER_EMAIL_PORT = int(os.getenv("SERVER_EMAIL_PORT"))
+SERVER_LLAVA_HOST = os.getenv("SERVER_LLAVA_HOST")
+SERVER_LLAVA_PORT = int(os.getenv("SERVER_LLAVA_PORT"))
+MYEMAIL = os.getenv("MYEMAIL")
+MAILSERVER = os.getenv("MAILSERVER")
+saveMail_directory = os.getenv("SAVE_MAIL_DIRECTORY")
 MyEmails = None
-CycleNewEmails = None
-BaseEmails_directory = None
-# Define the default image to be sent in case of network errors
-default_image=''
+CycleNewEmails = os.getenv("CYCLE_NEW_EMAILS", "False").lower() in ("true", "1", "t")
+BaseEmails_directory = os.getenv("BASE_EMAILS_DIRECTORY")
+default_image = os.getenv("DEFAULT_IMAGE", '')
+
+if not BaseEmails_directory:
+    raise ValueError("BASE_EMAILS_DIRECTORY environment variable is not set.")
 
 
 def receive_complete_data(client_socket): # this function is used to receive the complete data from the client, adjust the parameters as needed based on your network conditions
@@ -46,83 +48,93 @@ def receive_complete_data(client_socket): # this function is used to receive the
         print('timeout')
         print(e)
         pass
+    except Exception as e:
+        print(f"Error receiving data: {e}")
 
     return received_data
 
 
 def parse_email_data(data):  # this function gets the data from the inbox and parse it to the email data
-    msg = email.message_from_bytes(data)
+    try:
+        msg = email.message_from_bytes(data)
 
-    Command, subject, sender, recipient = msg['Command'], msg["Subject"], msg["From"], msg["To"]
-    recipient_directory = f"{saveMail_directory}/{recipient}"
-    os.makedirs(recipient_directory, exist_ok=True)
+        Command, subject, sender, recipient = msg['Command'], msg["Subject"], msg["From"], msg["To"]
+        recipient_directory = f"{saveMail_directory}/{recipient}"
+        os.makedirs(recipient_directory, exist_ok=True)
 
-    if msg.is_multipart():
-        for part in msg.get_payload():
-            if part.get_content_type() == "text/plain":
-                body = part.get_payload()
-    else:
-        print(msg.get_payload())
-    for part in msg.walk():
-        if part.get_content_maintype() == "multipart":
-            continue
-        if part.get("Content-Disposition") is None:
-            continue
-
-        filename = part.get_filename()
-        #filename = filename.split("\\")[-1]
-        filename = filename.split("/")[-1]
-
-        # Save the image file
-        with open(os.path.join(recipient_directory, filename), "wb") as f:
-            f.write(part.get_payload(decode=True))
-    print(f'\n Opened and parsed new email from {sender} to {recipient} with subject {subject}')
-    print(f'Email body: {body}')
-    print(f'Email attachment: {filename}')
-
-    filepath = str(f"{recipient_directory}/{filename}")
-    try: #We faced some network errors resulting in images being sent partially black. To address this issue, we implemented a try-except block to handle such occurrences. Now, if an image fails to send correctly, a default image is sent for that experiment.
-        with open(filepath) as f: # TEST IF THE FILE IS A VALID IMAGE
-            img = MIMEImage(f.read())
-    except:  # network error
-        if default_image=='':
-            print('Network Error: No default image is set')
-            return
+        if msg.is_multipart():
+            for part in msg.get_payload():
+                if part.get_content_type() == "text/plain":
+                    body = part.get_payload()
         else:
-            filepath = default_image
+            print(msg.get_payload())
+        for part in msg.walk():
+            if part.get_content_maintype() == "multipart":
+                continue
+            if part.get("Content-Disposition") is None:
+                continue
 
-    return (sender, recipient, subject, body, filepath)
+            filename = part.get_filename()
+            #filename = filename.split("\\")[-1]
+            filename = filename.split("/")[-1]
+
+            # Save the image file
+            with open(os.path.join(recipient_directory, filename), "wb") as f:
+                f.write(part.get_payload(decode=True))
+        print(f'\n Opened and parsed new email from {sender} to {recipient} with subject {subject}')
+        print(f'Email body: {body}')
+        print(f'Email attachment: {filename}')
+
+        filepath = str(f"{recipient_directory}/{filename}")
+        try: #We faced some network errors resulting in images being sent partially black. To address this issue, we implemented a try-except block to handle such occurrences. Now, if an image fails to send correctly, a default image is sent for that experiment.
+            with open(filepath) as f: # TEST IF THE FILE IS A VALID IMAGE
+                img = MIMEImage(f.read())
+        except:  # network error
+            if default_image=='':
+                print('Network Error: No default image is set')
+                return
+            else:
+                filepath = default_image
+
+        return (sender, recipient, subject, body, filepath)
+    except Exception as e:
+        print(f"Error parsing email data: {e}")
+        return None
 
 
 def send_Email(Command, sender, recipient, subject, body, attachment_path, SERVER_HOST, SERVER_PORT,
                AdditionalQuery=['']):  # this function sends a new email to the email server
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:
-        client_socket.connect((SERVER_HOST, SERVER_PORT))
+    try:
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:
+            client_socket.connect((SERVER_HOST, SERVER_PORT))
 
-        # Create the message
-        msg = MIMEMultipart()
-        msg["Command"] = Command
-        msg["Subject"] = subject
-        msg["From"] = sender
-        msg["To"] = recipient
+            # Create the message
+            msg = MIMEMultipart()
+            msg["Command"] = Command
+            msg["Subject"] = subject
+            msg["From"] = sender
+            msg["To"] = recipient
 
-        if AdditionalQuery != '':
-            for i in range(len(AdditionalQuery)):
-                msg["AdditionalQuery" + str(i)] = AdditionalQuery[i]
-        msg["AdditionalQueryNum"] = str(len(AdditionalQuery))
-        msg.attach(MIMEText(body, "plain"))
+            if AdditionalQuery != '':
+                for i in range(len(AdditionalQuery)):
+                    msg["AdditionalQuery" + str(i)] = AdditionalQuery[i]
+            msg["AdditionalQueryNum"] = str(len(AdditionalQuery))
+            msg.attach(MIMEText(body, "plain"))
 
-        filename = attachment_path
-        with open(filename, "rb") as f:
-            img = MIMEImage(f.read())
-            img.add_header("Content-Disposition", "attachment", filename=filename)
-            msg.attach(img)
-        message = msg.as_string().encode('utf-8')
+            filename = attachment_path
+            with open(filename, "rb") as f:
+                img = MIMEImage(f.read())
+                img.add_header("Content-Disposition", "attachment", filename=filename)
+                msg.attach(img)
+            message = msg.as_string().encode('utf-8')
 
-        client_socket.sendall(message)  # send the message to the server
-        response = receive_complete_data(client_socket)  # get the response from the server
+            client_socket.sendall(message)  # send the message to the server
+            response = receive_complete_data(client_socket)  # get the response from the server
 
-    return response.decode('utf-8')
+        return response.decode('utf-8')
+    except Exception as e:
+        print(f"Error sending email: {e}")
+        return "Error sending email"
 
 
 def show_email_popup(email_data):  # this function shows a popup with the email data
@@ -184,10 +196,11 @@ def check_email_inbox():  # this function checks the inbox for new emails from t
         client_socket.close()
         try:
             email_data = parse_email_data(inbox_data)
-            show_email_popup(email_data)
-            Handle_New_Inbox_Email(email_data)
-        except:
-            pass
+            if email_data:
+                show_email_popup(email_data)
+                Handle_New_Inbox_Email(email_data)
+        except Exception as e:
+            print(f"Error handling new inbox email: {e}")
 
 
 def read_emails_from_file():  # this function reads 5 emails from the Email csv file and returns them as a list

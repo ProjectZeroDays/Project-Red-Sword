@@ -7,13 +7,54 @@ from exploit_deployer import deploy_exploit
 from database.models import DocumentAnalysis
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-
 from modules.real_time_threat_intelligence import RealTimeThreatIntelligence
 from modules.real_time_monitoring import RealTimeMonitoring
+from modules.threat_intelligence import ThreatIntelligence
+from modules.predictive_analytics import PredictiveAnalytics
+from modules.automated_incident_response import AutomatedIncidentResponse
+from modules.ai_red_teaming import AIRedTeaming
+from modules.apt_simulation import APTSimulation
+from modules.machine_learning_ai import MachineLearningAI
+from modules.data_visualization import DataVisualization
+from modules.blockchain_logger import BlockchainLogger
+from modules.cloud_exploitation import CloudExploitation
+from modules.iot_exploitation import IoTExploitation
+from modules.quantum_computing import QuantumComputing
+from modules.edge_computing import EdgeComputing
+from modules.serverless_computing import ServerlessComputing
+from modules.microservices_architecture import MicroservicesArchitecture
+from modules.cloud_native_applications import CloudNativeApplications
+from modules.advanced_decryption import AdvancedDecryption
+from modules.advanced_malware_analysis import AdvancedMalwareAnalysis
+from modules.advanced_social_engineering import AdvancedSocialEngineering
+from modules.alerts_notifications import AlertsNotifications
+from modules.device_fingerprinting import DeviceFingerprinting
+from modules.exploit_payloads import ExploitPayloads
+from modules.fuzzing_engine import FuzzingEngine
+from modules.mitm_stingray import MITMStingray
+from modules.network_exploitation import NetworkExploitation
+from modules.vulnerability_scanner import VulnerabilityScanner
+from modules.wireless_exploitation import WirelessExploitation
+from modules.zero_day_exploits import ZeroDayExploits
+from modules.device_control import DeviceControl
+from modules.windows_control import WindowsControl
+from modules.macos_control import MacOSControl
+from modules.linux_control import LinuxControl
+from modules.android_control import AndroidControl
+from modules.ios_control import iOSControl
+from modules.advanced_device_control import AdvancedDeviceControl
+from backend.code_parser import CodeParser
+from backend.pipeline_manager import PipelineManager
+import pika
+from kafka import KafkaProducer, KafkaConsumer
+import logging
 
 DATABASE_URL = "sqlite:///document_analysis.db"
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+# Configure logging
+logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def get_response(user_input):
     """Handle user input and provide responses."""
@@ -45,13 +86,13 @@ def handle_vulnerability_scanning():
             session.add(scan_result)
             session.commit()
         except Exception as e:
-            print(f"Error saving scan results to database: {e}")
+            logging.error(f"Error saving scan results to database: {e}")
         finally:
             session.close()
         
         return vulnerabilities
     except Exception as e:
-        print(f"Error during vulnerability scanning: {e}")
+        logging.error(f"Error during vulnerability scanning: {e}")
         return []
 
 def handle_exploit_deployment(target):
@@ -71,13 +112,13 @@ def handle_exploit_deployment(target):
             session.add(exploit_result)
             session.commit()
         except Exception as e:
-            print(f"Error saving exploit deployment results to database: {e}")
+            logging.error(f"Error saving exploit deployment results to database: {e}")
         finally:
             session.close()
         
         return "Exploit deployed successfully!" if result else "Exploit deployment failed."
     except Exception as e:
-        print(f"Error during exploit deployment: {e}")
+        logging.error(f"Error during exploit deployment: {e}")
         return "Exploit deployment failed."
 
 def setup_kafka():
