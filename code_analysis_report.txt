@@ -93,3 +93,14 @@ By addressing the issues identified in this report, the Project Red Sword codeba
   - `Pillow`
   - `transformers`
   - `panel`
+
+### 6. Changes to `app_security/app_vulnerability_scanner.py`
+
+#### Input Validation
+- **Update**: Added input validation for `app_url` to check if it is a valid URL.
+
+#### Error Handling
+- **Update**: Added error handling for potential SQL injection vulnerability in `scan_application` function.
+
+#### Logging
+- **Update**: Added logging for exceptions in `scan_application` function.
