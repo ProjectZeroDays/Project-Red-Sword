@@ -327,7 +327,13 @@ def dashboard():
 @app.route("/admin")
 @rbac_required("admin")
 def admin_dashboard():
-    return render_template("admin_dashboard.html", data={"compliance_status": "Compliant", "training_status": "Completed"})
+    try:
+        compliance_status = "Compliant"
+        training_status = "Completed"
+        return render_template("admin_dashboard.html", data={"compliance_status": compliance_status, "training_status": training_status})
+    except Exception as e:
+        logging.error(f"Error initializing admin dashboard: {e}")
+        return "Error initializing admin dashboard"
 
 @app.route("/compliance")
 @rbac_required("admin")

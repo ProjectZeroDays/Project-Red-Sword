@@ -4,6 +4,7 @@ import logging
 from database.models import DocumentAnalysis
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+import os
 
 DATABASE_URL = "sqlite:///document_analysis.db"
 engine = create_engine(DATABASE_URL)
@@ -18,7 +19,7 @@ class PipelineManager:
 
     def autogpt_task(self, task):
         try:
-            api_key = "YOUR_API_KEY"
+            api_key = os.getenv("OPENAI_API_KEY")
             if not api_key:
                 raise ValueError("Missing API key")
             openai.api_key = api_key
@@ -43,7 +44,7 @@ class PipelineManager:
             url = "https://factchecktools.googleapis.com/v1alpha1/claims:search"
             params = {
                 "query": text,
-                "key": "YOUR_API_KEY"
+                "key": os.getenv("FACT_CHECK_API_KEY")
             }
             response = requests.get(url, params=params)
             response.raise_for_status()

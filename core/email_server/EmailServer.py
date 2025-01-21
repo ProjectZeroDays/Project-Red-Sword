@@ -73,135 +73,142 @@ def handle_messages():  # This function is used to handle the messages in the qu
 
 
 def Save_Email_To_Recipient(client_socket, data, msg, requests, subject, sender, recipient): # This function is used to save the email to the recipient's inbox
-    recipient_directory = f"{saveMail_directory}/{recipient}" # This is the directory where the emails will be saved
-    os.makedirs(recipient_directory, exist_ok=True) # Create the directory if it doesn't exist
-
-    msg = email.message_from_bytes(data)
-
     try:
-        if msg.is_multipart():
-            for part in msg.get_payload():
-                if part.get_content_type() == "text/plain":
-                    body = part.get_payload()
-        else:
-            body = msg.get_payload()
+        recipient_directory = f"{saveMail_directory}/{recipient}" # This is the directory where the emails will be saved
+        os.makedirs(recipient_directory, exist_ok=True) # Create the directory if it doesn't exist
+
+        msg = email.message_from_bytes(data)
+
+        try:
+            if msg.is_multipart():
+                for part in msg.get_payload():
+                    if part.get_content_type() == "text/plain":
+                        body = part.get_payload()
+            else:
+                body = msg.get_payload()
+        except Exception as e:
+            logging.error(f"Error processing email message: {e}")
+            client_socket.sendall("Error processing email message".encode('utf-8'))
+            return
+
+        for part in msg.walk():
+            if part.get_content_maintype() == "multipart":
+                continue
+            if part.get("Content-Disposition") is None:
+                continue
+
+            # Get the filename
+            filename = part.get_filename()
+            # split the filename by "\" and take the last part of it
+            #filename = filename.split("\\")[-1]
+            filename = filename.split("/")[-1]
+
+            # Save the image file
+            try:
+                with open(os.path.join(recipient_directory, filename), "wb") as f:
+                    f.write(part.get_payload(decode=True))
+            except Exception as e:
+                logging.error(f"Error saving email attachment: {e}")
+                client_socket.sendall("Error saving email attachment".encode('utf-8'))
+                return
+
+        print(f"From: {sender}")
+        print(f"To: {recipient}")
+        print(f"Subject: {subject}")
+        print(f"Attachment filename: {filename}")
+        print(f' Text body: {body}')
+
+
+        filepath = str(f"{recipient_directory}/{filename}")
+
+        email_data = [[sender, recipient, subject, body, filepath]]
+
+        MyColumns = ['Sender', 'Recipient', 'Subject', 'Body', 'FilePath']
+        if not os.path.isfile(f"{recipient_directory}/{recipient}_received_emails.csv") or (
+                os.stat(f"{recipient_directory}/{recipient}_received_emails.csv").st_size == 0): # If the file doesn't exist, then create the file and save the email to the file
+            df = pd.DataFrame(email_data, columns=MyColumns)
+            try:
+                df.to_csv(f"{recipient_directory}/{recipient}_received_emails.csv", mode='w', header=True, index=False) # Save the email to the recipient's inbox
+                df.to_csv(f"{recipient_directory}/{recipient}_received_emailsHistory.csv", mode='w', header=True, index=False) # Save the email to the recipient's inbox history
+            except Exception as e:
+                logging.error(f"Error saving email to CSV: {e}")
+                client_socket.sendall("Error saving email to CSV".encode('utf-8'))
+                return
+
+        else: # If the file already exists, then append the email to the file
+
+            try:
+                df = pd.read_csv(f"{recipient_directory}/{recipient}_received_emails.csv") # Read the csv file of the recipient
+                new_row_df = pd.DataFrame(email_data, columns=df.columns)
+                df = pd.concat([df, new_row_df], ignore_index=True)
+                df.to_csv(f"{recipient_directory}/{recipient}_received_emails.csv", mode='w', header=True, index=False)
+                df = pd.read_csv(f"{recipient_directory}/{recipient}_received_emailsHistory.csv")
+                df = pd.concat([df, new_row_df], ignore_index=True)
+                df.to_csv(f"{recipient_directory}/{recipient}_received_emailsHistory.csv", mode='w', header=True, index=False)
+            except Exception as e:
+                logging.error(f"Error appending email to CSV: {e}")
+                client_socket.sendall("Error appending email to CSV".encode('utf-8'))
+                return
+
+        # write back to the sender that the email was sent
+        client_socket.sendall("Email Sent".encode('utf-8'))
     except Exception as e:
-        logging.error(f"Error processing email message: {e}")
-        client_socket.sendall("Error processing email message".encode('utf-8'))
-        return
-
-    for part in msg.walk():
-        if part.get_content_maintype() == "multipart":
-            continue
-        if part.get("Content-Disposition") is None:
-            continue
-
-        # Get the filename
-        filename = part.get_filename()
-        # split the filename by "\" and take the last part of it
-        #filename = filename.split("\\")[-1]
-        filename = filename.split("/")[-1]
-
-        # Save the image file
-        try:
-            with open(os.path.join(recipient_directory, filename), "wb") as f:
-                f.write(part.get_payload(decode=True))
-        except Exception as e:
-            logging.error(f"Error saving email attachment: {e}")
-            client_socket.sendall("Error saving email attachment".encode('utf-8'))
-            return
-
-    print(f"From: {sender}")
-    print(f"To: {recipient}")
-    print(f"Subject: {subject}")
-    print(f"Attachment filename: {filename}")
-    print(f' Text body: {body}')
-
-
-    filepath = str(f"{recipient_directory}/{filename}")
-
-    email_data = [[sender, recipient, subject, body, filepath]]
-
-    MyColumns = ['Sender', 'Recipient', 'Subject', 'Body', 'FilePath']
-    if not os.path.isfile(f"{recipient_directory}/{recipient}_received_emails.csv") or (
-            os.stat(f"{recipient_directory}/{recipient}_received_emails.csv").st_size == 0): # If the file doesn't exist, then create the file and save the email to the file
-        df = pd.DataFrame(email_data, columns=MyColumns)
-        try:
-            df.to_csv(f"{recipient_directory}/{recipient}_received_emails.csv", mode='w', header=True, index=False) # Save the email to the recipient's inbox
-            df.to_csv(f"{recipient_directory}/{recipient}_received_emailsHistory.csv", mode='w', header=True, index=False) # Save the email to the recipient's inbox history
-        except Exception as e:
-            logging.error(f"Error saving email to CSV: {e}")
-            client_socket.sendall("Error saving email to CSV".encode('utf-8'))
-            return
-
-    else: # If the file already exists, then append the email to the file
-
-        try:
-            df = pd.read_csv(f"{recipient_directory}/{recipient}_received_emails.csv") # Read the csv file of the recipient
-            new_row_df = pd.DataFrame(email_data, columns=df.columns)
-            df = pd.concat([df, new_row_df], ignore_index=True)
-            df.to_csv(f"{recipient_directory}/{recipient}_received_emails.csv", mode='w', header=True, index=False)
-            df = pd.read_csv(f"{recipient_directory}/{recipient}_received_emailsHistory.csv")
-            df = pd.concat([df, new_row_df], ignore_index=True)
-            df.to_csv(f"{recipient_directory}/{recipient}_received_emailsHistory.csv", mode='w', header=True, index=False)
-        except Exception as e:
-            logging.error(f"Error appending email to CSV: {e}")
-            client_socket.sendall("Error appending email to CSV".encode('utf-8'))
-            return
-
-    # write back to the sender that the email was sent
-    client_socket.sendall("Email Sent".encode('utf-8'))
+        logging.error(f"Unhandled exception in Save_Email_To_Recipient: {e}")
+        client_socket.sendall("Unhandled exception in Save_Email_To_Recipient".encode('utf-8'))
 
 
 def Check_Inbox(client_socket, sender): # This function is used to check the inbox of the user and send the email to the client
+    try:
+        print(f' A request ot check the inbox email from: {sender}')
 
-    print(f' A request ot check the inbox email from: {sender}')
+        sender_directory = f"{saveMail_directory}/{sender}"
+        os.makedirs(sender_directory, exist_ok=True)
 
-    sender_directory = f"{saveMail_directory}/{sender}"
-    os.makedirs(sender_directory, exist_ok=True)
+        if (not os.path.isfile(f"{sender_directory}/{sender}_received_emails.csv")) or (
+                os.stat(f"{sender_directory}/{sender}_received_emails.csv").st_size == 0):
+            client_socket.sendall("No Emails".encode('utf-8'))
+            return
+        df = pd.read_csv(f"{sender_directory}/{sender}_received_emails.csv")
+        rows = df.shape[0]
+        print(f'found {rows} emails in the inbox of {sender}')
+        if rows == 0: # If there are no emails in the inbox, then send "No Emails" to the client
+            client_socket.sendall("No Emails".encode('utf-8'))
+            return
+        else: # If there are emails in the inbox, then send the email to the client
+            # take the last row of the csv file
+            header_columns = df.columns
+            last_row = df.tail(1)
+            msg = MIMEMultipart()
+            msg["Command"] = "SEND_EMAIL"
+            msg["From"] = last_row['Sender'].values[0]
+            msg["To"] = last_row['Recipient'].values[0]
+            msg["Subject"] = last_row['Subject'].values[0]
+            msg.attach(MIMEText(last_row['Body'].values[0], "plain"))
 
-    if (not os.path.isfile(f"{sender_directory}/{sender}_received_emails.csv")) or (
-            os.stat(f"{sender_directory}/{sender}_received_emails.csv").st_size == 0):
-        client_socket.sendall("No Emails".encode('utf-8'))
-        return
-    df = pd.read_csv(f"{sender_directory}/{sender}_received_emails.csv")
-    rows = df.shape[0]
-    print(f'found {rows} emails in the inbox of {sender}')
-    if rows == 0: # If there are no emails in the inbox, then send "No Emails" to the client
-        client_socket.sendall("No Emails".encode('utf-8'))
-        return
-    else: # If there are emails in the inbox, then send the email to the client
-        # take the last row of the csv file
-        header_columns = df.columns
-        last_row = df.tail(1)
-        msg = MIMEMultipart()
-        msg["Command"] = "SEND_EMAIL"
-        msg["From"] = last_row['Sender'].values[0]
-        msg["To"] = last_row['Recipient'].values[0]
-        msg["Subject"] = last_row['Subject'].values[0]
-        msg.attach(MIMEText(last_row['Body'].values[0], "plain"))
-
-        filename = last_row['FilePath'].values[0]
-        with open(filename, "rb") as f:
-            try:  #We faced some network errors resulting in images being sent partially black. To address this issue, we implemented a try-except block to handle such occurrences. Now, if an image fails to send correctly, a default image is sent for that experiment.
-                img = MIMEImage(f.read())
-                img.add_header("Content-Disposition", "attachment", filename=filename)
-                msg.attach(img)
-            except Exception as e:
-                logging.error(f"Error sending image: {e}")
-                print('network error, sending default image instead of the original image')
-                with open(default_image,"rb") as f:
+            filename = last_row['FilePath'].values[0]
+            with open(filename, "rb") as f:
+                try:  #We faced some network errors resulting in images being sent partially black. To address this issue, we implemented a try-except block to handle such occurrences. Now, if an image fails to send correctly, a default image is sent for that experiment.
                     img = MIMEImage(f.read())
                     img.add_header("Content-Disposition", "attachment", filename=filename)
                     msg.attach(img)
+                except Exception as e:
+                    logging.error(f"Error sending image: {e}")
+                    print('network error, sending default image instead of the original image')
+                    with open(default_image,"rb") as f:
+                        img = MIMEImage(f.read())
+                        img.add_header("Content-Disposition", "attachment", filename=filename)
+                        msg.attach(img)
 
-        message = msg.as_bytes()
-        # send the message to the client
-        df.drop(df.tail(1).index, inplace=True)
+            message = msg.as_bytes()
+            # send the message to the client
+            df.drop(df.tail(1).index, inplace=True)
 
-        df.to_csv(f"{sender_directory}/{sender}_received_emails.csv", mode='w', header=True, index=False)
-        client_socket.sendall(message)
-        return
+            df.to_csv(f"{sender_directory}/{sender}_received_emails.csv", mode='w', header=True, index=False)
+            client_socket.sendall(message)
+            return
+    except Exception as e:
+        logging.error(f"Unhandled exception in Check_Inbox: {e}")
+        client_socket.sendall("Unhandled exception in Check_Inbox".encode('utf-8'))
 
 def prevent_deletion_of_exploits():
     print("Preventing deletion of exploits or resources/tools")

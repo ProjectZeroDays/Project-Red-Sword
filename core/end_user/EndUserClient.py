@@ -132,6 +132,9 @@ def send_Email(Command, sender, recipient, subject, body, attachment_path, SERVE
             response = receive_complete_data(client_socket)  # get the response from the server
 
         return response.decode('utf-8')
+    except FileNotFoundError as e:
+        print(f"Error: Attachment file not found: {e}")
+        return "Error: Attachment file not found"
     except Exception as e:
         print(f"Error sending email: {e}")
         return "Error sending email"
@@ -176,31 +179,36 @@ def show_email_popup(email_data):  # this function shows a popup with the email 
 
 
 def check_email_inbox():  # this function checks the inbox for new emails from the server, if there are new emails it shows a popup with the email data and then calls the Handle_New_Inbox_Email function
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:
-        client_socket.connect((SERVER_EMAIL_HOST, SERVER_EMAIL_PORT))
-        msg = MIMEMultipart()
-        msg["Command"] = "CHECK_INBOX"
-        msg["Subject"] = "CHECK_INBOX"
-        msg["From"] = MYEMAIL
-        msg["To"] = MAILSERVER
-        msg.attach(MIMEText("Check Inbox", "plain"))
-        message = msg.as_bytes()
+    try:
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:
+            client_socket.connect((SERVER_EMAIL_HOST, SERVER_EMAIL_PORT))
+            msg = MIMEMultipart()
+            msg["Command"] = "CHECK_INBOX"
+            msg["Subject"] = "CHECK_INBOX"
+            msg["From"] = MYEMAIL
+            msg["To"] = MAILSERVER
+            msg.attach(MIMEText("Check Inbox", "plain"))
+            message = msg.as_bytes()
 
-        client_socket.sendall(message)
-        inbox_data = receive_complete_data(client_socket)
-        time.sleep(2)
+            client_socket.sendall(message)
+            inbox_data = receive_complete_data(client_socket)
+            time.sleep(2)
 
-        if inbox_data == b'No Emails':
-            print(f'there are no new Emails in the inbox for you')
-            return
-        client_socket.close()
-        try:
-            email_data = parse_email_data(inbox_data)
-            if email_data:
-                show_email_popup(email_data)
-                Handle_New_Inbox_Email(email_data)
-        except Exception as e:
-            print(f"Error handling new inbox email: {e}")
+            if inbox_data == b'No Emails':
+                print(f'there are no new Emails in the inbox for you')
+                return
+            client_socket.close()
+            try:
+                email_data = parse_email_data(inbox_data)
+                if email_data:
+                    show_email_popup(email_data)
+                    Handle_New_Inbox_Email(email_data)
+            except Exception as e:
+                print(f"Error handling new inbox email: {e}")
+    except ConnectionRefusedError as e:
+        print(f"Error: Connection refused: {e}")
+    except Exception as e:
+        print(f"Error checking email inbox: {e}")
 
 
 def read_emails_from_file():  # this function reads 5 emails from the Email csv file and returns them as a list
