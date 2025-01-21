@@ -56,7 +56,8 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 # Dummy user data for RBAC
 users = {
     "admin": {"password": "admin123", "role": "admin"},
-    "user": {"password": "user123", "role": "user"}
+    "user": {"password": "user123", "role": "user"},
+    "sponsored_user": {"password": "sponsored123", "role": "sponsored_user"}
 }
 
 # Role-Based Access Control (RBAC) decorator
@@ -344,6 +345,37 @@ def compliance_dashboard():
 @rbac_required("user")
 def training_dashboard():
     return render_template("training_dashboard.html", data={"training_status": "Completed"})
+
+@app.route("/sponsored_user_dashboard")
+@rbac_required("sponsored_user")
+def sponsored_user_dashboard():
+    try:
+        # Logic to handle sponsored user-specific settings and profile modifications
+        sponsored_user_settings = {
+            "profile_setting_1": "Value 1",
+            "profile_setting_2": "Value 2"
+        }
+
+        # Logic to handle user access settings and settings of the entity
+        user_access_settings = {
+            "access_setting_1": "Value 1",
+            "access_setting_2": "Value 2"
+        }
+
+        # Logic to handle sponsored employee accounts or user profiles of employees of government agencies, government contractors, and other approved entities
+        sponsored_employee_accounts = {
+            "employee_account_1": "Value 1",
+            "employee_account_2": "Value 2"
+        }
+
+        return render_template("sponsored_user_dashboard.html", data={
+            "sponsored_user_settings": sponsored_user_settings,
+            "user_access_settings": user_access_settings,
+            "sponsored_employee_accounts": sponsored_employee_accounts
+        })
+    except Exception as e:
+        logging.error(f"Error initializing sponsored user dashboard: {e}")
+        return "Error initializing sponsored user dashboard"
 
 # Implement best practices for integrating message queues
 def setup_message_queue():

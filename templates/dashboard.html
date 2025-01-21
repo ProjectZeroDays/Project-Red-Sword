@@ -255,6 +255,31 @@
             <ul id="otpList"></ul>
         </div>
     </div>
+    <div class="dashboard-section">
+        <h2>Sponsored User-Specific Settings and Profile Modifications</h2>
+        <p>Profile Setting 1: {{ data["sponsored_user_settings"]["profile_setting_1"] }}</p>
+        <p>Profile Setting 2: {{ data["sponsored_user_settings"]["profile_setting_2"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>User Access Settings and Settings of the Entity</h2>
+        <p>Access Setting 1: {{ data["user_access_settings"]["access_setting_1"] }}</p>
+        <p>Access Setting 2: {{ data["user_access_settings"]["access_setting_2"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Sponsored Employee Accounts or User Profiles of Employees of Government Agencies, Government Contractors, and Other Approved Entities</h2>
+        <p>Employee Account 1: {{ data["sponsored_employee_accounts"]["employee_account_1"] }}</p>
+        <p>Employee Account 2: {{ data["sponsored_employee_accounts"]["employee_account_2"] }}</p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Admin to Approve and Deny New Registrations for Entities</h2>
+        <button onclick="approveEntityRegistration()">Approve</button>
+        <button onclick="denyEntityRegistration()">Deny</button>
+    </div>
+    <div class="dashboard-section">
+        <h2>Admin to Approve and Deny New Registrations for Sponsored User Accounts</h2>
+        <button onclick="approveSponsoredUserRegistration()">Approve</button>
+        <button onclick="denySponsoredUserRegistration()">Deny</button>
+    </div>
     <script>
         var ctx = document.getElementById('threatsChart').getContext('2d');
         var threatsChart = new Chart(ctx, {
@@ -361,6 +386,26 @@
                 }
             }
         });
+
+        function approveEntityRegistration() {
+            // Implement the logic to approve entity registration
+            console.log("Entity registration approved");
+        }
+
+        function denyEntityRegistration() {
+            // Implement the logic to deny entity registration
+            console.log("Entity registration denied");
+        }
+
+        function approveSponsoredUserRegistration() {
+            // Implement the logic to approve sponsored user registration
+            console.log("Sponsored user registration approved");
+        }
+
+        function denySponsoredUserRegistration() {
+            // Implement the logic to deny sponsored user registration
+            console.log("Sponsored user registration denied");
+        }
     </script>
 </body>
 </html>
