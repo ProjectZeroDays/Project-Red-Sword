@@ -7,7 +7,6 @@ from exploit_deployer import deploy_exploit
 from database.models import DocumentAnalysis
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-
 from modules.real_time_threat_intelligence import RealTimeThreatIntelligence
 from modules.real_time_monitoring import RealTimeMonitoring
 from modules.threat_intelligence import ThreatIntelligence
@@ -37,7 +36,6 @@ from modules.network_exploitation import NetworkExploitation
 from modules.vulnerability_scanner import VulnerabilityScanner
 from modules.wireless_exploitation import WirelessExploitation
 from modules.zero_day_exploits import ZeroDayExploits
-
 from modules.device_control import DeviceControl
 from modules.windows_control import WindowsControl
 from modules.macos_control import MacOSControl
@@ -45,10 +43,8 @@ from modules.linux_control import LinuxControl
 from modules.android_control import AndroidControl
 from modules.ios_control import iOSControl
 from modules.advanced_device_control import AdvancedDeviceControl
-
 from backend.code_parser import CodeParser
 from backend.pipeline_manager import PipelineManager
-
 import pika
 from kafka import KafkaProducer, KafkaConsumer
 import logging
@@ -193,49 +189,9 @@ try:
 except Exception as e:
     print(f"Error initializing real-time threat intelligence and monitoring modules: {e}")
 
-# Initialize and integrate new modules in the main function
-try:
-    advanced_threat_intelligence = ThreatIntelligence()
-    predictive_analytics = PredictiveAnalytics()
-    automated_incident_response = AutomatedIncidentResponse()
-    ai_red_teaming = AIRedTeaming()
-    apt_simulation = APTSimulation()
-    machine_learning_ai = MachineLearningAI()
-    data_visualization = DataVisualization()
-    blockchain_logger = BlockchainLogger()
-    cloud_exploitation = CloudExploitation()
-    iot_exploitation = IoTExploitation()
-    quantum_computing = QuantumComputing()
-    edge_computing = EdgeComputing()
-    serverless_computing = ServerlessComputing()
-    microservices_architecture = MicroservicesArchitecture()
-    cloud_native_applications = CloudNativeApplications()
-    advanced_decryption = AdvancedDecryption()
-    advanced_malware_analysis = AdvancedMalwareAnalysis()
-    advanced_social_engineering = AdvancedSocialEngineering()
-    alerts_notifications = AlertsNotifications(smtp_server="smtp.example.com", smtp_port=587, smtp_user="user@example.com", smtp_password="password")
-    device_fingerprinting = DeviceFingerprinting()
-    exploit_payloads = ExploitPayloads()
-    fuzzing_engine = FuzzingEngine()
-    mitm_stingray = MITMStingray(interface="wlan0")
-    network_exploitation = NetworkExploitation()
-    vulnerability_scanner = VulnerabilityScanner()
-    wireless_exploitation = WirelessExploitation()
-    zero_day_exploits = ZeroDayExploits()
-    device_control = DeviceControl()
-    windows_control = WindowsControl()
-    macos_control = MacOSControl()
-    linux_control = LinuxControl()
-    android_control = AndroidControl()
-    ios_control = iOSControl()
-    advanced_device_control = AdvancedDeviceControl()
-    code_parser = CodeParser("sample_code")
-    pipeline_manager = PipelineManager()
-except Exception as e:
-    print(f"Error initializing modules: {e}")
-
 # Integrate the ThreatIntelligence module with RealTimeMonitoring
 try:
+    advanced_threat_intelligence = ThreatIntelligence()
     monitoring.threat_intelligence_module = advanced_threat_intelligence
 except Exception as e:
     print(f"Error integrating ThreatIntelligence module with RealTimeMonitoring: {e}")
@@ -268,120 +224,140 @@ async def monitor_threat_data():
 
 # Integrate the AutomatedIncidentResponse module with RealTimeMonitoring
 try:
+    automated_incident_response = AutomatedIncidentResponse()
     monitoring.automated_incident_response = automated_incident_response
 except Exception as e:
     print(f"Error integrating AutomatedIncidentResponse module with RealTimeMonitoring: {e}")
 
 # Integrate the AIRedTeaming module with RealTimeMonitoring
 try:
+    ai_red_teaming = AIRedTeaming()
     monitoring.ai_red_teaming = ai_red_teaming
 except Exception as e:
     print(f"Error integrating AIRedTeaming module with RealTimeMonitoring: {e}")
 
 # Integrate the APTSimulation module with RealTimeMonitoring
 try:
-    monitoring.apt_simulation = apt_simulation()
+    apt_simulation = APTSimulation()
+    monitoring.apt_simulation = apt_simulation
 except Exception as e:
     print(f"Error integrating APTSimulation module with RealTimeMonitoring: {e}")
 
 # Integrate the PredictiveAnalytics module with RealTimeMonitoring
 try:
+    predictive_analytics = PredictiveAnalytics()
     monitoring.predictive_analytics = predictive_analytics
 except Exception as e:
     print(f"Error integrating PredictiveAnalytics module with RealTimeMonitoring: {e}")
 
 # Integrate the MachineLearningAI module with RealTimeMonitoring
 try:
+    machine_learning_ai = MachineLearningAI()
     monitoring.machine_learning_ai = machine_learning_ai
 except Exception as e:
     print(f"Error integrating MachineLearningAI module with RealTimeMonitoring: {e}")
 
 # Integrate the DataVisualization module with RealTimeMonitoring
 try:
+    data_visualization = DataVisualization()
     monitoring.data_visualization = data_visualization
 except Exception as e:
     print(f"Error integrating DataVisualization module with RealTimeMonitoring: {e}")
 
 # Integrate the CloudExploitation module with RealTimeMonitoring
 try:
+    cloud_exploitation = CloudExploitation()
     monitoring.cloud_exploitation = cloud_exploitation
 except Exception as e:
     print(f"Error integrating CloudExploitation module with RealTimeMonitoring: {e}")
 
 # Integrate the IoTExploitation module with RealTimeMonitoring
 try:
+    iot_exploitation = IoTExploitation()
     monitoring.iot_exploitation = iot_exploitation
 except Exception as e:
     print(f"Error integrating IoTExploitation module with RealTimeMonitoring: {e}")
 
 # Integrate the QuantumComputing module with RealTimeMonitoring
 try:
+    quantum_computing = QuantumComputing()
     monitoring.quantum_computing = quantum_computing
 except Exception as e:
     print(f"Error integrating QuantumComputing module with RealTimeMonitoring: {e}")
 
 # Integrate the EdgeComputing module with RealTimeMonitoring
 try:
+    edge_computing = EdgeComputing()
     monitoring.edge_computing = edge_computing
 except Exception as e:
     print(f"Error integrating EdgeComputing module with RealTimeMonitoring: {e}")
 
 # Integrate the ServerlessComputing module with RealTimeMonitoring
 try:
+    serverless_computing = ServerlessComputing()
     monitoring.serverless_computing = serverless_computing
 except Exception as e:
     print(f"Error integrating ServerlessComputing module with RealTimeMonitoring: {e}")
 
 # Integrate the MicroservicesArchitecture module with RealTimeMonitoring
 try:
+    microservices_architecture = MicroservicesArchitecture()
     monitoring.microservices_architecture = microservices_architecture
 except Exception as e:
     print(f"Error integrating MicroservicesArchitecture module with RealTimeMonitoring: {e}")
 
 # Integrate the CloudNativeApplications module with RealTimeMonitoring
 try:
+    cloud_native_applications = CloudNativeApplications()
     monitoring.cloud_native_applications = cloud_native_applications
 except Exception as e:
     print(f"Error integrating CloudNativeApplications module with RealTimeMonitoring: {e}")
 
 # Integrate the DeviceControl module with RealTimeMonitoring
 try:
+    device_control = DeviceControl()
     monitoring.device_control = device_control
 except Exception as e:
     print(f"Error integrating DeviceControl module with RealTimeMonitoring: {e}")
 
 # Integrate the WindowsControl module with RealTimeMonitoring
 try:
+    windows_control = WindowsControl()
     monitoring.windows_control = windows_control
 except Exception as e:
     print(f"Error integrating WindowsControl module with RealTimeMonitoring: {e}")
 
 # Integrate the MacOSControl module with RealTimeMonitoring
 try:
+    macos_control = MacOSControl()
     monitoring.macos_control = macos_control
 except Exception as e:
     print(f"Error integrating MacOSControl module with RealTimeMonitoring: {e}")
 
 # Integrate the LinuxControl module with RealTimeMonitoring
 try:
+    linux_control = LinuxControl()
     monitoring.linux_control = linux_control
 except Exception as e:
     print(f"Error integrating LinuxControl module with RealTimeMonitoring: {e}")
 
 # Integrate the AndroidControl module with RealTimeMonitoring
 try:
+    android_control = AndroidControl()
     monitoring.android_control = android_control
 except Exception as e:
     print(f"Error integrating AndroidControl module with RealTimeMonitoring: {e}")
 
 # Integrate the iOSControl module with RealTimeMonitoring
 try:
+    ios_control = iOSControl()
     monitoring.ios_control = ios_control
 except Exception as e:
     print(f"Error integrating iOSControl module with RealTimeMonitoring: {e}")
 
 # Integrate the AdvancedDeviceControl module with RealTimeMonitoring
 try:
+    advanced_device_control = AdvancedDeviceControl()
     monitoring.advanced_device_control = advanced_device_control
 except Exception as e:
     print(f"Error integrating AdvancedDeviceControl module with RealTimeMonitoring: {e}")
