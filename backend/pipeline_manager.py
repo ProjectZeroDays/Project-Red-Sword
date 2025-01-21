@@ -18,7 +18,10 @@ class PipelineManager:
 
     def autogpt_task(self, task):
         try:
-            openai.api_key = "YOUR_API_KEY"
+            api_key = "YOUR_API_KEY"
+            if not api_key:
+                raise ValueError("Missing API key")
+            openai.api_key = api_key
             response = openai.Completion.create(
                 engine="text-davinci-003",
                 prompt=task,
@@ -28,6 +31,9 @@ class PipelineManager:
         except openai.error.AuthenticationError as e:
             logging.error(f"API key error during autogpt_task: {e}")
             return "API key error"
+        except ValueError as e:
+            logging.error(f"ValueError during autogpt_task: {e}")
+            return "ValueError: Missing API key"
         except Exception as e:
             logging.error(f"Error during autogpt_task: {e}")
             return ""
