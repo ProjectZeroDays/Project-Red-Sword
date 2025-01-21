@@ -103,8 +103,13 @@ def Save_Email_To_Recipient(client_socket, data, msg, requests, subject, sender,
         filename = filename.split("/")[-1]
 
         # Save the image file
-        with open(os.path.join(recipient_directory, filename), "wb") as f:
-            f.write(part.get_payload(decode=True))
+        try:
+            with open(os.path.join(recipient_directory, filename), "wb") as f:
+                f.write(part.get_payload(decode=True))
+        except Exception as e:
+            logging.error(f"Error saving email attachment: {e}")
+            client_socket.sendall("Error saving email attachment".encode('utf-8'))
+            return
 
     print(f"From: {sender}")
     print(f"To: {recipient}")
@@ -121,18 +126,28 @@ def Save_Email_To_Recipient(client_socket, data, msg, requests, subject, sender,
     if not os.path.isfile(f"{recipient_directory}/{recipient}_received_emails.csv") or (
             os.stat(f"{recipient_directory}/{recipient}_received_emails.csv").st_size == 0): # If the file doesn't exist, then create the file and save the email to the file
         df = pd.DataFrame(email_data, columns=MyColumns)
-        df.to_csv(f"{recipient_directory}/{recipient}_received_emails.csv", mode='w', header=True, index=False) # Save the email to the recipient's inbox
-        df.to_csv(f"{recipient_directory}/{recipient}_received_emailsHistory.csv", mode='w', header=True, index=False) # Save the email to the recipient's inbox history
+        try:
+            df.to_csv(f"{recipient_directory}/{recipient}_received_emails.csv", mode='w', header=True, index=False) # Save the email to the recipient's inbox
+            df.to_csv(f"{recipient_directory}/{recipient}_received_emailsHistory.csv", mode='w', header=True, index=False) # Save the email to the recipient's inbox history
+        except Exception as e:
+            logging.error(f"Error saving email to CSV: {e}")
+            client_socket.sendall("Error saving email to CSV".encode('utf-8'))
+            return
 
     else: # If the file already exists, then append the email to the file
 
-        df = pd.read_csv(f"{recipient_directory}/{recipient}_received_emails.csv") # Read the csv file of the recipient
-        new_row_df = pd.DataFrame(email_data, columns=df.columns)
-        df = pd.concat([df, new_row_df], ignore_index=True)
-        df.to_csv(f"{recipient_directory}/{recipient}_received_emails.csv", mode='w', header=True, index=False)
-        df = pd.read_csv(f"{recipient_directory}/{recipient}_received_emailsHistory.csv")
-        df = pd.concat([df, new_row_df], ignore_index=True)
-        df.to_csv(f"{recipient_directory}/{recipient}_received_emailsHistory.csv", mode='w', header=True, index=False)
+        try:
+            df = pd.read_csv(f"{recipient_directory}/{recipient}_received_emails.csv") # Read the csv file of the recipient
+            new_row_df = pd.DataFrame(email_data, columns=df.columns)
+            df = pd.concat([df, new_row_df], ignore_index=True)
+            df.to_csv(f"{recipient_directory}/{recipient}_received_emails.csv", mode='w', header=True, index=False)
+            df = pd.read_csv(f"{recipient_directory}/{recipient}_received_emailsHistory.csv")
+            df = pd.concat([df, new_row_df], ignore_index=True)
+            df.to_csv(f"{recipient_directory}/{recipient}_received_emailsHistory.csv", mode='w', header=True, index=False)
+        except Exception as e:
+            logging.error(f"Error appending email to CSV: {e}")
+            client_socket.sendall("Error appending email to CSV".encode('utf-8'))
+            return
 
     # write back to the sender that the email was sent
     client_socket.sendall("Email Sent".encode('utf-8'))

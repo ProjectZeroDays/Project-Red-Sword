@@ -270,6 +270,7 @@ def dashboard():
             session.commit()
         except Exception as e:
             logging.error(f"Error saving dashboard data to database: {e}")
+            session.rollback()
         finally:
             session.close()
 
