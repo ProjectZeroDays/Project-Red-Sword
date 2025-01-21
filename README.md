@@ -551,3 +551,279 @@ The following connections have been made to ensure all apps, dashboards, modules
 44. **modules/windows_control.py**: Connects to the appropriate models for Windows control.
 45. **modules/wireless_exploitation.py**: Connects to the appropriate models for wireless exploitation.
 46. **modules/zero_day_exploits.py**: Connects to the appropriate models for zero-day exploits.
+
+## Recent Updates and Changes
+
+### New Dashboards and Functionalities
+
+We have recently added several new dashboards and functionalities to the Project Red Sword framework. These updates include:
+
+1. **Advanced Connection Methods**: Added a new dashboard for managing advanced connection methods, including reverse shells and other advanced techniques.
+2. **Real-Time Threat Intelligence**: Enhanced the real-time threat intelligence dashboard with new visualizations and data sources.
+3. **Predictive Analytics**: Added a new dashboard for predictive analytics, utilizing machine learning algorithms to predict potential threats and vulnerabilities.
+4. **Automated Incident Response**: Developed a new dashboard for automated incident response, allowing for quick response and containment of security incidents.
+5. **AI Red Teaming**: Integrated AI-powered red teaming capabilities into a new dashboard, enabling advanced attack simulations and vulnerability identification.
+6. **Blockchain Logger**: Added a new dashboard for blockchain-based logging, providing immutable logs and audit trails for security events and incidents.
+7. **Advanced Decryption**: Developed a new dashboard for advanced decryption capabilities, allowing for secure decryption of sensitive data.
+8. **Advanced Malware Analysis**: Enhanced the advanced malware analysis dashboard with new tools and techniques for analyzing and reverse engineering malware.
+9. **Advanced Social Engineering**: Added a new dashboard for advanced social engineering attacks, including phishing, spear phishing, and whaling attacks.
+10. **Alerts and Notifications**: Developed a new dashboard for managing alerts and notifications, providing real-time updates on security events and incidents.
+11. **APT Simulation**: Added a new dashboard for simulating advanced persistent threats (APTs), allowing for comprehensive testing of the framework's defenses.
+12. **Cloud Exploitation**: Enhanced the cloud exploitation dashboard with new tools and techniques for exploiting vulnerabilities in cloud environments.
+13. **Custom Dashboards**: Developed customizable dashboards to provide tailored security insights and metrics.
+14. **Dark Web Scraper**: Added a new dashboard for scraping and indexing the dark web, providing valuable intelligence on emerging threats and vulnerabilities.
+15. **Data Exfiltration**: Enhanced the data exfiltration dashboard with new techniques for secure data extraction.
+16. **Data Visualization**: Developed new visualizations for data analysis, including charts, graphs, and status indicators.
+17. **Device Fingerprinting**: Added a new dashboard for device fingerprinting, allowing for the collection and analysis of device information.
+18. **Exploit Payloads**: Enhanced the exploit payloads dashboard with new techniques for generating polymorphic and encrypted payloads.
+19. **Fuzzing Engine**: Added a new dashboard for the fuzzing engine, allowing for comprehensive fuzz testing of targets.
+20. **IoT Exploitation**: Enhanced the IoT exploitation dashboard with new tools and techniques for exploiting vulnerabilities in IoT devices.
+21. **Machine Learning AI**: Developed a new dashboard for machine learning AI, providing advanced capabilities for threat detection and analysis.
+22. **MITM Stingray**: Added a new dashboard for managing MITM Stingray operations, including interception and analysis of network traffic.
+23. **Network Exploitation**: Enhanced the network exploitation dashboard with new tools and techniques for exploiting network vulnerabilities.
+24. **Vulnerability Scanner**: Added a new dashboard for the vulnerability scanner, providing comprehensive scanning and reporting of vulnerabilities.
+25. **Wireless Exploitation**: Enhanced the wireless exploitation dashboard with new tools and techniques for exploiting wireless vulnerabilities.
+26. **Zero Day Exploits**: Added a new dashboard for managing zero-day exploits, including identification and deployment of exploits.
+
+### Detailed and Comprehensive Instructions
+
+#### Prerequisites
+
+- Python 3.8+
+- Docker (for containerized deployment)
+- AWS CLI, Azure CLI, Google Cloud SDK, or DigitalOcean CLI (for cloud deployment)
+
+#### Installation
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/your-repo/project-red-sword.git
+   cd project-red-sword
+   ```
+
+2. **Install Python dependencies:**
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Set up environment variables:**
+
+   Create a `.env` file in the root directory and add your API keys:
+
+   ```bash
+   OPENAI_API_KEY=your-openai-api-key
+   HUGGINGFACE_API_KEY=your-huggingface-api-key
+   ```
+
+#### Running the Application
+
+To run the application locally, use the following command:
+
+```bash
+python app.py
+```
+
+#### Docker Deployment
+
+1. **Build the Docker image:**
+
+   ```bash
+   docker build -t project-red-sword .
+   ```
+
+2. **Run the Docker container:**
+
+   ```bash
+   docker run -p 7860:7860 project-red-sword
+   ```
+
+#### Cloud Deployment
+
+##### AWS Deployment
+
+1. **Build the Docker image:**
+
+   ```bash
+   docker build -t project-red-sword .
+   ```
+
+2. **Push the Docker image to AWS ECR:**
+
+   ```bash
+   aws ecr get-login-password --region YOUR_AWS_REGION | docker login --username AWS --password-stdin YOUR_AWS_ACCOUNT_ID.dkr.ecr.YOUR_AWS_REGION.amazonaws.com
+   aws ecr create-repository --repository-name project-red-sword || echo "Repository already exists."
+   docker tag project-red-sword:latest YOUR_AWS_ACCOUNT_ID.dkr.ecr.YOUR_AWS_REGION.amazonaws.com/project-red-sword
+   docker push YOUR_AWS_ACCOUNT_ID.dkr.ecr.YOUR_AWS_REGION.amazonaws.com/project-red-sword
+   ```
+
+3. **Deploy to AWS Elastic Beanstalk:**
+
+   ```bash
+   eb init -p docker project-red-sword --region YOUR_AWS_REGION
+   eb create project-red-sword-env
+   ```
+
+##### Azure Deployment
+
+1. **Build the Docker image:**
+
+   ```bash
+   docker build -t project-red-sword .
+   ```
+
+2. **Push the Docker image to Azure ACR:**
+
+   ```bash
+   az acr login --name YOUR_AZURE_ACR_NAME
+   az acr create --resource-group YOUR_RESOURCE_GROUP --name YOUR_AZURE_ACR_NAME --sku Basic || echo "Registry already exists."
+   docker tag project-red-sword:latest YOUR_AZURE_ACR_NAME.azurecr.io/project-red-sword
+   docker push YOUR_AZURE_ACR_NAME.azurecr.io/project-red-sword
+   ```
+
+3. **Deploy to Azure App Service:**
+
+   ```bash
+   az webapp create --resource-group YOUR_RESOURCE_GROUP --plan YOUR_APP_SERVICE_PLAN --name YOUR_APP_NAME --deployment-container-image-name YOUR_AZURE_ACR_NAME.azurecr.io/project-red-sword:latest
+   ```
+
+##### Google Cloud Deployment
+
+1. **Build the Docker image:**
+
+   ```bash
+   docker build -t project-red-sword .
+   ```
+
+2. **Push the Docker image to Google Container Registry:**
+
+   ```bash
+   gcloud auth configure-docker
+   docker tag project-red-sword gcr.io/YOUR_PROJECT_ID/project-red-sword
+   docker push gcr.io/YOUR_PROJECT_ID/project-red-sword
+   ```
+
+3. **Deploy to Google Kubernetes Engine:**
+
+   ```bash
+   kubectl apply -f google-k8s.yaml
+   ```
+
+##### DigitalOcean Deployment
+
+1. **Build the Docker image:**
+
+   ```bash
+   docker build -t project-red-sword .
+   ```
+
+2. **Deploy to DigitalOcean:**
+
+   ```bash
+   doctl auth init
+   doctl apps create --spec digitalocean-app.yaml
+   ```
+
+#### File Structure
+
+The Project Red Sword repository is organized into several directories, each containing specific modules and components. Here is an overview of the file structure:
+
+```
+project-red-sword/
+├── app.py
+├── requirements.txt
+├── .env
+├── modules/
+│   ├── ai_red_teaming.py
+│   ├── alerts_notifications.py
+│   ├── apt_simulation.py
+│   ├── advanced_decryption.py
+│   ├── advanced_malware_analysis.py
+│   ├── advanced_social_engineering.py
+│   ├── blockchain_logger.py
+│   ├── cloud_exploitation.py
+│   ├── cloud_native_applications.py
+│   ├── data_exfiltration.py
+│   ├── data_visualization.py
+│   ├── device_control.py
+│   ├── device_fingerprinting.py
+│   ├── edge_computing.py
+│   ├── exploit_payloads.py
+│   ├── fuzzing_engine.py
+│   ├── ios_control.py
+│   ├── iot_exploitation.py
+│   ├── linux_control.py
+│   ├── machine_learning_ai.py
+│   ├── macos_control.py
+│   ├── microservices_architecture.py
+│   ├── mitm_stingray.py
+│   ├── network_exploitation.py
+│   ├── predictive_analytics.py
+│   ├── quantum_computing.py
+│   ├── real_time_monitoring.py
+│   ├── real_time_threat_intelligence.py
+│   ├── serverless_computing.py
+│   ├── threat_intelligence.py
+│   ├── vulnerability_scanner.py
+│   ├── windows_control.py
+│   ├── wireless_exploitation.py
+│   ├── zero_day_exploits.py
+├── exploits/
+│   ├── exploits2.py
+│   ├── ios_framework_extracted/
+│   │   ├── iOS Zero-Click Framework (Updated)/
+│   │   │   ├── exploits.py
+├── database/
+│   ├── models.py
+├── backend/
+│   ├── code_parser.py
+│   ├── pipeline_manager.py
+├── c2_dashboard.py
+├── chatbot/
+│   ├── app.py
+│   ├── chatbot.py
+├── dashboard/
+│   ├── dashboard.py
+```
+
+#### API Key for Free Text Service
+
+You can get the API key for the free text service from Textbelt. Replace 'textbelt' in the send_sms function with your actual API key.
+
+```python
+def send_sms(to_phone_number, message):
+    url = 'https://textbelt.com/text'
+    data = {
+        'phone': to_phone_number,
+        'message': message,
+        'key': '6c6ba6cbbed7e162c975b3d2f8b0b391f8c5f97aQeDibGwKd8KbMQiMV1DSuUkaW'
+    }
+    try:
+        response = requests.post(url, data=data)
+        response.raise_for_status()
+        return response.json()
+    except requests.RequestException as e:
+        return {'success': False, 'message': str(e)}
+```
+
+#### Option to Send Either Exploit to the Target
+
+The Project Red Sword framework now includes an option to send either exploit to the target. This feature allows you to choose between different exploits based on the target system and the desired outcome.
+
+```python
+# Example of sending either exploit to the target
+from exploits.dia_framework_extracted.DIA_Framework.src.exploits import exploits
+
+# Choose the exploit to send
+exploit_choice = input("Enter the exploit to send (1 for Exploit A, 2 for Exploit B): ")
+
+if exploit_choice == '1':
+    result = exploits.deploy_exploit_a(ip='192.168.1.1', port=22, phone='1234567890', email='user@example.com', user='admin')
+elif exploit_choice == '2':
+    result = exploits.deploy_exploit_b(ip='192.168.1.1', port=22, phone='1234567890', email='user@example.com', user='admin')
+else:
+    print("Invalid choice. Please enter 1 or 2.")
+
+print(result)
+```
