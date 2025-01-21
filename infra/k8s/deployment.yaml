@@ -1,4 +1,3 @@
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -18,3 +17,9 @@ spec:
         image: cybersecurity/framework:latest
         ports:
         - containerPort: 5000
+        env:
+        - name: HUGGINGFACE_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: huggingface-secret
+              key: api_key
