@@ -27,6 +27,9 @@ CycleNewEmails = os.getenv("CYCLE_NEW_EMAILS", "False").lower() in ("true", "1",
 BaseEmails_directory = os.getenv("BASE_EMAILS_DIRECTORY")
 default_image = os.getenv("DEFAULT_IMAGE", '')
 
+if not BaseEmails_directory:
+    raise ValueError("BASE_EMAILS_DIRECTORY environment variable is not set.")
+
 
 def receive_complete_data(client_socket): # this function is used to receive the complete data from the client, adjust the parameters as needed based on your network conditions
     received_data = b""

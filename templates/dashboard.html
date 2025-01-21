@@ -246,6 +246,15 @@
             <canvas id="interceptedDataChart"></canvas>
         </div>
     </div>
+    <div class="dashboard-section">
+        <h2>OTP Interception</h2>
+        <button onclick="interceptEmailOTP()">Intercept Email OTP</button>
+        <button onclick="interceptSMSOTP()">Intercept SMS OTP</button>
+        <div class="otp-data">
+            <h3>Intercepted OTPs</h3>
+            <ul id="otpList"></ul>
+        </div>
+    </div>
     <script>
         var ctx = document.getElementById('threatsChart').getContext('2d');
         var threatsChart = new Chart(ctx, {
@@ -319,6 +328,16 @@
         function stopInterception() {
             // Implement the logic to stop interception
             console.log("Interception stopped");
+        }
+
+        function interceptEmailOTP() {
+            // Implement the logic to intercept email OTP
+            console.log("Intercepting Email OTP");
+        }
+
+        function interceptSMSOTP() {
+            // Implement the logic to intercept SMS OTP
+            console.log("Intercepting SMS OTP");
         }
 
         var ctx3 = document.getElementById('interceptedDataChart').getContext('2d');
