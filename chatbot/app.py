@@ -396,6 +396,22 @@ def receive_message_from_kafka(consumer):
     except Exception as e:
         logging.error(f"Error receiving message from Kafka: {e}")
 
+# Integrate email spoofing techniques
+def email_spoofing(target_email, spoofed_email, subject, message):
+    try:
+        return advanced_social_engineering.email_spoofing_attack(target_email, spoofed_email, subject, message)
+    except Exception as e:
+        logging.error(f"Error during email spoofing: {e}")
+        return "Email spoofing failed."
+
+# Integrate SMS spoofing techniques
+def sms_spoofing(target_number, spoofed_number, message):
+    try:
+        return advanced_social_engineering.sms_spoofing_attack(target_number, spoofed_number, message)
+    except Exception as e:
+        logging.error(f"Error during SMS spoofing: {e}")
+        return "SMS spoofing failed."
+
 if __name__ == "__main__":
     channel = setup_message_queue()
     if channel:

@@ -1,4 +1,3 @@
-
 # Base image
 FROM python:3.9-slim
 
@@ -9,10 +8,11 @@ WORKDIR /app
 COPY . .
 
 # Install dependencies
+RUN apt-get update && apt-get install -y libgl1-mesa-glx
 RUN pip install -r requirements.txt
 
 # Expose application port
 EXPOSE 5000
 
 # Run the application
-CMD ["python", "src/frontend/gui_chat_interface.py"]
+CMD ["python", "frontend/archive_gui.py"]
