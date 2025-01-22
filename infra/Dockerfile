@@ -15,4 +15,4 @@ RUN pip install -r requirements.txt
 EXPOSE 5000
 
 # Run the application
-CMD ["python", "src/frontend/gui_chat_interface.py"]
+CMD ["python", "frontend/archive_gui.py"]
