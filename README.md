@@ -333,3 +333,19 @@ We have recently added several new dashboards and functionalities to the Project
 24. **Vulnerability Scanner**: Added a new dashboard for the vulnerability scanner, providing comprehensive scanning and reporting of vulnerabilities.
 25. **Wireless Exploitation**: Enhanced the wireless exploitation dashboard with new tools and techniques for exploiting wireless vulnerabilities.
 26. **Zero Day Exploits**: Added a new dashboard for managing zero-day exploits, including identification and deployment of exploits.
+
+### Huggingface Deployment Automation
+
+To automate the deployment process for Huggingface, follow these steps:
+
+1. **Create a deployment script**: Add a script named `scripts/deploy_huggingface.sh` that includes the necessary commands to deploy your application to Huggingface. Ensure the script includes commands to authenticate with Huggingface, upload your model or dataset, and any other necessary steps.
+
+2. **Define environment variables**: Define the necessary environment variables for Huggingface deployment, such as `HUGGINGFACE_API_KEY`. You can set these environment variables in your deployment script or in your GitHub Actions workflow file.
+
+3. **Integrate with GitHub Actions**: Integrate the Huggingface deployment script with GitHub Actions by creating a workflow file named `.github/workflows/deploy_huggingface.yml`. Define the necessary jobs and steps in the workflow file to run the deployment script. Ensure that the workflow file includes steps to set up the environment, install dependencies, and run the deployment script.
+
+4. **Install dependencies**: Ensure that all dependencies required for the Huggingface deployment script are installed. You can specify the dependencies in a `requirements.txt` file or directly in the deployment script.
+
+5. **Create and manage API keys**: Learn about creating and managing API keys for Huggingface by referring to the Huggingface documentation. Store the API keys securely using GitHub Secrets or other secure methods. Ensure that the API keys are not exposed in your code or version control system.
+
+By following these steps, you can automate the deployment process for Huggingface and ensure a smooth and efficient deployment of your application.

@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 echo "Starting Deployment Testing..."
@@ -34,5 +33,14 @@ fi
 
 echo "Checking Kubernetes Pods..."
 kubectl get pods
+
+# Test Huggingface Deployment
+echo "Testing Huggingface Deployment..."
+bash scripts/deploy_huggingface.sh
+if [ $? -eq 0 ]; then
+    echo "Huggingface Deployment Tested Successfully."
+else
+    echo "Huggingface Deployment Test Failed!" && exit 1
+fi
 
 echo "Deployment Testing Completed."
