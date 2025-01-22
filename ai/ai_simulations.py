@@ -17,8 +17,6 @@ class OffensiveSimulation:
             return
 
         try:
-            if not self.scenarios:
-                raise IndexError("No scenarios available.")
             scenario = random.choice(self.scenarios)
             print(f"[SIMULATION] Executing simulated attack: {scenario}")
 

@@ -21,6 +21,9 @@ class MultiAIChat:
             openai.api_key = self.openai_key
             response = openai.Completion.create(engine="text-davinci-003", prompt=prompt, max_tokens=100)
             return response.choices[0].text.strip()
+        except openai.error.AuthenticationError as e:
+            logging.error(f"Authentication error during OpenAI chat: {e}")
+            return "Authentication error"
         except Exception as e:
             logging.error(f"Error during OpenAI chat: {e}")
             return ""
