@@ -71,20 +71,19 @@ logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %
 
 
 async def random_url(_):
-    retries = 3
-    for _ in range(retries):
-        try:
-            pet = random.choice(["cat", "dog"])
-            api_url = f"https://api.the{pet}api.com/v1/images/search"
-            async with aiohttp.ClientSession() as session:
-                async with session.get(api_url) as resp:
-                    resp.raise_for_status()
-                    return (await resp.json())[0]["url"]
-        except aiohttp.ClientError as e:
-            logging.error(f"API request failed: {e}")
-        except Exception as e:
-            logging.error(f"Unexpected error: {e}")
-    return None
+    try:
+        pet = random.choice(["cat", "dog"])
+        api_url = f"https://api.the{pet}api.com/v1/images/search"
+        async with aiohttp.ClientSession() as session:
+            async with session.get(api_url) as resp:
+                resp.raise_for_status()
+                return (await resp.json())[0]["url"]
+    except aiohttp.ClientError as e:
+        logging.error(f"API request failed: {e}")
+        return None
+    except Exception as e:
+        logging.error(f"Unexpected error: {e}")
+        return None
 
 
 @pn.cache
@@ -270,7 +269,7 @@ try:
     macos_control = MacOSControl()
     linux_control = LinuxControl()
     android_control = AndroidControl()
-    ios_control = iOSControl()
+    ios_control = IOSControl()
     advanced_device_control = AdvancedDeviceControl()
     code_parser = CodeParser("sample_code")
     pipeline_manager = PipelineManager()
